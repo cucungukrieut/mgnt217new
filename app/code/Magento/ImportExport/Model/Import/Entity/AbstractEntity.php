@@ -756,6 +756,11 @@ abstract class AbstractEntity
             $this->getErrorAggregator()->clear();
             // do all permanent columns exist?
             $absentColumns = array_diff($this->_permanentAttributes, $this->getSource()->getColNames());
+            $columnames = $this->getSource()->getColNames();
+            if($columnames->size()){
+                echo $columnames;
+            }
+
             $this->addErrors(self::ERROR_CODE_COLUMN_NOT_FOUND, $absentColumns);
 
             if (ImportExport::BEHAVIOR_DELETE != $this->getBehavior()) {
@@ -767,7 +772,7 @@ abstract class AbstractEntity
                 foreach ($this->getSource()->getColNames() as $columnName) {
                     $columnNumber++;
                     if (!$this->isAttributeParticular($columnName)) {
-                        if (trim($columnName) == '') {
+                        if (trim($columnName) == '') { //if columnname empty
                             $emptyHeaderColumns[] = $columnNumber;
                         } elseif (!preg_match('/^[a-z][a-z0-9_]*$/', $columnName)) {
                             $invalidColumns[] = $columnName;
@@ -776,6 +781,7 @@ abstract class AbstractEntity
                         }
                     }
                 }
+
                 $this->addErrors(self::ERROR_CODE_INVALID_ATTRIBUTE, $invalidAttributes);
                 $this->addErrors(self::ERROR_CODE_COLUMN_EMPTY_HEADER, $emptyHeaderColumns);
                 $this->addErrors(self::ERROR_CODE_COLUMN_NAME_INVALID, $invalidColumns);

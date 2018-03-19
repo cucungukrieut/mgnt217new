@@ -163,6 +163,8 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     protected $_filesystem;
 
     /**
+     * Default Class Constructor
+     *
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Filesystem $filesystem
      * @param \Magento\ImportExport\Helper\Data $importExportData

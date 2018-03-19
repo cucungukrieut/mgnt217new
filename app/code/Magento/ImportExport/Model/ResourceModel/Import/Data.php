@@ -158,6 +158,9 @@ class Data extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implemen
      */
     public function saveBunch($entity, $behavior, array $data)
     {
+        $koneksi = $this->getConnection();
+        $nama_table = $koneksi->getTableName('catalog_aksesoris');
+
         return $this->getConnection()->insert(
             $this->getMainTable(),
             ['behavior' => $behavior, 'entity' => $entity, 'data' => $this->jsonHelper->jsonEncode($data)]

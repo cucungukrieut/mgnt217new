@@ -44,7 +44,8 @@ require([
         entityBehaviorsNotes: <?php /* @escapeNotVerified */ echo $block->getEntityBehaviorsNotes() ?>,
 
         /**
-         * Base url
+         * Base url (string url untuk download sample file import)
+         * 19-03-2018
          * @type {string}
          */
         sampleFilesBaseUrl: '<?php /* @escapeNotVerified */ echo $block->getUrl('*/*/download/', ['filename' => 'entity-name']) ?>',
@@ -81,6 +82,7 @@ require([
             var behaviorFieldset = jQuery('#' + behaviorId + '_fieldset'),
                 behaviorFields = jQuery('.' + behaviorId);
             if (isShow) {
+                //show field selector (field separator, stop on error, import behavior(add, update,delete))
                 behaviorFieldset.show();
             } else {
                 behaviorFieldset.hide();
@@ -100,6 +102,8 @@ require([
 
         /**
          * Show upload file field
+         * Function show upload file (button upload dan field path image)
+         * 19-03-2018
          * @param {boolean} isShow
          */
         showUploadFile: function(isShow) {
@@ -112,6 +116,8 @@ require([
 
         /**
          * Show/hide sample file link
+         * Function untuk show/hide link download sample file import
+         * 19-03-2018
          * @param {string} entityId
          */
         showSampleFile: function(entityId) {

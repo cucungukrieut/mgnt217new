@@ -83,6 +83,7 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
 
     /**
      * Retrieve default Selection object
+     * Get default selection yang di setting di admin product
      *
      * @return \Magento\Catalog\Model\Product|null
      */
@@ -101,6 +102,7 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
 
     /**
      * Check is multi Option selection
+     * Untuk checkbox multi selection
      *
      * @return bool
      */

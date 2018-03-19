@@ -314,6 +314,7 @@ abstract class AbstractDb extends AbstractResource
     /**
      * Get connection
      *
+     *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface|false
      */
     public function getConnection()
