@@ -768,8 +768,6 @@ abstract class AbstractEntity
 
     /**
      * Validate data
-     * Validasi data untuk import data (product, customer, etc)
-     * 19-03-2018
      *
      * @return ProcessingErrorAggregatorInterface
      * @throws \Magento\Framework\Exception\LocalizedException

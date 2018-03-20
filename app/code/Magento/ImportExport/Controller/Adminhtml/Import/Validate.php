@@ -73,10 +73,7 @@ class Validate extends ImportResultController
     private function processValidationResult($validationResult, $resultBlock)
     {
         $import = $this->getImport();
-
-        $check = $import->getProcessedRowsCount();
-
-        if (!$check) { // if row count != 0
+        if (!$import->getProcessedRowsCount()) {
             if (!$import->getErrorAggregator()->getErrorsCount()) {
                 $resultBlock->addError(__('This file is empty. Please try another one.'));
             } else {
