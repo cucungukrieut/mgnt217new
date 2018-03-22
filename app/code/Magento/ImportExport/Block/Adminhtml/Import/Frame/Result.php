@@ -126,7 +126,7 @@ class Result extends \Magento\Backend\Block\Template
     }
 
     /**
-     * Add success message.
+     * Add success import message.
      *
      * @param string[]|string $message Message text
      * @param bool $appendImportButton OPTIONAL Append import button to message?
@@ -146,11 +146,23 @@ class Result extends \Magento\Backend\Block\Template
 
     /**
      * Import button HTML for append to message.
+     * Untuk menampilkan button import setelah validasi file import sukses
      *
      * @return string
      */
     public function getImportButtonHtml()
     {
+        $importURI = '&nbsp;&nbsp;<button onclick="varienImport.startImport(\'' .
+            $this->getImportStartUrl() .
+            '\', \'' .
+            \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE .
+            '\');" class="scalable save"' .
+            ' type="button"><span><span><span>' .
+            __(
+                'Import'
+            ) . '</span></span></span></button>';
+        echo 'Testing fungsi tombol import ';
+
         return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\'' .
             $this->getImportStartUrl() .
             '\', \'' .
@@ -213,6 +225,7 @@ class Result extends \Magento\Backend\Block\Template
         if (!isset($this->_actions['import_validation_messages'])) {
             $this->addAction('innerHTML', 'import_validation_messages', $this->getMessagesHtml());
         }
+
         return $this->_jsonEncoder->encode($this->_actions);
     }
 }

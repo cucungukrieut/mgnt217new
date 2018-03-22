@@ -47,6 +47,7 @@ class Validate extends ImportResultController
                         ->getDirectoryWrite(DirectoryList::ROOT),
                     $data[$import::FIELD_FIELD_SEPARATOR]
                 );
+
                 $this->processValidationResult($import->validateSource($source), $resultBlock);
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $resultBlock->addError($e->getMessage());
@@ -59,6 +60,7 @@ class Validate extends ImportResultController
             return $resultLayout;
         }
         $this->messageManager->addError(__('Sorry, but the data is invalid or the file is not uploaded.'));
+
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         $resultRedirect->setPath('adminhtml/*/index');
@@ -66,6 +68,8 @@ class Validate extends ImportResultController
     }
 
     /**
+     * Error message untuk result validasi import...
+     *
      * @param bool $validationResult
      * @param ImportResultBlock $resultBlock
      * @return void
@@ -98,6 +102,8 @@ class Validate extends ImportResultController
                     $resultBlock->addError(__('The file is valid, but we can\'t import it for some reason.'));
                 }
             }
+
+            // Notice of success oor errror validae data import...
             $resultBlock->addNotice(
                 __(
                     'Checked rows: %1, checked entities: %2, invalid rows: %3, total errors: %4',
