@@ -1,0 +1,26 @@
+{
+  "name": "Test/admin-module-sample",
+  "type": "magento2-module",
+  "description": "Admin module sample for Magento 2",
+  "keywords": ["Magento2", "Admin", "Sample"],
+  "homepage": "https://github.com/Test/",
+  "aaaminimum-stability": "dev",
+  "license": "AFL - Academic Free License (AFL 3.0)",
+  "authors": [
+    {
+      "name": "Test"
+    }
+  ],
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "magento/magento-composer-installer": "*"
+  },
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Test/HelloTest"
+      ]
+    ]
+  }
+}

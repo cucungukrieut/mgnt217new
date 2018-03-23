@@ -111,7 +111,7 @@ require([
         },
 
         /**
-         * Show/hide sample file link
+         * Show/hide sample file link download
          * @param {string} entityId
          */
         showSampleFile: function(entityId) {
@@ -253,9 +253,17 @@ require([
          * @param {string} sourceFileField
          */
         startImport: function(newActionUrl, sourceFileField) {
-            jQuery('#' + sourceFileField).removeClass('required-entry');
-            this.postToFrame(newActionUrl);
-            jQuery('#' + sourceFileField).addClass('required-entry');
+
+            var url_string = newActionUrl.toString();
+            if (url_string != null){
+                window.alert("Url string adaan...");
+            }
+
+            window.alert(sourceFileField.toString());
+            alert({content: sourceFileField.toString()});
+            //jQuery('#' + sourceFileField).removeClass('required-entry');
+            //this.postToFrame(newActionUrl);
+            //jQuery('#' + sourceFileField).addClass('required-entry');
         }
     };
 //]]>

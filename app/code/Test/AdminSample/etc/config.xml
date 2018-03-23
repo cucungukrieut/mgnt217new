@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <adminsample> <!--section id dari "etc/adminhtml/system.xml" -->
+            <txt> <!-- group id -->
+                <textsample>Ini adalah teks</textsample>
+            </txt>
+            <yn> <!-- Untuk yes no sample di configuration-->
+                <ynsample>0</ynsample>
+            </yn>
+        </adminsample>
+    </default>
+</config>
