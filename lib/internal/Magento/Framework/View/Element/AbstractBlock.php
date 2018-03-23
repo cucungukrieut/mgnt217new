@@ -61,6 +61,7 @@ abstract class AbstractBlock extends \Magento\Framework\DataObject implements Bl
 
     /**
      * Parent layout of the block
+     * Variable untuk class LayoutInterface
      *
      * @var \Magento\Framework\View\LayoutInterface
      */
