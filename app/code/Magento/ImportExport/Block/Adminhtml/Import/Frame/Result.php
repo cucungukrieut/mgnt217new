@@ -216,6 +216,8 @@ class Result extends \Magento\Backend\Block\Template
 
     /**
      * Return response as JSON.
+     * Return json string html message.....
+     * 23/03/2018
      *
      * @return string
      */
@@ -224,6 +226,11 @@ class Result extends \Magento\Backend\Block\Template
         // add messages HTML if it is not already specified
         if (!isset($this->_actions['import_validation_messages'])) {
             $this->addAction('innerHTML', 'import_validation_messages', $this->getMessagesHtml());
+        }
+
+        $jsonfile = $this->_jsonEncoder->encode($this->_actions);
+        if ($jsonfile == null){
+            echo 'Hahahahaha kosong..';
         }
 
         return $this->_jsonEncoder->encode($this->_actions);
