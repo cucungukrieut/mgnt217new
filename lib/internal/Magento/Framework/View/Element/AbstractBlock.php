@@ -656,11 +656,7 @@ abstract class AbstractBlock extends \Magento\Framework\DataObject implements Bl
             if ($this->hasData('translate_inline')) {
                 $this->inlineTranslation->suspend($this->getData('translate_inline'));
 
-                $tahieuinline = $this->getData('translate_inline');
             }
-
-            $tahieuinline->toString();
-
 
             $this->_beforeToHtml();
             $html = $this->_toHtml();

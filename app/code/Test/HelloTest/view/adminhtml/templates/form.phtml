@@ -1,63 +1,28 @@
-<?php
-
-
-?>
+<?php $_product = $block->getProduct(); ?>
 <div class="container">
     <div class="row">
-        <!--div class="col-md-2 col-md-offset-1 col-sm-11 col-sm-offset-1 col-xs-11 col-xs-offset-1"-->
+        <form role="form" action="import.php" method="POST">
 
-            <!--div class="panel-body" style="margin-top: 10%; border: 1px dotted #a8a8a8"-->
-                <form role="form" action="import.php" method="POST">
+            <div class="form-group input-group">
+                <span class="input-group-addon"></span>
+                <input type="text" name="pilihanaction" placeholder="Action" class="form-control" required></br>
+            </div>
 
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"><i class="fa fa-tag"></i> </span>
-                        <input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" required></br>
-                    </div>
-
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"></span>
-                        <input type="text" name="alamat" placeholder="Alamat" class="form-control" required></br>
-                    </div>
-
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"></span>
-                        <input type="text" name="kota" placeholder="Kota" class="form-control" required></br>
-                    </div>
-
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"></span>
-                        <input type="text" name="provinsi" placeholder="Provinsi" class="form-control" required></br>
-                    </div>
-
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"></span>
-                        <input type="text" name="Email" placeholder="Email" class="form-control" required></br>
-                    </div>
-
-                    <!--div class="form-group input-group">
-                        <span class="input-group"></span>
-                        <input type="checkbox" name="remember" placeholder="remember" > Remember Me</br>
-                    </div-->
-
-                    <div class="form-group">
-                        <span class="input-group"></span>
-                    </div>
-                    <div class="form-group">
-                        <span class="input-group"></span>
-                    </div>
-
-                    <!--div class="form-group">
-                            <span class="pull-right">
-                                <a style="font-size: 11px" href="lupa.html">Lupa Password?</a>
-                            </span>
-                    </div-->
-                    <div class="form-group">
-                        <span class="pull-right">
-                            <button class="btn btn-primary" type="submit" name="login" >File Chooser</button>
-                        </span>
-                    </div>
-                </form>
-            <!--/div-->
-        <!--/div-->
+            <div class="form-group input-group">
+                <span class="input-group-addon"></span>
+                <input type="text" name="separator" placeholder="Separator" class="form-control" required></br>
+            </div>
+            <div class="form-group">
+                <span class="input-group"></span>
+            </div>
+            <div class="form-group">
+                <span class="input-group"></span>
+            </div>
+            <div class="form-group">
+                <span class="pull-right">
+                    <button onclick="" class="btn btn-primary" type="submit" name="login" >File Chooser</button>
+                </span>
+            </div>
+        </form>
     </div>
 </div>
