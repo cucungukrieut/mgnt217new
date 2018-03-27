@@ -41,6 +41,6 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     public function getHeaderText()
     {
-        return __('Import');
+        return __('Import Products');
     }
 }
