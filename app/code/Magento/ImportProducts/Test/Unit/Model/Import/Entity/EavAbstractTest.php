@@ -51,7 +51,7 @@ class EavAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abs
     /**
      * @var \Magento\ImportProducts\Model\Export\Factory
      */
-    protected $_collectionFactory;
+    //protected $_collectionFactory;
 
     /**
      * @var \Magento\Eav\Model\Config
@@ -81,13 +81,7 @@ class EavAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abs
             false
         );
         $this->_storeManager = $this->getMock('Magento\Store\Model\StoreManager', [], [], '', false);
-        $this->_collectionFactory = $this->getMock(
-            'Magento\ImportProducts\Model\Export\Factory',
-            [],
-            [],
-            '',
-            false
-        );
+        //$this->_collectionFactory = $this->getMock('Magento\ImportProducts\Model\Export\Factory', [], [], '', false);
         $this->_eavConfig = $this->getMock('Magento\Eav\Model\Config', [], [], '', false);
 
         $this->_model = $this->getMockForAbstractClass(

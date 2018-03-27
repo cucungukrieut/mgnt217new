@@ -8,7 +8,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Magento_ImportProducts::system_convert_import" title="Import Products" translate="title" module="Magento_ImportProducts" sortOrder="10" parent="Magento_Backend::system_convert" action="adminhtml/import" resource="Magento_ImportProducts::import"/>
-        <add id="Magento_ImportProducts::system_convert_export" title="Export Products" translate="title" module="Magento_ImportProducts" sortOrder="20" parent="Magento_Backend::system_convert" action="adminhtml/export" resource="Magento_ImportProducts::export"/>
-        <add id="Magento_ImportProducts::system_convert_history" title="Import History Products" translate="title" module="Magento_ImportProducts" sortOrder="40" parent="Magento_Backend::system_convert" action="adminhtml/history" resource="Magento_ImportProducts::history"/>
-    </menu>
+     </menu>
 </config>

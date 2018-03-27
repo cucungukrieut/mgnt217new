@@ -34,7 +34,7 @@ class Csv implements ReportProcessorInterface
     /**
      * @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory
      */
-    protected $outputCsvFactory;
+    //protected $outputCsvFactory;
 
     /**
      * @var \Magento\Framework\Filesystem
@@ -50,12 +50,12 @@ class Csv implements ReportProcessorInterface
     public function __construct(
         \Magento\ImportProducts\Helper\Report $reportHelper,
         \Magento\ImportProducts\Model\Import\Source\CsvFactory $sourceCsvFactory,
-        \Magento\ImportProducts\Model\Export\Adapter\CsvFactory $outputCsvFactory,
+        //\Magento\ImportProducts\Model\Export\Adapter\CsvFactory $outputCsvFactory,
         \Magento\Framework\Filesystem $filesystem
     ) {
         $this->reportHelper = $reportHelper;
         $this->sourceCsvFactory = $sourceCsvFactory;
-        $this->outputCsvFactory = $outputCsvFactory;
+        //$this->outputCsvFactory = $outputCsvFactory;
         $this->filesystem = $filesystem;
     }
 
@@ -138,7 +138,7 @@ class Csv implements ReportProcessorInterface
     /**
      * @param string $outputFileName
      * @return \Magento\ImportProducts\Model\Export\Adapter\Csv
-     */
+     *
     protected function createOutputCsvModel($outputFileName)
     {
         return $this->outputCsvFactory->create(
@@ -147,5 +147,5 @@ class Csv implements ReportProcessorInterface
                 'destinationDirectoryCode' => DirectoryList::VAR_DIR,
             ]
         );
-    }
+    }*/
 }

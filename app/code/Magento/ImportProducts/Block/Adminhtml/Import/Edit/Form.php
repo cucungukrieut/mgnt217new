@@ -191,6 +191,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'upload_file_fieldset',
             ['legend' => __('File to Import'), 'class' => 'no-display']
         );
+        //button file chooser
         $fieldsets['upload']->addField(
             \Magento\ImportProducts\Model\Import::FIELD_NAME_SOURCE_FILE,
             'file',
@@ -202,6 +203,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'class' => 'input-file'
             ]
         );
+
+        //field untuk path upload image
         $fieldsets['upload']->addField(
             \Magento\ImportProducts\Model\Import::FIELD_NAME_IMG_FILE_DIR,
             'text',
@@ -226,6 +229,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 
     /**
      * Get download sample file html
+     * Link untuk download file sample import
      *
      * @return string
      */

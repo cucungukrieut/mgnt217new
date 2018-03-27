@@ -135,7 +135,7 @@ class Import extends \Magento\ImportProducts\Model\AbstractModel
     /**
      * @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory
      */
-    protected $_csvFactory;
+    //protected $_csvFactory;
 
     /**
      * @var \Magento\Framework\HTTP\Adapter\FileTransferFactory
@@ -188,7 +188,7 @@ class Import extends \Magento\ImportProducts\Model\AbstractModel
         \Magento\ImportProducts\Model\Import\ConfigInterface $importConfig,
         \Magento\ImportProducts\Model\Import\Entity\Factory $entityFactory,
         \Magento\ImportProducts\Model\ResourceModel\Import\Data $importData,
-        \Magento\ImportProducts\Model\Export\Adapter\CsvFactory $csvFactory,
+        //\Magento\ImportProducts\Model\Export\Adapter\CsvFactory $csvFactory,
         \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory,
         \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Magento\ImportProducts\Model\Source\Import\Behavior\Factory $behaviorFactory,
@@ -202,7 +202,7 @@ class Import extends \Magento\ImportProducts\Model\AbstractModel
         $this->_importConfig = $importConfig;
         $this->_entityFactory = $entityFactory;
         $this->_importData = $importData;
-        $this->_csvFactory = $csvFactory;
+        //$this->_csvFactory = $csvFactory;
         $this->_httpFactory = $httpFactory;
         $this->_uploaderFactory = $uploaderFactory;
         $this->indexerRegistry = $indexerRegistry;

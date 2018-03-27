@@ -96,18 +96,16 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
         \Magento\Framework\App\ResourceConnection $resource,
         ProcessingErrorAggregatorInterface $errorAggregator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\ImportProducts\Model\Export\Factory $collectionFactory,
+        //\Magento\ImportProducts\Model\Export\Factory $collectionFactory,
         \Magento\Eav\Model\Config $eavConfig,
         array $data = []
     ) {
         parent::__construct($string, $scopeConfig, $importFactory, $resourceHelper, $resource, $errorAggregator, $data);
 
         $this->_storeManager = $storeManager;
-        $this->_attributeCollection = isset(
-            $data['attribute_collection']
-        ) ? $data['attribute_collection'] : $collectionFactory->create(
-            static::ATTRIBUTE_COLLECTION_NAME
-        );
+
+        //Edit setelah export di hilangkan...........
+        $this->_attributeCollection = isset($data['attribute_collection']) ? $data['attribute_collection'] : null ;//$collectionFactory->create(static::ATTRIBUTE_COLLECTION_NAME);
 
         if (isset($data['entity_type_id'])) {
             $this->_entityTypeId = $data['entity_type_id'];

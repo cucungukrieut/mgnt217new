@@ -23,7 +23,7 @@ class Index extends ImportController
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->setActiveMenu('Magento_ImportProducts::system_convert_import');
-        $resultPage->getConfig()->getTitle()->prepend(__('Import/Export'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Import Products'));
         $resultPage->getConfig()->getTitle()->prepend(__('Import'));
         $resultPage->addBreadcrumb(__('Import'), __('Import'));
         return $resultPage;

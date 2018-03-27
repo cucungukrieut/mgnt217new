@@ -46,7 +46,7 @@ class ImportTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstract
     /**
      * @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $_csvFactory;
+    //protected $_csvFactory;
 
     /**
      * @var \Magento\Framework\HTTP\Adapter\FileTransferFactory|\PHPUnit_Framework_MockObject_MockObject
@@ -143,9 +143,7 @@ class ImportTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstract
         $this->_importData = $this->getMockBuilder('\Magento\ImportProducts\Model\ResourceModel\Import\Data')
             ->disableOriginalConstructor()
             ->getMock();
-        $this->_csvFactory = $this->getMockBuilder('\Magento\ImportProducts\Model\Export\Adapter\CsvFactory')
-            ->disableOriginalConstructor()
-            ->getMock();
+        //$this->_csvFactory = $this->getMockBuilder('\Magento\ImportProducts\Model\Export\Adapter\CsvFactory')->disableOriginalConstructor()->getMock();
         $this->_httpFactory = $this->getMockBuilder('\Magento\Framework\HTTP\Adapter\FileTransferFactory')
             ->disableOriginalConstructor()
             ->getMock();
