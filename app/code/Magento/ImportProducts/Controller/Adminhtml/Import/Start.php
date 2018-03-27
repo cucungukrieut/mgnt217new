@@ -60,7 +60,7 @@ class Start extends ImportResultController
             } else {
                 $this->importModel->invalidateIndex();
                 $this->addErrorMessages($resultBlock, $errorAggregator);
-                $resultBlock->addSuccess(__('Import successfully done'));
+                $resultBlock->addSuccess(__('Import berhasil..'));
             }
 
             return $resultLayout;

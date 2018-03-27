@@ -64,11 +64,7 @@ class InstallSchema implements InstallSchemaInterface
          */
         $table = $installer->getConnection()
             ->newTable($installer->getTable('import_history'))
-            ->addColumn(
-                'history_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                null,
-                ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+            ->addColumn('history_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
                 'History record Id'
             )
             ->addColumn(
