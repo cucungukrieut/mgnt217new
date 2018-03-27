@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
     <menu>
-        <add id="Test_AdminSample::customMenu" title="Test Menu" module="Test_AdminSample" sortOrder="500" parent="Magento_Backend::system" resource="Test_AdminSample::customMenu"/>
-        <add id="Test_AdminSample::sampleOne" title="Test Form" module="Test_AdminSample" sortOrder="100" parent="Test_AdminSample::customMenu" action="AdminSample/SampleOne" resource="Test_AdminSample::SampleOne"/>
-        <add id="Test_AdminSample::sampleTwo" title="Sample Two" module="Test_AdminSample" sortOrder="200" parent="Test_AdminSample::customMenu" action="AdminSample/sampleTwo" resource="Test_AdminSample::sampleTwo"/>
+        <add id="Test_AdminSample::customMenu" title="Menu Testing" module="Test_AdminSample" sortOrder="500" parent="Magento_Backend::system" resource="Test_AdminSample::customMenu"/>
+        <add id="Test_AdminSample::sampleOne" title="Menu 1" module="Test_AdminSample" sortOrder="100" parent="Test_AdminSample::customMenu" action="AdminSample/SampleOne" resource="Test_AdminSample::SampleOne"/>
+        <add id="Test_AdminSample::sampleTwo" title="Menu 2" module="Test_AdminSample" sortOrder="200" parent="Test_AdminSample::customMenu" action="AdminSample/sampleTwo" resource="Test_AdminSample::sampleTwo"/>
     </menu>
 </config>

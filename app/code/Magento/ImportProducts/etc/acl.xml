@@ -13,7 +13,7 @@
                     <resource id="Magento_Backend::convert">
                         <resource id="Magento_ImportProducts::import" title="Import" translate="title" sortOrder="10" />
                         <!-- lebih baik remove untuk history-->
-                        <resource id="Magento_ImportProducts::history" title="Import History" translate="title" sortOrder="30" />
+                        <!--resource id="Magento_ImportProducts::history" title="Import History" translate="title" sortOrder="30" /-->
                     </resource>
                 </resource>
             </resource>

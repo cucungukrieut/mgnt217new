@@ -76,7 +76,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
 
-        // base fieldset
+        // base fieldset header
         $fieldsets['base'] = $form->addFieldset('base_fieldset', ['legend' => __('Import Settings')]);
         $fieldsets['base']->addField(
             'entity',
