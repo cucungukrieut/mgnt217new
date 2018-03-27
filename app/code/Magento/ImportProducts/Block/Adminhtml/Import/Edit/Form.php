@@ -141,7 +141,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'title' => __('Allowed Errors Count'),
                     'required' => true,
                     'disabled' => true,
-                    'value' => 10,
+                    'value' => 5,
                     'class' => $behaviorCode . ' validate-number validate-greater-than-zero input-text',
                     'note' => __(
                         'Please specify number of errors to halt import process'
@@ -158,7 +158,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'required' => true,
                     'disabled' => true,
                     'class' => $behaviorCode,
-                    'value' => ',',
+                    'value' => ';',
                 ]
             );
             $fieldsets[$behaviorCode]->addField(
@@ -232,7 +232,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected function getDownloadSampleFileHtml()
     {
         $html = '<span id="sample-file-span" class="no-display"><a id="sample-file-link" href="#">'
-            . __('Download Sample File')
+            . __('Download Sample')
             . '</a></span>';
         return $html;
     }
