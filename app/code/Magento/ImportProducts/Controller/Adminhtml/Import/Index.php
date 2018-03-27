@@ -17,15 +17,14 @@ class Index extends ImportController
      */
     public function execute()
     {
-        $this->messageManager->addNotice(
-            $this->_objectManager->get('Magento\ImportProducts\Helper\Data')->getMaxUploadSizeMessage()
-        );
+        $this->messageManager->addNoticeMessage($this->_objectManager->get('Magento\ImportProducts\Helper\Data')->getMaxUploadSizeMessage());
+
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $resultPage->setActiveMenu('Magento_ImportProducts::system_convert_import');
         $resultPage->getConfig()->getTitle()->prepend(__('Import Products'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Import'));
-        $resultPage->addBreadcrumb(__('Import'), __('Import'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Import Products'));
+        $resultPage->addBreadcrumb(__('Import'), __('Import Products'));
         return $resultPage;
     }
 }

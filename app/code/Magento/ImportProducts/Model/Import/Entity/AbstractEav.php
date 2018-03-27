@@ -82,7 +82,6 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\ImportProducts\Model\Export\Factory $collectionFactory
      * @param \Magento\Eav\Model\Config $eavConfig
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -105,7 +104,8 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
         $this->_storeManager = $storeManager;
 
         //Edit setelah export di hilangkan...........
-        $this->_attributeCollection = isset($data['attribute_collection']) ? $data['attribute_collection'] : null ;//$collectionFactory->create(static::ATTRIBUTE_COLLECTION_NAME);
+        $this->_attributeCollection = isset($data['attribute_collection']) ? $data['attribute_collection'] : null ;
+        //$collectionFactory->create(static::ATTRIBUTE_COLLECTION_NAME);
 
         if (isset($data['entity_type_id'])) {
             $this->_entityTypeId = $data['entity_type_id'];

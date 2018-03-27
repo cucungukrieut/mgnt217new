@@ -291,13 +291,8 @@ abstract class AbstractEntity
         array $data = []
     ) {
         $this->_scopeConfig = $scopeConfig;
-        $this->_dataSourceModel = isset(
-            $data['data_source_model']
-        ) ? $data['data_source_model'] : $importFactory->create()->getDataSourceModel();
-        $this->_connection =
-            isset($data['connection']) ?
-            $data['connection'] :
-            $resource->getConnection();
+        $this->_dataSourceModel = isset($data['data_source_model']) ? $data['data_source_model'] : $importFactory->create()->getDataSourceModel();
+        $this->_connection = isset($data['connection']) ? $data['connection'] : $resource->getConnection();
         $this->string = $string;
         $this->_pageSize = isset(
             $data['page_size']

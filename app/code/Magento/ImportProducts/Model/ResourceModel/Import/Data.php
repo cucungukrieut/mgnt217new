@@ -5,12 +5,13 @@
  */
 namespace Magento\ImportProducts\Model\ResourceModel\Import;
 
+use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 /**
  * ImportProducts import data resource model
- *
+ *  default full source path \Magento\Framework\Model\ResourceModel\Db\AbstractDb
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Data extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implements \IteratorAggregate
+class Data extends AbstractDb implements \IteratorAggregate
 {
     /**
      * @var \Iterator
