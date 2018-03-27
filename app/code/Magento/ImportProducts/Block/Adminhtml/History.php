@@ -1,8 +1,9 @@
+<?php
 /**
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Block\Adminhtml;
+namespace Magento\ImportExport\Block\Adminhtml;
 
 /**
  * Adminhtml import history page content block
