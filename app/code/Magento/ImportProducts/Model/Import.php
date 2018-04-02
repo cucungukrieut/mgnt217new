@@ -133,7 +133,7 @@ class Import extends \Magento\ImportProducts\Model\AbstractModel
     protected $_importData;
 
     /**
-     * @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory
+     //* @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory
      */
     //protected $_csvFactory;
 
@@ -170,7 +170,7 @@ class Import extends \Magento\ImportProducts\Model\AbstractModel
      * @param Import\ConfigInterface $importConfig
      * @param Import\Entity\Factory $entityFactory
      * @param \Magento\ImportProducts\Model\ResourceModel\Import\Data $importData
-     * @param Export\Adapter\CsvFactory $csvFactory
+     //* @param Export\Adapter\CsvFactory $csvFactory
      * @param FileTransferFactory $httpFactory
      * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
      * @param Source\Import\Behavior\Factory $behaviorFactory

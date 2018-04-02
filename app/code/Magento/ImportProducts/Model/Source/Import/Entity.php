@@ -38,3 +38,4 @@ class Entity implements \Magento\Framework\Option\ArrayInterface
         return $options;
     }
 }
+
