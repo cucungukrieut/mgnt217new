@@ -440,6 +440,9 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     }
 
     /**
+     * Process Import Data Ke Database
+     * 03/04/2018
+     *
      * @return bool
      */
     protected function processImport()
@@ -450,6 +453,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
             $this->getData(self::FIELD_NAME_ALLOWED_ERROR_COUNT)
         );
         try {
+            // Process Import data ke database
             $this->_getEntityAdapter()->importData();
         } catch (\Exception $e) {
             $errorAggregator->addError(
@@ -644,7 +648,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
             $behaviorClassName = isset($entityData['behaviorModel']) ? $entityData['behaviorModel'] : null;
             //$behaviorClassName = isset($entity['behaviorModel']) ? $entity['behaviorModel'] : null;
             if ($behaviorClassName && class_exists($behaviorClassName)) {
-                if ($entityCode == 'catalog_product') {
+                if ($entityCode == 'catalog_product') { //add y ahmd 03/04/2018
                     /** @var $behavior \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
                     $behavior = $this->_behaviorFactory->create($behaviorClassName);
                     $behaviourData[$entityCode] = [
@@ -660,7 +664,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
             }
         }
 
-        $testbehaviourdata = $behaviourData;
+        //$testbehaviourdata = $behaviourData;
         return $behaviourData;
     }
 

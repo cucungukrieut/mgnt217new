@@ -31,11 +31,11 @@ class Entity implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         $options = [];
-        //$options[] = ['label' => __('-- Please Select --'), 'value' => ''];
+        //$options[] = ['label' => __('-- Please Select --'), 'value' => '']; //disable by ahmd
         foreach ($this->_importConfig->getEntities() as $entityName => $entityConfig) {
-            //if ($entityName == 'catalog_product') {
+            if ($entityName == 'catalog_product') { // add by ahmd
                 $options[] = ['label' => __($entityConfig['label']), 'value' => $entityName];
-            //}
+            }
         }
 
        // $optionentity = $options;

@@ -87,7 +87,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Entity Type'),
                 'label' => __('Entity Type'),
                 'required' => true,
-                'onchange' => 'varienImport.handleEntityTypeSelector();',
+                //'onchange' => 'varienImport.handleEntityTypeSelector();',
                 'values' => $this->_entityFactory->create()->toOptionArray(),
                 'after_element_html' => $this->getDownloadSampleFileHtml(),
             ]
@@ -98,8 +98,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         foreach ($uniqueBehaviors as $behaviorCode => $behaviorClass) {
             $fieldsets[$behaviorCode] = $form->addFieldset(
                 $behaviorCode . '_fieldset',
-                ['legend' => __('Import Behavior'), 'class' => 'no-display']
+                ['legend' => __('Import Behavior')] // untuk hide dan show tambahkan, 'class' => 'no-display'
             );
+
             /** @var $behaviorSource \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode,
@@ -109,13 +110,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'title' => __('Import Behavior'),
                     'label' => __('Import Behavior'),
                     'required' => true,
-                    'disabled' => true,
+                    //'disabled' => true,
                     'values' => $this->_behaviorFactory->create($behaviorClass)->toOptionArray(),
                     'class' => $behaviorCode,
                     'onchange' => 'varienImport.handleImportBehaviorSelector();',
                     'note' => ' ',
                 ]
             );
+
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode . \Magento\ImportExport\Model\Import::FIELD_NAME_VALIDATION_STRATEGY,
                 'select',
@@ -125,7 +127,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __(' '),
                     'required' => true,
                     'class' => $behaviorCode,
-                    'disabled' => true,
+                    //'disabled' => true,
                     'values' => [
                         ProcessingErrorAggregatorInterface::VALIDATION_STRATEGY_STOP_ON_ERROR => 'Stop on Error',
                         ProcessingErrorAggregatorInterface::VALIDATION_STRATEGY_SKIP_ERRORS => 'Skip error entries'
@@ -133,6 +135,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'after_element_html' => $this->getDownloadSampleFileHtml(),
                 ]
             );
+
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode . '_' . \Magento\ImportExport\Model\Import::FIELD_NAME_ALLOWED_ERROR_COUNT,
                 'text',
@@ -141,7 +144,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Allowed Errors Count'),
                     'title' => __('Allowed Errors Count'),
                     'required' => true,
-                    'disabled' => true,
+                    //'disabled' => true,
                     'value' => 10,
                     'class' => $behaviorCode . ' validate-number validate-greater-than-zero input-text',
                     'note' => __(
@@ -149,6 +152,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     ),
                 ]
             );
+
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode . '_' . \Magento\ImportExport\Model\Import::FIELD_FIELD_SEPARATOR,
                 'text',
@@ -157,11 +161,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Field separator'),
                     'title' => __('Field separator'),
                     'required' => true,
-                    'disabled' => true,
+                    //'disabled' => true,
                     'class' => $behaviorCode,
                     'value' => ';',
                 ]
             );
+
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode . \Magento\ImportExport\Model\Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR,
                 'text',
@@ -170,11 +175,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Multiple value separator'),
                     'title' => __('Multiple value separator'),
                     'required' => true,
-                    'disabled' => true,
+                    //'disabled' => true,
                     'class' => $behaviorCode,
                     'value' => Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR,
                 ]
             );
+
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode . \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE,
                 'checkbox',
@@ -190,7 +196,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         // fieldset for file uploading
         $fieldsets['upload'] = $form->addFieldset(
             'upload_file_fieldset',
-            ['legend' => __('File to Import'), 'class' => 'no-display']
+            ['legend' => __('File to Import')] // untuk hide dan show field , 'class' => 'no-display'
         );
         $fieldsets['upload']->addField(
             \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE,

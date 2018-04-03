@@ -152,26 +152,28 @@ class Result extends \Magento\Backend\Block\Template
      */
     public function getImportButtonHtml()
     {
-        $importURI = '&nbsp;&nbsp;<button onclick="varienImport.startImport(\'' .
-            $this->getImportStartUrl() .
-            '\', \'' .
-            \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE .
-            '\');" class="scalable save"' .
-            ' type="button"><span><span><span>' .
-            __(
-                'Import'
-            ) . '</span></span></span></button>';
-        echo 'Testing fungsi tombol import ';
+        $importURI = '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
+            . $this->getImportStartUrl() . '\', \''
+            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
+            . '\');" class="scalable save"'
+            . ' type="button"><span><span><span>'
+            . __('Import')
+            . '</span></span></span></button>';
 
-        return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\'' .
-            $this->getImportStartUrl() .
-            '\', \'' .
-            \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE .
-            '\');" class="scalable save"' .
-            ' type="button"><span><span><span>' .
-            __(
-                'Import'
-            ) . '</span></span></span></button>';
+        //echo 'untuk testing saja ';
+        //$checkurlimport = '\'' . $this->getImportStartUrl() . '\', \'' . 'import_file' . '\'';
+        return $importURI;
+
+        /**
+        return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
+            . $this->getImportStartUrl()
+            . '\', \''
+            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
+            . '\');" class="scalable save"'
+            . ' type="button"><span><span><span>'
+            . __('Import')
+            . '</span></span></span></button>';
+         * */
     }
 
     /**
@@ -181,6 +183,11 @@ class Result extends \Magento\Backend\Block\Template
      */
     public function getImportStartUrl()
     {
+        //$checkurl = $this->getUrl('adminhtml/*/start');
+
+
+        //echo 'test';
+
         return $this->getUrl('adminhtml/*/start');
     }
 

@@ -28,15 +28,18 @@ class Config extends \Magento\Framework\Config\Data implements \Magento\ImportEx
      */
     public function getEntities()
     {
+        /**
         $entityimport = $this->get('entities');
         $entityimportproduct = null;
         foreach ($entityimport as $key => $value){
             if ($key == 'catalog_product'){
                 $entityimportproduct = $value;
             }
-        }
+        }*/
+
+
         return $this->get('entities');
-        $test = $entityimportproduct;
+        //$test = $entityimportproduct;
         //return $entityimportproduct;
     }
 

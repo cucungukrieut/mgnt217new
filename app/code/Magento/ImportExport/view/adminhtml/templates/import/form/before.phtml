@@ -36,6 +36,7 @@ require([
          * @type {Array}
          */
         entityBehaviors: <?php /* @escapeNotVerified */ echo $block->getEntityBehaviors() ?>,
+        //window.alert(this.entityBehaviors);
 
         /**
          * Behaviour notes for import entities
@@ -186,6 +187,8 @@ require([
                 (form.attr('action').lastIndexOf('?') != -1 ? '&' : '?')+
                 'form_key=' + encodeURIComponent(form.find('[name="form_key"]').val());
 
+            console.log("ini adalah log" + newActionUrl);
+
             form.trigger('save', [{
                 action: newActionUrl,
                 target: this.ifrElemName
@@ -260,13 +263,13 @@ require([
          */
         startImport: function(newActionUrl, sourceFileField) {
 
-            //var url_string = newActionUrl.toString();
+            //var url_string = newActionUrl;
             //if (url_string != null){
             //    window.alert("Url string adaan...");
             //}
 
             //window.alert(sourceFileField.toString());
-            alert({content: sourceFileField.toString()});
+            //alert(newActionUrl);
             jQuery('#' + sourceFileField).removeClass('required-entry');
             this.postToFrame(newActionUrl);
             jQuery('#' + sourceFileField).addClass('required-entry');
