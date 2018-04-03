@@ -224,13 +224,15 @@ class Result extends \Magento\Backend\Block\Template
     public function getResponseJson()
     {
         // add messages HTML if it is not already specified
+        //menampilkan pesan validasi
         if (!isset($this->_actions['import_validation_messages'])) {
             $this->addAction('innerHTML', 'import_validation_messages', $this->getMessagesHtml());
         }
 
         $jsonfile = $this->_jsonEncoder->encode($this->_actions);
         if ($jsonfile == null){
-            echo 'Hahahahaha kosong..';
+            //window.imap_alerts();
+            echo 'json file hahahahaha kosong..';
         }
 
         return $this->_jsonEncoder->encode($this->_actions);

@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <head>
         <title>Test Form</title>
-        <css src="css/bootstrap.css" />
+        <css src="Test_AdminSample::css/bootstrap.css"/>
         <css href='http://fonts.googleapis.com/css?family=Open+Sans'/>
     </head>
     <body>

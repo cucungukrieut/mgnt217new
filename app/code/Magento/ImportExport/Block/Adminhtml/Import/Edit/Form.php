@@ -65,6 +65,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected function _prepareForm()
     {
         /** @var \Magento\Framework\Data\Form $form */
+        // FormFactory class untuk membuat form
         $form = $this->_formFactory->create(
             [
                 'data' => [
@@ -158,7 +159,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'required' => true,
                     'disabled' => true,
                     'class' => $behaviorCode,
-                    'value' => ',',
+                    'value' => ';',
                 ]
             );
             $fieldsets[$behaviorCode]->addField(

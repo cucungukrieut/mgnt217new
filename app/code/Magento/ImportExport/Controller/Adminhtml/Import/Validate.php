@@ -30,6 +30,7 @@ class Validate extends ImportResultController
         /** @var \Magento\Framework\View\Result\Layout $resultLayout */
         $resultLayout = $this->resultFactory->create(ResultFactory::TYPE_LAYOUT);
         /** @var $resultBlock ImportResultBlock */
+        //nama di xml adminhtml_import_validate import.frame.result
         $resultBlock = $resultLayout->getLayout()->getBlock('import.frame.result');
         if ($data) {
             // common actions

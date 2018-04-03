@@ -32,6 +32,5 @@ class Index extends Action
         ///return $resultPage = $this->pageFactory->create();
         $this->_view->loadLayout();
         $this->_view->renderLayout();
-        echo 'Ini adalah test untuk form baru';
     }
 }

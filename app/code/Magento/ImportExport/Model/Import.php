@@ -133,9 +133,9 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     protected $_importData;
 
     /**
-     * @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
+     //* @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
      */
-    protected $_csvFactory;
+    //protected $_csvFactory;
 
     /**
      * @var \Magento\Framework\HTTP\Adapter\FileTransferFactory
@@ -170,7 +170,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
      * @param Import\ConfigInterface $importConfig
      * @param Import\Entity\Factory $entityFactory
      * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
-     * @param Export\Adapter\CsvFactory $csvFactory
+     //* @param Export\Adapter\CsvFactory $csvFactory
      * @param FileTransferFactory $httpFactory
      * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
      * @param Source\Import\Behavior\Factory $behaviorFactory
@@ -188,7 +188,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
         \Magento\ImportExport\Model\Import\ConfigInterface $importConfig,
         \Magento\ImportExport\Model\Import\Entity\Factory $entityFactory,
         \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
-        \Magento\ImportExport\Model\Export\Adapter\CsvFactory $csvFactory,
+        //\Magento\ImportExport\Model\Export\Adapter\CsvFactory $csvFactory,
         \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory,
         \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Magento\ImportExport\Model\Source\Import\Behavior\Factory $behaviorFactory,
@@ -202,7 +202,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
         $this->_importConfig = $importConfig;
         $this->_entityFactory = $entityFactory;
         $this->_importData = $importData;
-        $this->_csvFactory = $csvFactory;
+        //$this->_csvFactory = $csvFactory;
         $this->_httpFactory = $httpFactory;
         $this->_uploaderFactory = $uploaderFactory;
         $this->indexerRegistry = $indexerRegistry;
@@ -638,23 +638,29 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     public function getEntityBehaviors()
     {
         $behaviourData = [];
-        $entities = $this->_importConfig->getEntities();
+        $entities = $this->_importConfig->getEntities(); //hanya satu entity yaitu catalog_product
+        //$entity = $this->_importConfig->getEntities(); //hanya satu entity yaitu catalog_product
         foreach ($entities as $entityCode => $entityData) {
             $behaviorClassName = isset($entityData['behaviorModel']) ? $entityData['behaviorModel'] : null;
+            //$behaviorClassName = isset($entity['behaviorModel']) ? $entity['behaviorModel'] : null;
             if ($behaviorClassName && class_exists($behaviorClassName)) {
-                /** @var $behavior \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
-                $behavior = $this->_behaviorFactory->create($behaviorClassName);
-                $behaviourData[$entityCode] = [
-                    'token' => $behaviorClassName,
-                    'code' => $behavior->getCode() . '_behavior',
-                    'notes' => $behavior->getNotes($entityCode),
-                ];
+                if ($entityCode == 'catalog_product') {
+                    /** @var $behavior \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
+                    $behavior = $this->_behaviorFactory->create($behaviorClassName);
+                    $behaviourData[$entityCode] = [
+                        'token' => $behaviorClassName,
+                        'code' => $behavior->getCode() . '_behavior',
+                        'notes' => $behavior->getNotes($entityCode),
+                    ];
+                }
             } else {
                 throw new \Magento\Framework\Exception\LocalizedException(
                     __('The behavior token for %1 is invalid.', $entityCode)
                 );
             }
         }
+
+        $testbehaviourdata = $behaviourData;
         return $behaviourData;
     }
 

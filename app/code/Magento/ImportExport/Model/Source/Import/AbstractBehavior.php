@@ -23,6 +23,8 @@ abstract class AbstractBehavior implements \Magento\Framework\Option\ArrayInterf
     /**
      * Prepare and return array of option values
      *
+     * Array untuk piliha action import, add, replace, delete
+     *
      * @return array
      */
     public function toOptionArray()

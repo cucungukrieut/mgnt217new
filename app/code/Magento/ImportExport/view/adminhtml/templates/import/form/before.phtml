@@ -255,19 +255,21 @@ require([
          * Send form data to Start action when file is validated.
          * @param {string} newActionUrl
          * @param {string} sourceFileField
+         *
+         * Used by Import/Frame/Result.php
          */
         startImport: function(newActionUrl, sourceFileField) {
 
-            var url_string = newActionUrl.toString();
-            if (url_string != null){
-                window.alert("Url string adaan...");
-            }
+            //var url_string = newActionUrl.toString();
+            //if (url_string != null){
+            //    window.alert("Url string adaan...");
+            //}
 
-            window.alert(sourceFileField.toString());
+            //window.alert(sourceFileField.toString());
             alert({content: sourceFileField.toString()});
-            //jQuery('#' + sourceFileField).removeClass('required-entry');
-            //this.postToFrame(newActionUrl);
-            //jQuery('#' + sourceFileField).addClass('required-entry');
+            jQuery('#' + sourceFileField).removeClass('required-entry');
+            this.postToFrame(newActionUrl);
+            jQuery('#' + sourceFileField).addClass('required-entry');
         }
     };
 //]]>
