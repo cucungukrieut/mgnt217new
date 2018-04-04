@@ -5,14 +5,14 @@
  */
 
 /**
- * Test class for entity source model \Magento\ImportExport\Model\Source\Import\Entity
+ * Test class for entity source model \Magento\ImportProducts\Model\Source\Import\Entity
  */
-namespace Magento\ImportExport\Model\Source\Import;
+namespace Magento\ImportProducts\Model\Source\Import;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\ImportExport\Model\Source\Import\Entity
+     * @var \Magento\ImportProducts\Model\Source\Import\Entity
      */
     protected $_model;
 
@@ -23,8 +23,8 @@ class EntityTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->_importConfigMock = $this->getMock('Magento\ImportExport\Model\Import\ConfigInterface');
-        $this->_model = new \Magento\ImportExport\Model\Source\Import\Entity($this->_importConfigMock);
+        $this->_importConfigMock = $this->getMock('Magento\ImportProducts\Model\Import\ConfigInterface');
+        $this->_model = new \Magento\ImportProducts\Model\Source\Import\Entity($this->_importConfigMock);
     }
 
     public function testToOptionArray()

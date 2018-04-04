@@ -5,9 +5,9 @@
  */
 
 /**
- * Test class for \Magento\ImportExport\Block\Adminhtml\Export\Filter
+ * Test class for \Magento\ImportProducts\Block\Adminhtml\Export\Filter
  */
-namespace Magento\ImportExport\Block\Adminhtml\Export;
+namespace Magento\ImportProducts\Block\Adminhtml\Export;
 
 class FilterTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,9 +21,9 @@ class FilterTest extends \PHPUnit_Framework_TestCase
         \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get('Magento\Framework\View\DesignInterface')
             ->setDefaultDesignTheme();
         $block = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()
-            ->create('Magento\ImportExport\Block\Adminhtml\Export\Filter');
+            ->create('Magento\ImportProducts\Block\Adminhtml\Export\Filter');
         $method = new \ReflectionMethod(
-            'Magento\ImportExport\Block\Adminhtml\Export\Filter',
+            'Magento\ImportProducts\Block\Adminhtml\Export\Filter',
             '_getDateFromToHtmlWithValue'
         );
         $method->setAccessible(true);

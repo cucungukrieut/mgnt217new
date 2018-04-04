@@ -6,15 +6,15 @@
 
 // @codingStandardsIgnoreFile
 
-namespace Magento\CustomerImportExport\Test\Unit\Model\Import;
+namespace Magento\CustomerImportProducts\Test\Unit\Model\Import;
 
-use Magento\CustomerImportExport\Model\Import\CustomerComposite;
-use Magento\CustomerImportExport\Model\Import\Customer;
-use Magento\CustomerImportExport\Model\Import\Address;
+use Magento\CustomerImportProducts\Model\Import\CustomerComposite;
+use Magento\CustomerImportProducts\Model\Import\Customer;
+use Magento\CustomerImportProducts\Model\Import\Address;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\File\Read;
-use Magento\ImportExport\Model\Import;
-use Magento\ImportExport\Model\Import\Source\Csv;
+use Magento\ImportProducts\Model\Import;
+use Magento\ImportProducts\Model\Import\Source\Csv;
 
 /**
  * Customer composite test
@@ -39,7 +39,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
     protected $_string;
 
     /**
-     * @var \Magento\ImportExport\Model\ImportFactory
+     * @var \Magento\ImportProducts\Model\ImportFactory
      */
     protected $_importFactory;
 
@@ -49,22 +49,22 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
     protected $_resource;
 
     /**
-     * @var \Magento\ImportExport\Model\ResourceModel\Helper
+     * @var \Magento\ImportProducts\Model\ResourceModel\Helper
      */
     protected $_resourceHelper;
 
     /**
-     * @var \Magento\CustomerImportExport\Model\ResourceModel\Import\CustomerComposite\DataFactory
+     * @var \Magento\CustomerImportProducts\Model\ResourceModel\Import\CustomerComposite\DataFactory
      */
     protected $_dataFactory;
 
     /**
-     * @var \Magento\CustomerImportExport\Model\Import\CustomerFactory
+     * @var \Magento\CustomerImportProducts\Model\Import\CustomerFactory
      */
     protected $_customerFactory;
 
     /**
-     * @var \Magento\CustomerImportExport\Model\Import\AddressFactory
+     * @var \Magento\CustomerImportProducts\Model\Import\AddressFactory
      */
     protected $_addressFactory;
 
@@ -74,18 +74,18 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
     protected $_scopeConfigMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface
      * |\PHPUnit_Framework_MockObject_MockObject
      */
     protected $errorAggregator;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError $newError
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError $newError
      */
     protected $error;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory
      * |\PHPUnit_Framework_MockObject_MockObject
      */
     protected $errorFactory;
@@ -132,7 +132,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         $this->_string = new \Magento\Framework\Stdlib\StringUtils();
 
         $this->_importFactory = $this->getMock(
-            'Magento\ImportExport\Model\ImportFactory',
+            'Magento\ImportProducts\Model\ImportFactory',
             [],
             [],
             '',
@@ -140,28 +140,28 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         );
         $this->_resource = $this->getMock('Magento\Framework\App\ResourceConnection', [], [], '', false);
         $this->_resourceHelper = $this->getMock(
-            'Magento\ImportExport\Model\ResourceModel\Helper',
+            'Magento\ImportProducts\Model\ResourceModel\Helper',
             [],
             [],
             '',
             false
         );
         $this->_dataFactory = $this->getMock(
-            'Magento\CustomerImportExport\Model\ResourceModel\Import\CustomerComposite\DataFactory',
+            'Magento\CustomerImportProducts\Model\ResourceModel\Import\CustomerComposite\DataFactory',
             [],
             [],
             '',
             false
         );
         $this->_customerFactory = $this->getMock(
-            'Magento\CustomerImportExport\Model\Import\CustomerFactory',
+            'Magento\CustomerImportProducts\Model\Import\CustomerFactory',
             [],
             [],
             '',
             false
         );
         $this->_addressFactory = $this->getMock(
-            'Magento\CustomerImportExport\Model\Import\AddressFactory',
+            'Magento\CustomerImportProducts\Model\Import\AddressFactory',
             [],
             [],
             '',
@@ -169,7 +169,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->errorFactory = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory',
             ['create'],
             [],
             '',
@@ -177,7 +177,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->error = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError',
             ['init'],
             [],
             '',
@@ -188,7 +188,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         $this->error->expects($this->any())->method('init')->will($this->returnValue(true));
 
         $this->errorAggregator = $this->getMock(
-            'Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
+            'Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
             ['hasToBeTerminated'],
             [$this->errorFactory],
             '',
@@ -204,7 +204,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
      */
     protected function _createModelMock($data)
     {
-        return new \Magento\CustomerImportExport\Model\Import\CustomerComposite(
+        return new \Magento\CustomerImportProducts\Model\Import\CustomerComposite(
             $this->_string,
             $this->_scopeConfigMock,
             $this->_importFactory,
@@ -310,7 +310,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         $mockedMethods[] = 'getWebsiteId';
 
         $customerEntity = $this->getMock(
-            'Magento\CustomerImportExport\Model\Import\Customer',
+            'Magento\CustomerImportProducts\Model\Import\Customer',
             $mockedMethods,
             [],
             '',
@@ -345,7 +345,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         $mockedMethods[] = 'getAttributeCollection';
 
         $addressEntity = $this->getMock(
-            'Magento\CustomerImportExport\Model\Import\Address',
+            'Magento\CustomerImportProducts\Model\Import\Address',
             $mockedMethods,
             [],
             '',
@@ -642,7 +642,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
         $modelUnderTest = $this->_createModelMock($data);
 
         $source = $this->getMockForAbstractClass(
-            'Magento\ImportExport\Model\Import\AbstractSource',
+            'Magento\ImportProducts\Model\Import\AbstractSource',
             [],
             '',
             false
@@ -665,7 +665,7 @@ class CustomerCompositeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Callback for \Magento\ImportExport\Model\ResourceModel\Import\Data::saveBunch to verify correctness of data
+     * Callback for \Magento\ImportProducts\Model\ResourceModel\Import\Data::saveBunch to verify correctness of data
      * for method CustomerComposite::_prepareRowForDb
      *
      * @param string $entityType

@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Block\Adminhtml\Export\Edit;
+namespace Magento\ImportProducts\Block\Adminhtml\Export\Edit;
 
 /**
- * Test class for block \Magento\ImportExport\Block\Adminhtml\Export\Edit\Form
+ * Test class for block \Magento\ImportProducts\Block\Adminhtml\Export\Edit\Form
  * @magentoAppArea adminhtml
  */
 class FormTest extends \PHPUnit_Framework_TestCase
@@ -14,7 +14,7 @@ class FormTest extends \PHPUnit_Framework_TestCase
     /**
      * Testing model
      *
-     * @var \Magento\ImportExport\Block\Adminhtml\Export\Edit\Form
+     * @var \Magento\ImportProducts\Block\Adminhtml\Export\Edit\Form
      */
     protected $_model;
 
@@ -42,14 +42,14 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $this->_model = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
             'Magento\Framework\View\LayoutInterface'
         )->createBlock(
-            'Magento\ImportExport\Block\Adminhtml\Export\Edit\Form'
+            'Magento\ImportProducts\Block\Adminhtml\Export\Edit\Form'
         );
     }
 
     /**
      * Test preparing of form
      *
-     * @covers \Magento\ImportExport\Block\Adminhtml\Export\Edit\Form::_prepareForm
+     * @covers \Magento\ImportProducts\Block\Adminhtml\Export\Edit\Form::_prepareForm
      */
     public function testPrepareForm()
     {
