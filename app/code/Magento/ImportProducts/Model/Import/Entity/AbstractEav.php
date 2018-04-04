@@ -3,15 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\Import\Entity;
+namespace Magento\ImportExport\Model\Import\Entity;
 
-use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Import EAV entity abstract model
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\AbstractEntity
+abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEntity
 {
     /**
      * Attribute collection name
@@ -77,12 +77,12 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
     /**
      * @param \Magento\Framework\Stdlib\StringUtils $string
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\ImportProducts\Model\ImportFactory $importFactory
-     * @param \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper
+     * @param \Magento\ImportExport\Model\ImportFactory $importFactory
+     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\ImportProducts\Model\Export\Factory $collectionFactory
+     //* @param \Magento\ImportExport\Model\Export\Factory $collectionFactory
      * @param \Magento\Eav\Model\Config $eavConfig
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -91,23 +91,20 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
     public function __construct(
         \Magento\Framework\Stdlib\StringUtils $string,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\ImportProducts\Model\ImportFactory $importFactory,
-        \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper,
+        \Magento\ImportExport\Model\ImportFactory $importFactory,
+        \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
         \Magento\Framework\App\ResourceConnection $resource,
         ProcessingErrorAggregatorInterface $errorAggregator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\ImportProducts\Model\Export\Factory $collectionFactory,
+        //\Magento\ImportExport\Model\Export\Factory $collectionFactory,
         \Magento\Eav\Model\Config $eavConfig,
         array $data = []
     ) {
         parent::__construct($string, $scopeConfig, $importFactory, $resourceHelper, $resource, $errorAggregator, $data);
 
         $this->_storeManager = $storeManager;
-        $this->_attributeCollection = isset(
-            $data['attribute_collection']
-        ) ? $data['attribute_collection'] : $collectionFactory->create(
-            static::ATTRIBUTE_COLLECTION_NAME
-        );
+        $this->_attributeCollection = isset($data['attribute_collection']) ? $data['attribute_collection'] : null;
+        //$collectionFactory->create(static::ATTRIBUTE_COLLECTION_NAME);
 
         if (isset($data['entity_type_id'])) {
             $this->_entityTypeId = $data['entity_type_id'];
@@ -177,7 +174,7 @@ abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\Abstract
                 'is_required' => $attribute->getIsRequired(),
                 'is_static' => $attribute->isStatic(),
                 'rules' => $attribute->getValidateRules() ? unserialize($attribute->getValidateRules()) : null,
-                'type' => \Magento\ImportProducts\Model\Import::getAttributeType($attribute),
+                'type' => \Magento\ImportExport\Model\Import::getAttributeType($attribute),
                 'options' => $this->getAttributeOptions($attribute),
             ];
             $this->validColumnNames[] = $attribute->getAttributeCode();

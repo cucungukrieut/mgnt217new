@@ -9,12 +9,12 @@
     <default>
         <general>
             <file>
-                <ImportProducts_local_valid_paths>
+                <ImportExport_local_valid_paths>
                     <available>
                         <import_xml>var/import/*/*.xml</import_xml>
                         <import_csv>var/import/*/*.csv</import_csv>
                     </available>
-                </ImportProducts_local_valid_paths>
+                </ImportExport_local_valid_paths>
                 <bunch_size>100</bunch_size>
             </file>
         </general>

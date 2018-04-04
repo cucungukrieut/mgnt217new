@@ -5,11 +5,11 @@
  */
 
 /**
- * Test class for \Magento\ImportProducts\Model\Source\Import\Behavior\Basic
+ * Test class for \Magento\ImportExport\Model\Source\Import\Behavior\Basic
  */
-namespace Magento\ImportProducts\Test\Unit\Model\Source\Import\Behavior;
+namespace Magento\ImportExport\Test\Unit\Model\Source\Import\Behavior;
 
-class BasicTest extends \Magento\ImportProducts\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
+class BasicTest extends \Magento\ImportExport\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
 {
     /**
      * Expected behavior group code
@@ -24,21 +24,21 @@ class BasicTest extends \Magento\ImportProducts\Test\Unit\Model\Source\Import\Ab
      * @var array
      */
     protected $_expectedBehaviors = [
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_APPEND,
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_REPLACE,
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
     ];
 
     protected function setUp()
     {
         parent::setUp();
-        $this->_model = new \Magento\ImportProducts\Model\Source\Import\Behavior\Basic();
+        $this->_model = new \Magento\ImportExport\Model\Source\Import\Behavior\Basic();
     }
 
     /**
      * Test toArray method
      *
-     * @covers \Magento\ImportProducts\Model\Source\Import\Behavior\Basic::toArray
+     * @covers \Magento\ImportExport\Model\Source\Import\Behavior\Basic::toArray
      */
     public function testToArray()
     {
@@ -50,7 +50,7 @@ class BasicTest extends \Magento\ImportProducts\Test\Unit\Model\Source\Import\Ab
     /**
      * Test behavior group code
      *
-     * @covers \Magento\ImportProducts\Model\Source\Import\Behavior\Basic::getCode
+     * @covers \Magento\ImportExport\Model\Source\Import\Behavior\Basic::getCode
      */
     public function testGetCode()
     {

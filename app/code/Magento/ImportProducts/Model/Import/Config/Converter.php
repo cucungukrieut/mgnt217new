@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\Import\Config;
+namespace Magento\ImportExport\Model\Import\Config;
 
 use Magento\Framework\Module\Manager;
 use Magento\Framework\App\Utility\Classes;

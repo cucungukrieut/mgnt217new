@@ -3,23 +3,23 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Test\Unit\Model\ResourceModel;
+namespace Magento\ImportExport\Test\Unit\Model\ResourceModel;
 
 use \Magento\Framework\Data\Collection\AbstractDb;
 
 /**
- * Test class for \Magento\ImportProducts\Model\ResourceModel\CollectionByPagesIterator
+ * Test class for \Magento\ImportExport\Model\ResourceModel\CollectionByPagesIterator
  */
 class CollectionByPagesIteratorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\ImportProducts\Model\ResourceModel\CollectionByPagesIterator
+     * @var \Magento\ImportExport\Model\ResourceModel\CollectionByPagesIterator
      */
     protected $_resourceModel;
 
     protected function setUp()
     {
-        $this->_resourceModel = new \Magento\ImportProducts\Model\ResourceModel\CollectionByPagesIterator();
+        $this->_resourceModel = new \Magento\ImportExport\Model\ResourceModel\CollectionByPagesIterator();
     }
 
     protected function tearDown()
@@ -28,7 +28,7 @@ class CollectionByPagesIteratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Magento\ImportProducts\Model\ResourceModel\CollectionByPagesIterator::iterate
+     * @covers \Magento\ImportExport\Model\ResourceModel\CollectionByPagesIterator::iterate
      */
     public function testIterate()
     {

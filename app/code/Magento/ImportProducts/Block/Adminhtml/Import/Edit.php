@@ -9,7 +9,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Import;
+namespace Magento\ImportExport\Block\Adminhtml\Import;
 
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
@@ -30,7 +30,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
         $this->buttonList->update('save', 'data_attribute', '');
 
         $this->_objectId = 'import_id';
-        $this->_blockGroup = 'Magento_ImportProducts';
+        $this->_blockGroup = 'Magento_ImportExport';
         $this->_controller = 'adminhtml_import';
     }
 

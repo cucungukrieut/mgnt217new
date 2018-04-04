@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportProducts\Model\Import\ErrorProcessing;
+namespace Magento\ImportExport\Model\Import\ErrorProcessing;
 
 /**
  * Interface for Processing errors Aggregator

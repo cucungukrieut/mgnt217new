@@ -9,14 +9,14 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Import\Edit;
+namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
 
 class Before extends \Magento\Backend\Block\Template
 {
     /**
      * Basic import model
      *
-     * @var \Magento\ImportProducts\Model\Import
+     * @var \Magento\ImportExport\Model\Import
      */
     protected $_importModel;
 
@@ -28,13 +28,13 @@ class Before extends \Magento\Backend\Block\Template
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-     * @param \Magento\ImportProducts\Model\Import $importModel
+     * @param \Magento\ImportExport\Model\Import $importModel
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\ImportProducts\Model\Import $importModel,
+        \Magento\ImportExport\Model\Import $importModel,
         array $data = []
     ) {
         $this->_jsonEncoder = $jsonEncoder;

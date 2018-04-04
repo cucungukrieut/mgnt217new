@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Controller\Adminhtml;
+namespace Magento\ImportExport\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
 
@@ -17,5 +17,5 @@ abstract class History extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_ImportProducts::history';
+    const ADMIN_RESOURCE = 'Magento_ImportExport::history';
 }

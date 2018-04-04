@@ -4,14 +4,14 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportProducts\Helper;
+namespace Magento\ImportExport\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\ImportProducts\Model\Import;
+use Magento\ImportExport\Model\Import;
 
 /**
- * ImportProducts history reports helper
+ * ImportExport history reports helper
  */
 class Report extends \Magento\Framework\App\Helper\AbstractHelper
 {
@@ -54,10 +54,10 @@ class Report extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Get import summary
      *
-     * @param \Magento\ImportProducts\Model\Import $import
+     * @param \Magento\ImportExport\Model\Import $import
      * @return string
      */
-    public function getSummaryStats(\Magento\ImportProducts\Model\Import $import)
+    public function getSummaryStats(\Magento\ImportExport\Model\Import $import)
     {
         $message = __(
             'Created: %1, Updated: %2, Deleted: %3',

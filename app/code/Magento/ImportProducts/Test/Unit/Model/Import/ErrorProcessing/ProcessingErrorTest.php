@@ -3,13 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Test\Unit\Model\Import\ErrorProcessing;
+namespace Magento\ImportExport\Test\Unit\Model\Import\ErrorProcessing;
 
 class ProcessingErrorTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError
+     * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError
      */
     protected $model;
 
@@ -19,7 +19,7 @@ class ProcessingErrorTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
-        $this->model = $objectManager->getObject('\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError');
+        $this->model = $objectManager->getObject('\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError');
     }
 
     /**

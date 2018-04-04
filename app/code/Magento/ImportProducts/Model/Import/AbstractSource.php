@@ -3,12 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\Import;
+namespace Magento\ImportExport\Model\Import;
 
-use Magento\ImportProducts\Model\Import\AbstractEntity;
+use Magento\ImportExport\Model\Import\AbstractEntity;
 
 /**
- * Data source with columns for Magento_ImportProducts
+ * Data source with columns for Magento_ImportExport
  */
 abstract class AbstractSource implements \SeekableIterator
 {

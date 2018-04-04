@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportProducts\Test\Unit\Model\Import\Source;
+namespace Magento\ImportExport\Test\Unit\Model\Import\Source;
 
 class ZipTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class ZipTest extends \PHPUnit_Framework_TestCase
     protected $directory;
 
     /**
-     * @var \Magento\ImportProducts\Model\Import\Source\Zip|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportExport\Model\Import\Source\Zip|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $zip;
 
@@ -66,7 +66,7 @@ class ZipTest extends \PHPUnit_Framework_TestCase
     {
         try {
             $this->zip = $this->getMockBuilder(
-                '\Magento\ImportProducts\Model\Import\Source\Zip'
+                '\Magento\ImportExport\Model\Import\Source\Zip'
             )
                 ->setConstructorArgs(
                     [
@@ -78,7 +78,7 @@ class ZipTest extends \PHPUnit_Framework_TestCase
                 ->getMock();
 
             $reflectedClass = new \ReflectionClass(
-                '\Magento\ImportProducts\Model\Import\Source\Zip'
+                '\Magento\ImportExport\Model\Import\Source\Zip'
             );
             $constructor = $reflectedClass->getConstructor();
             $constructor->invoke(

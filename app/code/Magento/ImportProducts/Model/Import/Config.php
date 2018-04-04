@@ -3,17 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\Import;
+namespace Magento\ImportExport\Model\Import;
 
-class Config extends \Magento\Framework\Config\Data implements \Magento\ImportProducts\Model\Import\ConfigInterface
+class Config extends \Magento\Framework\Config\Data implements \Magento\ImportExport\Model\Import\ConfigInterface
 {
     /**
-     * @param \Magento\ImportProducts\Model\Import\Config\Reader $reader
+     * @param \Magento\ImportExport\Model\Import\Config\Reader $reader
      * @param \Magento\Framework\Config\CacheInterface $cache
      * @param string $cacheId
      */
     public function __construct(
-        \Magento\ImportProducts\Model\Import\Config\Reader $reader,
+        \Magento\ImportExport\Model\Import\Config\Reader $reader,
         \Magento\Framework\Config\CacheInterface $cache,
         $cacheId = 'import_config_cache'
     ) {
@@ -22,14 +22,15 @@ class Config extends \Magento\Framework\Config\Data implements \Magento\ImportPr
 
     /**
      * Retrieve import entities configuration
-     *  Return list entity product, advance pricing, cutomer
+     *  Return list entity product, advance pricing, cutomers
      *
      * @return array
      */
     public function getEntities()
     {
-        /**
+
         $entityimport = $this->get('entities');
+        /*
         $entityimportproduct = null;
         foreach ($entityimport as $key => $value){
             if ($key == 'catalog_product'){
@@ -37,9 +38,9 @@ class Config extends \Magento\Framework\Config\Data implements \Magento\ImportPr
             }
         }*/
 
-
+        $test = $entityimport;
         return $this->get('entities');
-        //$test = $entityimportproduct;
+
         //return $entityimportproduct;
     }
 

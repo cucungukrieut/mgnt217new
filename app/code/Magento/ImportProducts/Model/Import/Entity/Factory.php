@@ -9,7 +9,7 @@
 /**
  * Import entity factory
  */
-namespace Magento\ImportProducts\Model\Import\Entity;
+namespace Magento\ImportExport\Model\Import\Entity;
 
 class Factory
 {
@@ -30,7 +30,7 @@ class Factory
 
     /**
      * @param string $className
-     * @return \Magento\ImportProducts\Model\Import\Entity\AbstractEntity|\Magento\ImportProducts\Model\Import\AbstractEntity
+     * @return \Magento\ImportExport\Model\Import\Entity\AbstractEntity|\Magento\ImportExport\Model\Import\AbstractEntity
      * @throws \InvalidArgumentException
      */
     public function create($className)

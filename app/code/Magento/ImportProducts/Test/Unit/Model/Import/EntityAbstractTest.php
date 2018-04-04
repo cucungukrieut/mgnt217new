@@ -5,15 +5,15 @@
  */
 
 /**
- * Test class for \Magento\ImportProducts\Model\Import\EntityAbstract
+ * Test class for \Magento\ImportExport\Model\Import\EntityAbstract
  *
  * @todo Fix tests in the scope of https://wiki.magento.com/display/MAGE2/Technical+Debt+%28Team-Donetsk-B%29
  */
-namespace Magento\ImportProducts\Test\Unit\Model\Import;
+namespace Magento\ImportExport\Test\Unit\Model\Import;
 
-use Magento\ImportProducts\Model\Import\AbstractEntity;
+use Magento\ImportExport\Model\Import\AbstractEntity;
 
-class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\AbstractImportTestCase
+class EntityAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase
 {
     /**
      * Abstract import entity model
@@ -28,16 +28,16 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
      * @var array
      */
     protected $_availableBehaviors = [
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
-        \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
+        \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
     ];
 
     protected function setUp()
     {
         parent::setUp();
 
-        $this->_model = $this->getMockBuilder('Magento\ImportProducts\Model\Import\AbstractEntity')
+        $this->_model = $this->getMockBuilder('Magento\ImportExport\Model\Import\AbstractEntity')
             ->setConstructorArgs($this->_getModelDependencies())
             ->setMethods(['_saveValidatedBunches'])
             ->getMockForAbstractClass();
@@ -57,8 +57,8 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     {
         $string = new \Magento\Framework\Stdlib\StringUtils();
         $scopeConfig = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
-        $importFactory = $this->getMock('Magento\ImportProducts\Model\ImportFactory', [], [], '', false);
-        $resourceHelper = $this->getMock('Magento\ImportProducts\Model\ResourceModel\Helper', [], [], '', false);
+        $importFactory = $this->getMock('Magento\ImportExport\Model\ImportFactory', [], [], '', false);
+        $resourceHelper = $this->getMock('Magento\ImportExport\Model\ResourceModel\Helper', [], [], '', false);
         $resource = $this->getMock('Magento\Framework\App\ResourceConnection', [], [], '', false);
 
         $data = [
@@ -85,7 +85,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method _prepareRowForDb()
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::_prepareRowForDb
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::_prepareRowForDb
      */
     public function testPrepareRowForDb()
     {
@@ -193,7 +193,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method getBehavior() with $rowData argument = null
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::getBehavior
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::getBehavior
      */
     public function testGetBehaviorWithoutRowData()
     {
@@ -222,109 +222,109 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     {
         return [
             "add/update behavior and row with delete in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and row with delete in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and row with delete in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "add/update behavior and row with update in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and row with update in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and row with update in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "add/update behavior and row with bogus string in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and row with bogus string in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and row with bogus string in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "add/update behavior and row with null in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => null],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and row with null in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => null],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and row with null in action column" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => null],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "add/update behavior and empty row" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => null,
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and empty row" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => null,
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and empty row" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => null,
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
             ],
             "add/update behavior and row is empty array" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
                 '$rowData' => [],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
             ],
             "delete behavior and empty row is empty array" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
                 '$rowData' => [],
-                '$expectedBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+                '$expectedBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
             ],
             "custom behavior and empty row is empty array" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [],
                 '$expectedBehavior' => AbstractEntity::getDefaultBehavior(),
             ],
             "custom behavior and row with delete in action column and empty available behaviors" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
@@ -332,13 +332,13 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
                 '$availableBehaviors' => [],
             ],
             "custom behavior and row with update in action column and empty available behaviors" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
                 '$expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 '$availableBehaviors' => [],
             ],
             "custom behavior and row with bogus string in action column and empty available behaviors" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
@@ -346,7 +346,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
                 '$availableBehaviors' => [],
             ],
             "custom behavior and row with null in action column and empty available behaviors" => [
-                '$inputBehavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
+                '$inputBehavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
                 '$rowData' => [AbstractEntity::COLUMN_ACTION => null],
                 '$expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 '$availableBehaviors' => [],
@@ -357,7 +357,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method getBehavior() with $rowData argument = null
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::getBehavior
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::getBehavior
      *
      * @dataProvider dataProviderForTestGetBehaviorWithRowData
      * @param $inputBehavior
@@ -505,7 +505,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::validateData
      */
     public function testValidateDataPermanentAttributes()
     {
@@ -524,7 +524,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::validateData
      */
     public function testValidateDataEmptyColumnName()
     {
@@ -536,7 +536,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::validateData
      */
     public function testValidateDataColumnNameWithWhitespaces()
     {
@@ -549,7 +549,7 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::validateData
      */
     public function testValidateDataAttributeNames()
     {
@@ -562,13 +562,13 @@ class EntityAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\
      * Create source adapter mock and set it into model object which tested in this class
      *
      * @param array $columns value which will be returned by method getColNames()
-     * @return \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
+     * @return \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
      */
     protected function _createSourceAdapterMock(array $columns)
     {
-        /** @var $source \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject */
+        /** @var $source \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject */
         $source = $this->getMockForAbstractClass(
-            'Magento\ImportProducts\Model\Import\AbstractSource',
+            'Magento\ImportExport\Model\Import\AbstractSource',
             [],
             '',
             false,

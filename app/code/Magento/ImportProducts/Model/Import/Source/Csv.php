@@ -3,12 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\Import\Source;
+namespace Magento\ImportExport\Model\Import\Source;
 
 /**
  * CSV import adapter
  */
-class Csv extends \Magento\ImportProducts\Model\Import\AbstractSource
+class Csv extends \Magento\ImportExport\Model\Import\AbstractSource
 {
     /**
      * @var \Magento\Framework\Filesystem\File\Write

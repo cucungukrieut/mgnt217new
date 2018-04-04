@@ -6,10 +6,10 @@
 
 // @codingStandardsIgnoreFile
 
-namespace Magento\ImportProducts\Helper;
+namespace Magento\ImportExport\Helper;
 
 /**
- * ImportProducts data helper
+ * ImportExport data helper
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
@@ -18,7 +18,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**#@+
      * XML path for config data
      */
-    const XML_PATH_EXPORT_LOCAL_VALID_PATH = 'general/file/ImportProducts_local_valid_paths';
+    const XML_PATH_EXPORT_LOCAL_VALID_PATH = 'general/file/ImportExport_local_valid_paths';
 
     const XML_PATH_BUNCH_SIZE = 'general/file/bunch_size';
 

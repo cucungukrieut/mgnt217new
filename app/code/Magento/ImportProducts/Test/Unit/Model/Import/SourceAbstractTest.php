@@ -3,19 +3,19 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Test\Unit\Model\Import;
+namespace Magento\ImportExport\Test\Unit\Model\Import;
 
 class SourceAbstractTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $_model = null;
 
     protected function setUp()
     {
         $this->_model = $this->getMockForAbstractClass(
-            'Magento\ImportProducts\Model\Import\AbstractSource',
+            'Magento\ImportExport\Model\Import\AbstractSource',
             [['key1', 'key2', 'key3']]
         );
     }
@@ -27,7 +27,7 @@ class SourceAbstractTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructException($argument)
     {
-        $this->getMockForAbstractClass('Magento\ImportProducts\Model\Import\AbstractSource', [$argument]);
+        $this->getMockForAbstractClass('Magento\ImportExport\Model\Import\AbstractSource', [$argument]);
     }
 
     /**

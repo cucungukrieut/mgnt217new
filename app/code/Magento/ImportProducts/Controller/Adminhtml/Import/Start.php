@@ -3,31 +3,31 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Controller\Adminhtml\Import;
+namespace Magento\ImportExport\Controller\Adminhtml\Import;
 
-use Magento\ImportProducts\Controller\Adminhtml\ImportResult as ImportResultController;
+use Magento\ImportExport\Controller\Adminhtml\ImportResult as ImportResultController;
 use Magento\Framework\Controller\ResultFactory;
 
 class Start extends ImportResultController
 {
     /**
-     * @var \Magento\ImportProducts\Model\Import
+     * @var \Magento\ImportExport\Model\Import
      */
     protected $importModel;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\ImportProducts\Model\Report\ReportProcessorInterface $reportProcessor
-     * @param \Magento\ImportProducts\Model\History $historyModel
-     * @param \Magento\ImportProducts\Helper\Report $reportHelper
-     * @param \Magento\ImportProducts\Model\Import $importModel
+     * @param \Magento\ImportExport\Model\Report\ReportProcessorInterface $reportProcessor
+     * @param \Magento\ImportExport\Model\History $historyModel
+     * @param \Magento\ImportExport\Helper\Report $reportHelper
+     * @param \Magento\ImportExport\Model\Import $importModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\ImportProducts\Model\Report\ReportProcessorInterface $reportProcessor,
-        \Magento\ImportProducts\Model\History $historyModel,
-        \Magento\ImportProducts\Helper\Report $reportHelper,
-        \Magento\ImportProducts\Model\Import $importModel
+        \Magento\ImportExport\Model\Report\ReportProcessorInterface $reportProcessor,
+        \Magento\ImportExport\Model\History $historyModel,
+        \Magento\ImportExport\Helper\Report $reportHelper,
+        \Magento\ImportExport\Model\Import $importModel
     ) {
         parent::__construct($context, $reportProcessor, $historyModel, $reportHelper);
         $this->importModel = $importModel;
@@ -44,7 +44,7 @@ class Start extends ImportResultController
         if ($data) {
             /** @var \Magento\Framework\View\Result\Layout $resultLayout */
             $resultLayout = $this->resultFactory->create(ResultFactory::TYPE_LAYOUT);
-            /** @var $resultBlock \Magento\ImportProducts\Block\Adminhtml\Import\Frame\Result */
+            /** @var $resultBlock \Magento\ImportExport\Block\Adminhtml\Import\Frame\Result */
             $resultBlock = $resultLayout->getLayout()->getBlock('import.frame.result');
             $resultBlock
                 ->addAction('show', 'import_validation_container')

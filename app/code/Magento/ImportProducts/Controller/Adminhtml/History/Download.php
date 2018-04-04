@@ -4,11 +4,11 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Controller\Adminhtml\History;
+namespace Magento\ImportExport\Controller\Adminhtml\History;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 
-class Download extends \Magento\ImportProducts\Controller\Adminhtml\History
+class Download extends \Magento\ImportExport\Controller\Adminhtml\History
 {
     /**
      * @var \Magento\Framework\Controller\Result\RawFactory
@@ -41,8 +41,8 @@ class Download extends \Magento\ImportProducts\Controller\Adminhtml\History
     {
         $fileName = $this->getRequest()->getParam('filename');
 
-        /** @var \Magento\ImportProducts\Helper\Report $reportHelper */
-        $reportHelper = $this->_objectManager->get('Magento\ImportProducts\Helper\Report');
+        /** @var \Magento\ImportExport\Helper\Report $reportHelper */
+        $reportHelper = $this->_objectManager->get('Magento\ImportExport\Helper\Report');
 
         if (!$reportHelper->importFileExists($fileName)) {
             /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */

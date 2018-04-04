@@ -3,13 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model;
+namespace Magento\ImportExport\Model;
 
 /**
  * Import history model
  *
- * @method \Magento\ImportProducts\Model\ResourceModel\History _getResource()
- * @method \Magento\ImportProducts\Model\ResourceModel\History getResource()
+ * @method \Magento\ImportExport\Model\ResourceModel\History _getResource()
+ * @method \Magento\ImportExport\Model\ResourceModel\History getResource()
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.LongVariable)
  */
@@ -38,7 +38,7 @@ class History extends \Magento\Framework\Model\AbstractModel
     const IMPORT_SCHEDULED_USER = 0;
 
     /**
-     * @var \Magento\ImportProducts\Helper\Report
+     * @var \Magento\ImportExport\Helper\Report
      */
     protected $reportHelper;
 
@@ -47,18 +47,18 @@ class History extends \Magento\Framework\Model\AbstractModel
      *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Magento\ImportProducts\Model\ResourceModel\History $resource
-     * @param \Magento\ImportProducts\Model\ResourceModel\History\Collection $resourceCollection
-     * @param \Magento\ImportProducts\Helper\Report $reportHelper
+     * @param \Magento\ImportExport\Model\ResourceModel\History $resource
+     * @param \Magento\ImportExport\Model\ResourceModel\History\Collection $resourceCollection
+     * @param \Magento\ImportExport\Helper\Report $reportHelper
      * @param \Magento\Backend\Model\Auth\Session $authSession
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \Magento\ImportProducts\Model\ResourceModel\History $resource,
-        \Magento\ImportProducts\Model\ResourceModel\History\Collection $resourceCollection,
-        \Magento\ImportProducts\Helper\Report $reportHelper,
+        \Magento\ImportExport\Model\ResourceModel\History $resource,
+        \Magento\ImportExport\Model\ResourceModel\History\Collection $resourceCollection,
+        \Magento\ImportExport\Helper\Report $reportHelper,
         \Magento\Backend\Model\Auth\Session $authSession,
         array $data = []
     ) {
@@ -75,7 +75,7 @@ class History extends \Magento\Framework\Model\AbstractModel
      */
     protected function _construct()
     {
-        $this->_init('Magento\ImportProducts\Model\ResourceModel\History');
+        $this->_init('Magento\ImportExport\Model\ResourceModel\History');
     }
 
     /**

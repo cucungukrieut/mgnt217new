@@ -3,9 +3,9 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model\ResourceModel\History;
+namespace Magento\ImportExport\Model\ResourceModel\History;
 
-use \Magento\ImportProducts\Model\History;
+use \Magento\ImportExport\Model\History;
 
 /**
  * Import history collection
@@ -26,14 +26,14 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('Magento\ImportProducts\Model\History', 'Magento\ImportProducts\Model\ResourceModel\History');
+        $this->_init('Magento\ImportExport\Model\History', 'Magento\ImportExport\Model\ResourceModel\History');
         $this->_linkTable = $this->getTable('admin_user');
     }
 
     /**
      * Init select
      *
-     * @return \Magento\ImportProducts\Model\ResourceModel\History\Collection
+     * @return \Magento\ImportExport\Model\ResourceModel\History\Collection
      */
     protected function _initSelect()
     {

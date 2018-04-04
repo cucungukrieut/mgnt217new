@@ -3,14 +3,14 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Controller\Adminhtml\Import;
+namespace Magento\ImportExport\Controller\Adminhtml\Import;
 
-use Magento\ImportProducts\Controller\Adminhtml\ImportResult as ImportResultController;
-use Magento\ImportProducts\Model\Import;
-use Magento\ImportProducts\Block\Adminhtml\Import\Frame\Result as ImportResultBlock;
+use Magento\ImportExport\Controller\Adminhtml\ImportResult as ImportResultController;
+use Magento\ImportExport\Model\Import;
+use Magento\ImportExport\Block\Adminhtml\Import\Frame\Result as ImportResultBlock;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\ImportProducts\Model\Import\Adapter as ImportAdapter;
+use Magento\ImportExport\Model\Import\Adapter as ImportAdapter;
 
 class Validate extends ImportResultController
 {
@@ -39,7 +39,7 @@ class Validate extends ImportResultController
                 'import_validation_container'
             );
 
-            /** @var $import \Magento\ImportProducts\Model\Import */
+            /** @var $import \Magento\ImportExport\Model\Import */
             $import = $this->getImport()->setData($data);
             try {
                 $source = ImportAdapter::findAdapterFor(

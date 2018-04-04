@@ -7,7 +7,7 @@
 /**
  * Import behavior factory
  */
-namespace Magento\ImportProducts\Model\Source\Import\Behavior;
+namespace Magento\ImportExport\Model\Source\Import\Behavior;
 
 class Factory
 {
@@ -28,7 +28,7 @@ class Factory
 
     /**
      * @param string $className
-     * @return \Magento\ImportProducts\Model\Source\Import\AbstractBehavior
+     * @return \Magento\ImportExport\Model\Source\Import\AbstractBehavior
      * @throws \InvalidArgumentException
      */
     public function create($className)

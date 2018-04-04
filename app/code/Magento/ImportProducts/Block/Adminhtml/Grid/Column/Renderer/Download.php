@@ -3,9 +3,9 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Grid\Column\Renderer;
+namespace Magento\ImportExport\Block\Adminhtml\Grid\Column\Renderer;
 
-use Magento\ImportProducts\Model\Import;
+use Magento\ImportExport\Model\Import;
 
 /**
  * Backup grid item renderer

@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Test\Unit\Controller\Adminhtml\History;
+namespace Magento\ImportExport\Test\Unit\Controller\Adminhtml\History;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
@@ -43,12 +43,12 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
     protected $context;
 
     /**
-     * @var \Magento\ImportProducts\Controller\Adminhtml\History\Download
+     * @var \Magento\ImportExport\Controller\Adminhtml\History\Download
      */
     protected $downloadController;
 
     /**
-     * $var \Magento\ImportProducts\Helper\Report|\PHPUnit_Framework_MockObject_MockObject
+     * $var \Magento\ImportExport\Helper\Report|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $reportHelper;
 
@@ -81,7 +81,7 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
         );
         $this->request->expects($this->any())->method('getParam')->with('filename')->willReturn('filename');
         $this->reportHelper = $this->getMock(
-            'Magento\ImportProducts\Helper\Report',
+            'Magento\ImportExport\Helper\Report',
             ['importFileExists', 'getReportSize', 'getReportOutput'],
             [],
             '',
@@ -98,7 +98,7 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
         );
         $this->objectManager->expects($this->any())
             ->method('get')
-            ->with('Magento\ImportProducts\Helper\Report')
+            ->with('Magento\ImportExport\Helper\Report')
             ->willReturn($this->reportHelper);
         $this->context = $this->getMock(
             'Magento\Backend\App\Action\Context',
@@ -154,7 +154,7 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
 
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->downloadController = $this->objectManagerHelper->getObject(
-            'Magento\ImportProducts\Controller\Adminhtml\History\Download',
+            'Magento\ImportExport\Controller\Adminhtml\History\Download',
             [
                 'context' => $this->context,
                 'fileFactory' => $this->fileFactory,

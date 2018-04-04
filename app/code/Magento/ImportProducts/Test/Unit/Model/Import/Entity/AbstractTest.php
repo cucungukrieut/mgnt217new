@@ -5,18 +5,18 @@
  */
 
 /**
- * Test class for \Magento\ImportProducts\Model\Import\Entity\AbstractEntity
+ * Test class for \Magento\ImportExport\Model\Import\Entity\AbstractEntity
  */
-namespace Magento\ImportProducts\Test\Unit\Model\Import\Entity;
+namespace Magento\ImportExport\Test\Unit\Model\Import\Entity;
 
-use Magento\ImportProducts\Model\Import\Entity\AbstractEntity;
+use Magento\ImportExport\Model\Import\Entity\AbstractEntity;
 
-class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\AbstractImportTestCase
+class AbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase
 {
     /**
      * Abstract import entity model
      *
-     * @var \Magento\ImportProducts\Model\Import\Entity\AbstractEntity|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportExport\Model\Import\Entity\AbstractEntity|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $_model;
 
@@ -24,7 +24,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     {
         parent::setUp();
 
-        $this->_model = $this->getMockBuilder('Magento\ImportProducts\Model\Import\Entity\AbstractEntity')
+        $this->_model = $this->getMockBuilder('Magento\ImportExport\Model\Import\Entity\AbstractEntity')
             ->disableOriginalConstructor()
             ->setMethods(['_saveValidatedBunches', 'getErrorAggregator'])
             ->getMockForAbstractClass();
@@ -45,13 +45,13 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
      * Create source adapter mock and set it into model object which tested in this class
      *
      * @param array $columns value which will be returned by method getColNames()
-     * @return \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
+     * @return \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject
      */
     protected function _createSourceAdapterMock(array $columns)
     {
-        /** @var $source \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject */
+        /** @var $source \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject */
         $source = $this->getMockForAbstractClass(
-            'Magento\ImportProducts\Model\Import\AbstractSource',
+            'Magento\ImportExport\Model\Import\AbstractSource',
             [],
             '',
             false,
@@ -68,7 +68,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::validateData
      */
     public function testValidateDataEmptyColumnName()
     {
@@ -83,12 +83,12 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method validateData() for delete behaviour
      *
-     * @covers \Magento\ImportProducts\Model\Import\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\AbstractEntity::validateData
      */
     public function testValidateDataEmptyColumnNameForDeleteBehaviour()
     {
         $this->_createSourceAdapterMock(['']);
-        $this->_model->setParameters(['behavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE]);
+        $this->_model->setParameters(['behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE]);
         $errorAggregator = $this->_model->validateData();
         $this->assertEquals(0, $errorAggregator->getErrorsCount());
     }
@@ -96,12 +96,12 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method validateData() for delete behaviour
      *
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::validateData
      */
     public function testValidateDataColumnNameWithWhitespacesForDeleteBehaviour()
     {
         $this->_createSourceAdapterMock(['  ']);
-        $this->_model->setParameters(['behavior' => \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE]);
+        $this->_model->setParameters(['behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE]);
         $errorAggregator = $this->_model->validateData();
         $this->assertEquals(0, $errorAggregator->getErrorsCount());
     }
@@ -109,7 +109,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::validateData
      */
     public function testValidateDataColumnNameWithWhitespaces()
     {
@@ -124,7 +124,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method validateData()
      *
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::validateData
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::validateData
      */
     public function testValidateDataAttributeNames()
     {
@@ -139,7 +139,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
     /**
      * Test for method isNeedToLogInHistory()
      *
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::isNeedToLogInHistory
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::isNeedToLogInHistory
      */
     public function testIsNeedToLogInHistory()
     {
@@ -150,7 +150,7 @@ class AbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\Abstra
      * Test for method isAttributeValid()
      *
      * @dataProvider isAttributeValidDataProvider
-     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEntity::isAttributeValid
+     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEntity::isAttributeValid
      *
      * @param string $attrCode
      * @param array $attrParams

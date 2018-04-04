@@ -7,7 +7,7 @@
 /**
  * Block form after
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Form;
+namespace Magento\ImportExport\Block\Adminhtml\Form;
 
 class After extends \Magento\Backend\Block\Template
 {
