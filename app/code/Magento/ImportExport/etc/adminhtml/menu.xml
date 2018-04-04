@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Magento_ImportExport::system_convert_import" title="Import" translate="title" module="Magento_ImportExport" sortOrder="10" parent="Magento_Backend::system_convert" action="adminhtml/import" resource="Magento_ImportExport::import"/>
+        <add id="Magento_ImportProducts::system_convert_import" title="Import" translate="title" module="Magento_ImportProducts" sortOrder="10" parent="Magento_Backend::system_convert" action="adminhtml/import" resource="Magento_ImportProducts::import"/>
  </menu>
 </config>

@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportExport\Setup;
+namespace Magento\ImportProducts\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -24,10 +24,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         /**
-         * Create table 'importexport_importdata'
+         * Create table 'ImportProducts_importdata'
          */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('importexport_importdata'))
+            ->newTable($installer->getTable('ImportProducts_importdata'))
             ->addColumn(
                 'id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,

@@ -3,9 +3,9 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import;
+namespace Magento\ImportProducts\Test\Unit\Model\Import;
 
-use Magento\ImportExport\Model\Import\Adapter as Adapter;
+use Magento\ImportProducts\Model\Import\Adapter as Adapter;
 
 class AdapterTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class AdapterTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->adapter = $this->getMock(
-            '\Magento\ImportExport\Model\Import\Adapter',
+            '\Magento\ImportProducts\Model\Import\Adapter',
             [],
             [],
             '',

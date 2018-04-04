@@ -3,13 +3,13 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Import\Entity;
+namespace Magento\ImportProducts\Model\Import\Entity;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\ImportExport\Model\Import\AbstractSource;
-use Magento\ImportExport\Model\Import as ImportExport;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import\AbstractSource;
+use Magento\ImportProducts\Model\Import as ImportProducts;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Import entity abstract model
@@ -92,7 +92,7 @@ abstract class AbstractEntity
     /**
      * DB data source model.
      *
-     * @var \Magento\ImportExport\Model\ResourceModel\Import\Data
+     * @var \Magento\ImportProducts\Model\ResourceModel\Import\Data
      */
     protected $_dataSourceModel;
 
@@ -183,9 +183,9 @@ abstract class AbstractEntity
     /**
      * Import export data
      *
-     * @var \Magento\ImportExport\Helper\Data
+     * @var \Magento\ImportProducts\Helper\Data
      */
-    protected $_importExportData;
+    protected $_ImportProductsData;
 
     /**
      * Json Helper
@@ -202,7 +202,7 @@ abstract class AbstractEntity
     protected $string;
 
     /**
-     * @var \Magento\ImportExport\Model\ResourceModel\Helper
+     * @var \Magento\ImportProducts\Model\ResourceModel\Helper
      */
     protected $_resourceHelper;
 
@@ -248,27 +248,27 @@ abstract class AbstractEntity
 
     /**
      * @param \Magento\Framework\Json\Helper\Data $jsonHelper
-     * @param \Magento\ImportExport\Helper\Data $importExportData
-     * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
+     * @param \Magento\ImportProducts\Helper\Data $ImportProductsData
+     * @param \Magento\ImportProducts\Model\ResourceModel\Import\Data $importData
      * @param \Magento\Eav\Model\Config $config
      * @param ResourceConnection $resource
-     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
+     * @param \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper
      * @param \Magento\Framework\Stdlib\StringUtils $string
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function __construct(
         \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Magento\ImportExport\Helper\Data $importExportData,
-        \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
+        \Magento\ImportProducts\Helper\Data $ImportProductsData,
+        \Magento\ImportProducts\Model\ResourceModel\Import\Data $importData,
         \Magento\Eav\Model\Config $config,
         ResourceConnection $resource,
-        \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
+        \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper,
         \Magento\Framework\Stdlib\StringUtils $string,
         ProcessingErrorAggregatorInterface $errorAggregator
     ) {
         $this->jsonHelper = $jsonHelper;
-        $this->_importExportData = $importExportData;
+        $this->_ImportProductsData = $ImportProductsData;
         $this->_resourceHelper = $resourceHelper;
         $this->string = $string;
         $this->errorAggregator = $errorAggregator;
@@ -372,7 +372,7 @@ abstract class AbstractEntity
         $startNewBunch = false;
         $nextRowBackup = [];
         $maxDataSize = $this->_resourceHelper->getMaxDataSize();
-        $bunchSize = $this->_importExportData->getBunchSize();
+        $bunchSize = $this->_ImportProductsData->getBunchSize();
 
         $source->rewind();
         $this->_dataSourceModel->cleanBunches();
@@ -515,11 +515,11 @@ abstract class AbstractEntity
         if (!isset(
             $this->_parameters['behavior']
         ) ||
-            $this->_parameters['behavior'] != \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND &&
-            $this->_parameters['behavior'] != \Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE &&
-            $this->_parameters['behavior'] != \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE
+            $this->_parameters['behavior'] != \Magento\ImportProducts\Model\Import::BEHAVIOR_APPEND &&
+            $this->_parameters['behavior'] != \Magento\ImportProducts\Model\Import::BEHAVIOR_REPLACE &&
+            $this->_parameters['behavior'] != \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE
         ) {
-            return \Magento\ImportExport\Model\Import::getDefaultBehavior();
+            return \Magento\ImportProducts\Model\Import::getDefaultBehavior();
         }
         return $this->_parameters['behavior'];
     }
@@ -758,7 +758,7 @@ abstract class AbstractEntity
             $absentColumns = array_diff($this->_permanentAttributes, $this->getSource()->getColNames());
             $this->addErrors(self::ERROR_CODE_COLUMN_NOT_FOUND, $absentColumns);
 
-            if (ImportExport::BEHAVIOR_DELETE != $this->getBehavior()) {
+            if (ImportProducts::BEHAVIOR_DELETE != $this->getBehavior()) {
                 // check attribute columns names validity
                 $columnNumber = 0;
                 $emptyHeaderColumns = [];

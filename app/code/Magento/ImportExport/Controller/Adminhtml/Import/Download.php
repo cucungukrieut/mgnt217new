@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Controller\Adminhtml\Import;
+namespace Magento\ImportProducts\Controller\Adminhtml\Import;
 
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\ImportExport\Controller\Adminhtml\Import as ImportController;
+use Magento\ImportProducts\Controller\Adminhtml\Import as ImportController;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
 /**
@@ -14,7 +14,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
  */
 class Download extends ImportController
 {
-    const SAMPLE_FILES_MODULE = 'Magento_ImportExport';
+    const SAMPLE_FILES_MODULE = 'Magento_ImportProducts';
 
     /**
      * @var \Magento\Framework\Controller\Result\RawFactory

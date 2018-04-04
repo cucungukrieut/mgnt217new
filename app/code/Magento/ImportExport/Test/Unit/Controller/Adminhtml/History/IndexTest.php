@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Controller\Adminhtml\History;
+namespace Magento\ImportProducts\Test\Unit\Controller\Adminhtml\History;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
@@ -20,7 +20,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
     protected $objectManagerHelper;
 
     /**
-     * @var \Magento\ImportExport\Controller\Adminhtml\History\Index
+     * @var \Magento\ImportProducts\Controller\Adminhtml\History\Index
      */
     protected $indexController;
 
@@ -63,7 +63,7 @@ class IndexTest extends \PHPUnit_Framework_TestCase
         $this->context->expects($this->any())->method('getResultFactory')->willReturn($this->resultFactory);
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->indexController = $this->objectManagerHelper->getObject(
-            'Magento\ImportExport\Controller\Adminhtml\History\Index',
+            'Magento\ImportProducts\Controller\Adminhtml\History\Index',
             [
                 'context' => $this->context,
             ]

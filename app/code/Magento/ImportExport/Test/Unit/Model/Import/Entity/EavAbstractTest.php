@@ -5,11 +5,11 @@
  */
 
 /**
- * Test class for \Magento\ImportExport\Model\Import\Entity\AbstractEav
+ * Test class for \Magento\ImportProducts\Model\Import\Entity\AbstractEav
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import\Entity;
+namespace Magento\ImportProducts\Test\Unit\Model\Import\Entity;
 
-class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase
+class EavAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Import\AbstractImportTestCase
 {
     /**
      * Entity type id
@@ -19,7 +19,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
     /**
      * Abstract import entity eav model
      *
-     * @var \Magento\ImportExport\Model\Import\Entity\AbstractEav
+     * @var \Magento\ImportProducts\Model\Import\Entity\AbstractEav
      */
     protected $_model;
 
@@ -29,7 +29,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
     protected $_string;
 
     /**
-     * @var \Magento\ImportExport\Model\ImportFactory
+     * @var \Magento\ImportProducts\Model\ImportFactory
      */
     protected $_importFactory;
 
@@ -39,7 +39,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
     protected $_resource;
 
     /**
-     * @var \Magento\ImportExport\Model\ResourceModel\Helper
+     * @var \Magento\ImportProducts\Model\ResourceModel\Helper
      */
     protected $_resourceHelper;
 
@@ -49,7 +49,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
     protected $_storeManager;
 
     /**
-     * @var \Magento\ImportExport\Model\Export\Factory
+     * @var \Magento\ImportProducts\Model\Export\Factory
      */
     protected $_collectionFactory;
 
@@ -66,7 +66,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
         $scopeConfig = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
 
         $this->_importFactory = $this->getMock(
-            'Magento\ImportExport\Model\ImportFactory',
+            'Magento\ImportProducts\Model\ImportFactory',
             [],
             [],
             '',
@@ -74,7 +74,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
         );
         $this->_resource = $this->getMock('Magento\Framework\App\ResourceConnection', [], [], '', false);
         $this->_resourceHelper = $this->getMock(
-            'Magento\ImportExport\Model\ResourceModel\Helper',
+            'Magento\ImportProducts\Model\ResourceModel\Helper',
             [],
             [],
             '',
@@ -82,7 +82,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
         );
         $this->_storeManager = $this->getMock('Magento\Store\Model\StoreManager', [], [], '', false);
         $this->_collectionFactory = $this->getMock(
-            'Magento\ImportExport\Model\Export\Factory',
+            'Magento\ImportProducts\Model\Export\Factory',
             [],
             [],
             '',
@@ -91,7 +91,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
         $this->_eavConfig = $this->getMock('Magento\Eav\Model\Config', [], [], '', false);
 
         $this->_model = $this->getMockForAbstractClass(
-            'Magento\ImportExport\Model\Import\Entity\AbstractEav',
+            'Magento\ImportProducts\Model\Import\Entity\AbstractEav',
             [
                 $this->_string,
                 $scopeConfig,
@@ -139,7 +139,7 @@ class EavAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Import\Abstr
     /**
      * Test entity type id getter
      *
-     * @covers \Magento\ImportExport\Model\Import\Entity\AbstractEav::getEntityTypeId
+     * @covers \Magento\ImportProducts\Model\Import\Entity\AbstractEav::getEntityTypeId
      */
     public function testGetEntityTypeId()
     {

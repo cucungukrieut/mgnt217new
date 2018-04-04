@@ -3,32 +3,32 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Report;
+namespace Magento\ImportProducts\Test\Unit\Model\Report;
 
 class CsvTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\ImportExport\Helper\Report|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Helper\Report|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $reportHelperMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $outputCsvFactoryMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Export\Adapter\Csv|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Export\Adapter\Csv|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $outputCsvMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\Source\CsvFactory|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Import\Source\CsvFactory|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $sourceCsvFactoryMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Export\Adapter\Csv|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Export\Adapter\Csv|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $sourceCsvMock;
 
@@ -38,7 +38,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
     protected $filesystemMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Report\Csv|\Magento\Framework\TestFramework\Unit\Helper\ObjectManager
+     * @var \Magento\ImportProducts\Model\Report\Csv|\Magento\Framework\TestFramework\Unit\Helper\ObjectManager
      */
     protected $csvModel;
 
@@ -46,26 +46,26 @@ class CsvTest extends \PHPUnit_Framework_TestCase
     {
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
 
-        $this->reportHelperMock = $this->getMock('\Magento\ImportExport\Helper\Report', [], [], '', false);
+        $this->reportHelperMock = $this->getMock('\Magento\ImportProducts\Helper\Report', [], [], '', false);
 
         $this->outputCsvFactoryMock = $this->getMock(
-            '\Magento\ImportExport\Model\Export\Adapter\CsvFactory',
+            '\Magento\ImportProducts\Model\Export\Adapter\CsvFactory',
             ['create'],
             [],
             '',
             false
         );
-        $this->outputCsvMock = $this->getMock('\Magento\ImportExport\Model\Export\Adapter\Csv', [], [], '', false);
+        $this->outputCsvMock = $this->getMock('\Magento\ImportProducts\Model\Export\Adapter\Csv', [], [], '', false);
         $this->outputCsvFactoryMock->expects($this->any())->method('create')->willReturn($this->outputCsvMock);
 
         $this->sourceCsvFactoryMock = $this->getMock(
-            '\Magento\ImportExport\Model\Import\Source\CsvFactory',
+            '\Magento\ImportProducts\Model\Import\Source\CsvFactory',
             ['create'],
             [],
             '',
             false
         );
-        $this->sourceCsvMock = $this->getMock('\Magento\ImportExport\Model\Import\Source\Csv', [], [], '', false);
+        $this->sourceCsvMock = $this->getMock('\Magento\ImportProducts\Model\Import\Source\Csv', [], [], '', false);
         $this->sourceCsvMock->expects($this->any())->method('valid')->willReturnOnConsecutiveCalls(true, true, false);
         $this->sourceCsvMock->expects($this->any())->method('current')->willReturnOnConsecutiveCalls(
             [23 => 'first error'],
@@ -76,7 +76,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
         $this->filesystemMock = $this->getMock('\Magento\Framework\Filesystem', [], [], '', false);
 
         $this->csvModel = $objectManager->getObject(
-            '\Magento\ImportExport\Model\Report\Csv',
+            '\Magento\ImportProducts\Model\Report\Csv',
             [
                 'reportHelper' => $this->reportHelperMock,
                 'sourceCsvFactory' => $this->sourceCsvFactoryMock,
@@ -89,14 +89,14 @@ class CsvTest extends \PHPUnit_Framework_TestCase
     public function testCreateReport()
     {
         $errorAggregatorMock = $this->getMock(
-            'Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
+            'Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
             [],
             [],
             '',
             false
         );
         $errorProcessingMock = $this->getMock(
-            'Magento\ImportExport\Model\Import\ErrorProcessing',
+            'Magento\ImportProducts\Model\Import\ErrorProcessing',
             ['getErrorMessage'],
             [],
             '',

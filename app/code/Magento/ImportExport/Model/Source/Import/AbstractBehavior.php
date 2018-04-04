@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Source\Import;
+namespace Magento\ImportProducts\Model\Source\Import;
 
 /**
  * Source import behavior model

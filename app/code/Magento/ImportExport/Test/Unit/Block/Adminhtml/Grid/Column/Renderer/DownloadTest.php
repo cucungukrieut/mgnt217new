@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Block\Adminhtml\Grid\Column\Renderer;
+namespace Magento\ImportProducts\Test\Unit\Block\Adminhtml\Grid\Column\Renderer;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
@@ -20,7 +20,7 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
     protected $objectManagerHelper;
 
     /**
-     * @var \Magento\ImportExport\Block\Adminhtml\Grid\Column\Renderer\Download
+     * @var \Magento\ImportProducts\Block\Adminhtml\Grid\Column\Renderer\Download
      */
      protected $download;
 
@@ -49,7 +49,7 @@ class DownloadTest extends \PHPUnit_Framework_TestCase
 
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->download = $this->objectManagerHelper->getObject(
-            'Magento\ImportExport\Block\Adminhtml\Grid\Column\Renderer\Download',
+            'Magento\ImportProducts\Block\Adminhtml\Grid\Column\Renderer\Download',
             [
                 'context' => $this->context,
                 'data' => $data

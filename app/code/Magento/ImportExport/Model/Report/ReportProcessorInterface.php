@@ -4,9 +4,9 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportExport\Model\Report;
+namespace Magento\ImportProducts\Model\Report;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Error report generator interface

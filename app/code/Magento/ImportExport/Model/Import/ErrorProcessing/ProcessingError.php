@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportExport\Model\Import\ErrorProcessing;
+namespace Magento\ImportProducts\Model\Import\ErrorProcessing;
 
 /**
  * Class describe Processing Error

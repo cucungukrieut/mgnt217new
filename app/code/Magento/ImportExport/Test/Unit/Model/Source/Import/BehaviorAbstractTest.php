@@ -5,11 +5,11 @@
  */
 
 /**
- * Test class for \Magento\ImportExport\Model\Source\Import\AbstractBehavior
+ * Test class for \Magento\ImportProducts\Model\Source\Import\AbstractBehavior
  */
-namespace Magento\ImportExport\Test\Unit\Model\Source\Import;
+namespace Magento\ImportProducts\Test\Unit\Model\Source\Import;
 
-class BehaviorAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
+class BehaviorAbstractTest extends \Magento\ImportProducts\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
 {
     /**
      * Source array data
@@ -33,7 +33,7 @@ class BehaviorAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Source\
         parent::setUp();
 
         $model = $this->getMockForAbstractClass(
-            'Magento\ImportExport\Model\Source\Import\AbstractBehavior',
+            'Magento\ImportProducts\Model\Source\Import\AbstractBehavior',
             [[]],
             '',
             false,
@@ -49,7 +49,7 @@ class BehaviorAbstractTest extends \Magento\ImportExport\Test\Unit\Model\Source\
     /**
      * Test for toOptionArray method
      *
-     * @covers \Magento\ImportExport\Model\Source\Import\AbstractBehavior::toOptionArray
+     * @covers \Magento\ImportProducts\Model\Source\Import\AbstractBehavior::toOptionArray
      */
     public function testToOptionArray()
     {

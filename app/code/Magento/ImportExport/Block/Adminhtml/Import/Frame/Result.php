@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Block\Adminhtml\Import\Frame;
+namespace Magento\ImportProducts\Block\Adminhtml\Import\Frame;
 
 use Magento\Framework\View\Element\Template;
 
@@ -154,7 +154,7 @@ class Result extends \Magento\Backend\Block\Template
     {
         $importURI = '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
             . $this->getImportStartUrl() . '\', \''
-            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
+            . \Magento\ImportProducts\Model\Import::FIELD_NAME_SOURCE_FILE
             . '\');" class="scalable save"'
             . ' type="button"><span><span><span>'
             . __('Import')
@@ -168,7 +168,7 @@ class Result extends \Magento\Backend\Block\Template
         return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
             . $this->getImportStartUrl()
             . '\', \''
-            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
+            . \Magento\ImportProducts\Model\Import::FIELD_NAME_SOURCE_FILE
             . '\');" class="scalable save"'
             . ' type="button"><span><span><span>'
             . __('Import')

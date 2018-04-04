@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import\Source;
+namespace Magento\ImportProducts\Test\Unit\Model\Import\Source;
 
 class CsvTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +40,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
         $this->_directoryMock->expects($this->any())
             ->method('openFile')
             ->willThrowException(new \Magento\Framework\Exception\FileSystemException(__('Error message')));
-        new \Magento\ImportExport\Model\Import\Source\Csv(__DIR__ . '/invalid_file', $this->_directoryMock);
+        new \Magento\ImportProducts\Model\Import\Source\Csv(__DIR__ . '/invalid_file', $this->_directoryMock);
     }
 
     public function testConstructStream()
@@ -64,7 +64,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
             $this->returnValue($this->_directoryMock)
         );
 
-        $model = new \Magento\ImportExport\Model\Import\Source\Csv($stream, $this->_filesystem);
+        $model = new \Magento\ImportProducts\Model\Import\Source\Csv($stream, $this->_filesystem);
         foreach ($model as $value) {
             $this->assertSame(['column1' => 'value1', 'column2' => 'value2'], $value);
         }
@@ -90,7 +90,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
                 )
             )
         );
-        $model = new \Magento\ImportExport\Model\Import\Source\Csv(
+        $model = new \Magento\ImportProducts\Model\Import\Source\Csv(
             __DIR__ . '/_files/test.csv',
             $this->_directoryMock,
             $delimiter,
@@ -129,7 +129,7 @@ class CsvTest extends \PHPUnit_Framework_TestCase
                 )
             )
         );
-        $model = new \Magento\ImportExport\Model\Import\Source\Csv(
+        $model = new \Magento\ImportProducts\Model\Import\Source\Csv(
             __DIR__ . '/_files/test.csv',
             $this->_directoryMock
         );

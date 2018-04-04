@@ -4,11 +4,11 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportExport\Model\Report;
+namespace Magento\ImportProducts\Model\Report;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\ImportExport\Model\Import;
+use Magento\ImportProducts\Model\Import;
 
 /**
  * Class Csv create new CSV file and add Error data in additional column
@@ -22,17 +22,17 @@ class Csv implements ReportProcessorInterface
     const REPORT_ERROR_COLUMN_NAME = 'errors';
 
     /**
-     * @var \Magento\ImportExport\Helper\Report
+     * @var \Magento\ImportProducts\Helper\Report
      */
     protected $reportHelper;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\Source\CsvFactory
+     * @var \Magento\ImportProducts\Model\Import\Source\CsvFactory
      */
     protected $sourceCsvFactory;
 
     //
-     // @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
+     // @var \Magento\ImportProducts\Model\Export\Adapter\CsvFactory
 
     //protected $outputCsvFactory;
 
@@ -42,15 +42,15 @@ class Csv implements ReportProcessorInterface
     protected $filesystem;
 
     /**
-     * @param \Magento\ImportExport\Helper\Report $reportHelper
+     * @param \Magento\ImportProducts\Helper\Report $reportHelper
      * @param Import\Source\CsvFactory $sourceCsvFactory
-     //* @param \Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory
+     //* @param \Magento\ImportProducts\Model\Export\Adapter\CsvFactory $outputCsvFactory
      * @param \Magento\Framework\Filesystem $filesystem
      */
     public function __construct(
-        \Magento\ImportExport\Helper\Report $reportHelper,
-        \Magento\ImportExport\Model\Import\Source\CsvFactory $sourceCsvFactory,
-        //\Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory,
+        \Magento\ImportProducts\Helper\Report $reportHelper,
+        \Magento\ImportProducts\Model\Import\Source\CsvFactory $sourceCsvFactory,
+        //\Magento\ImportProducts\Model\Export\Adapter\CsvFactory $outputCsvFactory,
         \Magento\Framework\Filesystem $filesystem
     ) {
         $this->reportHelper = $reportHelper;
@@ -123,7 +123,7 @@ class Csv implements ReportProcessorInterface
 
     /**
      * @param string $sourceFile
-     * @return \Magento\ImportExport\Model\Import\Source\Csv
+     * @return \Magento\ImportProducts\Model\Import\Source\Csv
      */
     protected function createSourceCsvModel($sourceFile)
     {
@@ -137,7 +137,7 @@ class Csv implements ReportProcessorInterface
 
     /**
      * @param string $outputFileName
-     //* @return \Magento\ImportExport\Model\Export\Adapter\Csv
+     //* @return \Magento\ImportProducts\Model\Export\Adapter\Csv
      *
     protected function createOutputCsvModel($outputFileName)
     {

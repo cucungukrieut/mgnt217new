@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
+namespace Magento\ImportProducts\Block\Adminhtml\Import\Edit;
 
-use Magento\ImportExport\Model\Import;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Import edit form block
@@ -18,17 +18,17 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     /**
      * Basic import model
      *
-     * @var \Magento\ImportExport\Model\Import
+     * @var \Magento\ImportProducts\Model\Import
      */
     protected $_importModel;
 
     /**
-     * @var \Magento\ImportExport\Model\Source\Import\EntityFactory
+     * @var \Magento\ImportProducts\Model\Source\Import\EntityFactory
      */
     protected $_entityFactory;
 
     /**
-     * @var \Magento\ImportExport\Model\Source\Import\Behavior\Factory
+     * @var \Magento\ImportProducts\Model\Source\Import\Behavior\Factory
      */
     protected $_behaviorFactory;
 
@@ -36,18 +36,18 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Data\FormFactory $formFactory
-     * @param \Magento\ImportExport\Model\Import $importModel
-     * @param \Magento\ImportExport\Model\Source\Import\EntityFactory $entityFactory
-     * @param \Magento\ImportExport\Model\Source\Import\Behavior\Factory $behaviorFactory
+     * @param \Magento\ImportProducts\Model\Import $importModel
+     * @param \Magento\ImportProducts\Model\Source\Import\EntityFactory $entityFactory
+     * @param \Magento\ImportProducts\Model\Source\Import\Behavior\Factory $behaviorFactory
      * @param array $data
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\ImportExport\Model\Import $importModel,
-        \Magento\ImportExport\Model\Source\Import\EntityFactory $entityFactory,
-        \Magento\ImportExport\Model\Source\Import\Behavior\Factory $behaviorFactory,
+        \Magento\ImportProducts\Model\Import $importModel,
+        \Magento\ImportProducts\Model\Source\Import\EntityFactory $entityFactory,
+        \Magento\ImportProducts\Model\Source\Import\Behavior\Factory $behaviorFactory,
         array $data = []
     ) {
         $this->_entityFactory = $entityFactory;
@@ -101,7 +101,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 ['legend' => __('Import Behavior')] // untuk hide dan show tambahkan, 'class' => 'no-display'
             );
 
-            /** @var $behaviorSource \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
+            /** @var $behaviorSource \Magento\ImportProducts\Model\Source\Import\AbstractBehavior */
             $fieldsets[$behaviorCode]->addField(
                 $behaviorCode,
                 'select',
@@ -119,10 +119,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
 
             $fieldsets[$behaviorCode]->addField(
-                $behaviorCode . \Magento\ImportExport\Model\Import::FIELD_NAME_VALIDATION_STRATEGY,
+                $behaviorCode . \Magento\ImportProducts\Model\Import::FIELD_NAME_VALIDATION_STRATEGY,
                 'select',
                 [
-                    'name' => \Magento\ImportExport\Model\Import::FIELD_NAME_VALIDATION_STRATEGY,
+                    'name' => \Magento\ImportProducts\Model\Import::FIELD_NAME_VALIDATION_STRATEGY,
                     'title' => __(' '),
                     'label' => __(' '),
                     'required' => true,
@@ -137,10 +137,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
 
             $fieldsets[$behaviorCode]->addField(
-                $behaviorCode . '_' . \Magento\ImportExport\Model\Import::FIELD_NAME_ALLOWED_ERROR_COUNT,
+                $behaviorCode . '_' . \Magento\ImportProducts\Model\Import::FIELD_NAME_ALLOWED_ERROR_COUNT,
                 'text',
                 [
-                    'name' => \Magento\ImportExport\Model\Import::FIELD_NAME_ALLOWED_ERROR_COUNT,
+                    'name' => \Magento\ImportProducts\Model\Import::FIELD_NAME_ALLOWED_ERROR_COUNT,
                     'label' => __('Allowed Errors Count'),
                     'title' => __('Allowed Errors Count'),
                     'required' => true,
@@ -154,10 +154,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
 
             $fieldsets[$behaviorCode]->addField(
-                $behaviorCode . '_' . \Magento\ImportExport\Model\Import::FIELD_FIELD_SEPARATOR,
+                $behaviorCode . '_' . \Magento\ImportProducts\Model\Import::FIELD_FIELD_SEPARATOR,
                 'text',
                 [
-                    'name' => \Magento\ImportExport\Model\Import::FIELD_FIELD_SEPARATOR,
+                    'name' => \Magento\ImportProducts\Model\Import::FIELD_FIELD_SEPARATOR,
                     'label' => __('Field separator'),
                     'title' => __('Field separator'),
                     'required' => true,
@@ -168,10 +168,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
 
             $fieldsets[$behaviorCode]->addField(
-                $behaviorCode . \Magento\ImportExport\Model\Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR,
+                $behaviorCode . \Magento\ImportProducts\Model\Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR,
                 'text',
                 [
-                    'name' => \Magento\ImportExport\Model\Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR,
+                    'name' => \Magento\ImportProducts\Model\Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR,
                     'label' => __('Multiple value separator'),
                     'title' => __('Multiple value separator'),
                     'required' => true,
@@ -182,10 +182,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             );
 
             $fieldsets[$behaviorCode]->addField(
-                $behaviorCode . \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE,
+                $behaviorCode . \Magento\ImportProducts\Model\Import::FIELDS_ENCLOSURE,
                 'checkbox',
                 [
-                    'name' => \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE,
+                    'name' => \Magento\ImportProducts\Model\Import::FIELDS_ENCLOSURE,
                     'label' => __('Fields enclosure'),
                     'title' => __('Fields enclosure'),
                     'value' => 1,
@@ -199,10 +199,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ['legend' => __('File to Import')] // untuk hide dan show field , 'class' => 'no-display'
         );
         $fieldsets['upload']->addField(
-            \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE,
+            \Magento\ImportProducts\Model\Import::FIELD_NAME_SOURCE_FILE,
             'file',
             [
-                'name' => \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE,
+                'name' => \Magento\ImportProducts\Model\Import::FIELD_NAME_SOURCE_FILE,
                 'label' => __('Select File to Import'),
                 'title' => __('Select File to Import'),
                 'required' => true,
@@ -210,10 +210,10 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ]
         );
         $fieldsets['upload']->addField(
-            \Magento\ImportExport\Model\Import::FIELD_NAME_IMG_FILE_DIR,
+            \Magento\ImportProducts\Model\Import::FIELD_NAME_IMG_FILE_DIR,
             'text',
             [
-                'name' => \Magento\ImportExport\Model\Import::FIELD_NAME_IMG_FILE_DIR,
+                'name' => \Magento\ImportProducts\Model\Import::FIELD_NAME_IMG_FILE_DIR,
                 'label' => __('Images File Directory'),
                 'title' => __('Images File Directory'),
                 'required' => false,

@@ -11,7 +11,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::system">
                     <resource id="Magento_Backend::convert">
-                        <resource id="Magento_ImportExport::import" title="Import" translate="title" sortOrder="10" />
+                        <resource id="Magento_ImportProducts::import" title="Import" translate="title" sortOrder="10" />
                     </resource>
                 </resource>
             </resource>

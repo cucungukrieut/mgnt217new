@@ -7,14 +7,14 @@
 /**
  * Abstract class for behavior tests
  */
-namespace Magento\ImportExport\Test\Unit\Model\Source\Import;
+namespace Magento\ImportProducts\Test\Unit\Model\Source\Import;
 
 abstract class AbstractBehaviorTestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * Model for testing
      *
-     * @var \Magento\ImportExport\Model\Source\Import\AbstractBehavior
+     * @var \Magento\ImportProducts\Model\Source\Import\AbstractBehavior
      */
     protected $_model;
 

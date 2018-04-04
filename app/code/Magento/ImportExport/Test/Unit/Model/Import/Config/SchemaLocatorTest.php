@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import\Config;
+namespace Magento\ImportProducts\Test\Unit\Model\Import\Config;
 
 class SchemaLocatorTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,7 +13,7 @@ class SchemaLocatorTest extends \PHPUnit_Framework_TestCase
     protected $_moduleReaderMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\Config\SchemaLocator
+     * @var \Magento\ImportProducts\Model\Import\Config\SchemaLocator
      */
     protected $_model;
 
@@ -27,11 +27,11 @@ class SchemaLocatorTest extends \PHPUnit_Framework_TestCase
             'getModuleDir'
         )->with(
             'etc',
-            'Magento_ImportExport'
+            'Magento_ImportProducts'
         )->will(
             $this->returnValue('schema_dir')
         );
-        $this->_model = new \Magento\ImportExport\Model\Import\Config\SchemaLocator($this->_moduleReaderMock);
+        $this->_model = new \Magento\ImportProducts\Model\Import\Config\SchemaLocator($this->_moduleReaderMock);
     }
 
     public function testGetSchema()

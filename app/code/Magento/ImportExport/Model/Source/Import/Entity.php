@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Source\Import;
+namespace Magento\ImportProducts\Model\Source\Import;
 
 /**
  * Source import entity model
@@ -13,14 +13,14 @@ namespace Magento\ImportExport\Model\Source\Import;
 class Entity implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * @var \Magento\ImportExport\Model\Import\ConfigInterface
+     * @var \Magento\ImportProducts\Model\Import\ConfigInterface
      */
     protected $_importConfig;
 
     /**
-     * @param \Magento\ImportExport\Model\Import\ConfigInterface $importConfig
+     * @param \Magento\ImportProducts\Model\Import\ConfigInterface $importConfig
      */
-    public function __construct(\Magento\ImportExport\Model\Import\ConfigInterface $importConfig)
+    public function __construct(\Magento\ImportProducts\Model\Import\ConfigInterface $importConfig)
     {
         $this->_importConfig = $importConfig;
     }

@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Helper;
+namespace Magento\ImportProducts\Test\Unit\Helper;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
@@ -38,7 +38,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     protected $varDirectory;
 
     /**
-     * @var \Magento\ImportExport\Helper\Report
+     * @var \Magento\ImportProducts\Helper\Report
      */
     protected $report;
 
@@ -82,7 +82,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $this->filesystem->expects($this->any())->method('getDirectoryWrite')->willReturn($this->varDirectory);
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->report = $this->objectManagerHelper->getObject(
-            'Magento\ImportExport\Helper\Report',
+            'Magento\ImportProducts\Helper\Report',
             [
                 'context' => $this->context,
                 'timeZone' => $this->timezone,
@@ -112,10 +112,10 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     {
         $logger = $this->getMock('Psr\Log\LoggerInterface', [], [], '', false);
         $filesystem = $this->getMock('Magento\Framework\Filesystem', [], [], '', false);
-        $importExportData = $this->getMock('Magento\ImportExport\Helper\Data', [], [], '', false);
+        $ImportProductsData = $this->getMock('Magento\ImportProducts\Helper\Data', [], [], '', false);
         $coreConfig = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface', [], [], '', false);
         $importConfig = $this->getMock(
-            'Magento\ImportExport\Model\Import\Config',
+            'Magento\ImportProducts\Model\Import\Config',
             ['getEntities'],
             [],
             '',
@@ -125,14 +125,14 @@ class ReportTest extends \PHPUnit_Framework_TestCase
             ->method('getEntities')
             ->willReturn(['catalog_product' => ['model' => 'catalog_product']]);
         $entityFactory = $this->getMock(
-            'Magento\ImportExport\Model\Import\Entity\Factory',
+            'Magento\ImportProducts\Model\Import\Entity\Factory',
             ['create'],
             [],
             '',
             false
         );
         $product = $this->getMock(
-            'Magento\CatalogImportExport\Model\Import\Product',
+            'Magento\CatalogImportProducts\Model\Import\Product',
             ['getEntityTypeCode', 'setParameters'],
             [],
             '',
@@ -141,24 +141,24 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $product->expects($this->any())->method('getEntityTypeCode')->willReturn('catalog_product');
         $product->expects($this->any())->method('setParameters')->willReturn('');
         $entityFactory->expects($this->any())->method('create')->willReturn($product);
-        $importData = $this->getMock('Magento\ImportExport\Model\ResourceModel\Import\Data', [], [], '', false);
-        $csvFactory = $this->getMock('Magento\ImportExport\Model\Export\Adapter\CsvFactory', [], [], '', false);
+        $importData = $this->getMock('Magento\ImportProducts\Model\ResourceModel\Import\Data', [], [], '', false);
+        $csvFactory = $this->getMock('Magento\ImportProducts\Model\Export\Adapter\CsvFactory', [], [], '', false);
         $httpFactory = $this->getMock('Magento\Framework\HTTP\Adapter\FileTransferFactory', [], [], '', false);
         $uploaderFactory = $this->getMock('Magento\MediaStorage\Model\File\UploaderFactory', [], [], '', false);
         $behaviorFactory = $this->getMock(
-            'Magento\ImportExport\Model\Source\Import\Behavior\Factory',
+            'Magento\ImportProducts\Model\Source\Import\Behavior\Factory',
             [],
             [],
             '',
             false
         );
         $indexerRegistry = $this->getMock('Magento\Framework\Indexer\IndexerRegistry', [], [], '', false);
-        $importHistoryModel = $this->getMock('Magento\ImportExport\Model\History', [], [], '', false);
+        $importHistoryModel = $this->getMock('Magento\ImportProducts\Model\History', [], [], '', false);
         $localeDate = $this->getMock('Magento\Framework\Stdlib\DateTime\DateTime', [], [], '', false);
-        $import = new \Magento\ImportExport\Model\Import(
+        $import = new \Magento\ImportProducts\Model\Import(
             $logger,
             $filesystem,
-            $importExportData,
+            $ImportProductsData,
             $coreConfig,
             $importConfig,
             $entityFactory,

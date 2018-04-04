@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Import;
+namespace Magento\ImportProducts\Model\Import;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Framework\App\ResourceConnection;
 
 /**
@@ -107,7 +107,7 @@ abstract class AbstractEntity
     /**
      * DB data source model
      *
-     * @var \Magento\ImportExport\Model\ResourceModel\Import\Data
+     * @var \Magento\ImportProducts\Model\ResourceModel\Import\Data
      */
     protected $_dataSourceModel;
 
@@ -210,9 +210,9 @@ abstract class AbstractEntity
      * @var string[]
      */
     protected $_availableBehaviors = [
-        \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
-        \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
-        \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
     ];
 
     /**
@@ -274,8 +274,8 @@ abstract class AbstractEntity
     /**
      * @param \Magento\Framework\Stdlib\StringUtils $string
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\ImportExport\Model\ImportFactory $importFactory
-     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
+     * @param \Magento\ImportProducts\Model\ImportFactory $importFactory
+     * @param \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @param array $data
@@ -284,8 +284,8 @@ abstract class AbstractEntity
     public function __construct(
         \Magento\Framework\Stdlib\StringUtils $string,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\ImportExport\Model\ImportFactory $importFactory,
-        \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
+        \Magento\ImportProducts\Model\ImportFactory $importFactory,
+        \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper,
         ResourceConnection $resource,
         ProcessingErrorAggregatorInterface $errorAggregator,
         array $data = []
@@ -535,11 +535,11 @@ abstract class AbstractEntity
         )
         ) {
             $behavior = $this->_parameters['behavior'];
-            if ($rowData !== null && $behavior == \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM) {
+            if ($rowData !== null && $behavior == \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM) {
                 // try analyze value in self::COLUMN_CUSTOM column and return behavior for given $rowData
                 if (array_key_exists(self::COLUMN_ACTION, $rowData)) {
                     if (strtolower($rowData[self::COLUMN_ACTION]) == self::COLUMN_ACTION_VALUE_DELETE) {
-                        $behavior = \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE;
+                        $behavior = \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE;
                     } else {
                         // as per task description, if column value is different to self::COLUMN_CUSTOM_VALUE_DELETE,
                         // we should always use default behavior
@@ -565,7 +565,7 @@ abstract class AbstractEntity
      */
     public static function getDefaultBehavior()
     {
-        return \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE;
+        return \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE;
     }
 
     /**

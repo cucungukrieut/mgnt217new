@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Import;
+namespace Magento\ImportProducts\Model\Import;
 
 use Magento\Framework\Filesystem\Directory\Write;
 
@@ -33,7 +33,7 @@ class Adapter
                 __('The adapter type must be a non-empty string.')
             );
         }
-        $adapterClass = 'Magento\ImportExport\Model\Import\Source\\' . ucfirst(strtolower($type));
+        $adapterClass = 'Magento\ImportProducts\Model\Import\Source\\' . ucfirst(strtolower($type));
 
         if (!class_exists($adapterClass)) {
             throw new \Magento\Framework\Exception\LocalizedException(
@@ -44,7 +44,7 @@ class Adapter
 
         if (!$adapter instanceof AbstractSource) {
             throw new \Magento\Framework\Exception\LocalizedException(
-                __('Adapter must be an instance of \Magento\ImportExport\Model\Import\AbstractSource')
+                __('Adapter must be an instance of \Magento\ImportProducts\Model\Import\AbstractSource')
             );
         }
         return $adapter;

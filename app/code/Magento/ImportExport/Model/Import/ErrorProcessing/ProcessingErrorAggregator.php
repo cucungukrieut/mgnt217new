@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Magento\ImportExport\Model\Import\ErrorProcessing;
+namespace Magento\ImportProducts\Model\Import\ErrorProcessing;
 
 /**
  * Import/Export Error Aggregator class
@@ -47,15 +47,15 @@ class ProcessingErrorAggregator implements ProcessingErrorAggregatorInterface
     protected $messageTemplate = [];
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory
      */
     protected $errorFactory;
 
     /**
-     * @param \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory $errorFactory
+     * @param \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory $errorFactory
      */
     public function __construct(
-        \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory $errorFactory
+        \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory $errorFactory
     ) {
         $this->errorFactory = $errorFactory;
     }
@@ -168,7 +168,7 @@ class ProcessingErrorAggregator implements ProcessingErrorAggregatorInterface
         ];
         if (!in_array($validationStrategy, $allowedStrategy)) {
             throw new \Magento\Framework\Exception\LocalizedException(
-                __('ImportExport: Import Data validation - Validation strategy not found')
+                __('ImportProducts: Import Data validation - Validation strategy not found')
             );
         }
         $this->validationStrategy = $validationStrategy;

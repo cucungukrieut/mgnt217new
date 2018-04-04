@@ -3,15 +3,15 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Import\Entity;
+namespace Magento\ImportProducts\Model\Import\Entity;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Import EAV entity abstract model
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEntity
+abstract class AbstractEav extends \Magento\ImportProducts\Model\Import\AbstractEntity
 {
     /**
      * Attribute collection name
@@ -77,12 +77,12 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEn
     /**
      * @param \Magento\Framework\Stdlib\StringUtils $string
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\ImportExport\Model\ImportFactory $importFactory
-     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
+     * @param \Magento\ImportProducts\Model\ImportFactory $importFactory
+     * @param \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\ImportExport\Model\Export\Factory $collectionFactory
+     * @param \Magento\ImportProducts\Model\Export\Factory $collectionFactory
      * @param \Magento\Eav\Model\Config $eavConfig
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -91,12 +91,12 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEn
     public function __construct(
         \Magento\Framework\Stdlib\StringUtils $string,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\ImportExport\Model\ImportFactory $importFactory,
-        \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
+        \Magento\ImportProducts\Model\ImportFactory $importFactory,
+        \Magento\ImportProducts\Model\ResourceModel\Helper $resourceHelper,
         \Magento\Framework\App\ResourceConnection $resource,
         ProcessingErrorAggregatorInterface $errorAggregator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\ImportExport\Model\Export\Factory $collectionFactory,
+        \Magento\ImportProducts\Model\Export\Factory $collectionFactory,
         \Magento\Eav\Model\Config $eavConfig,
         array $data = []
     ) {
@@ -177,7 +177,7 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEn
                 'is_required' => $attribute->getIsRequired(),
                 'is_static' => $attribute->isStatic(),
                 'rules' => $attribute->getValidateRules() ? unserialize($attribute->getValidateRules()) : null,
-                'type' => \Magento\ImportExport\Model\Import::getAttributeType($attribute),
+                'type' => \Magento\ImportProducts\Model\Import::getAttributeType($attribute),
                 'options' => $this->getAttributeOptions($attribute),
             ];
             $this->validColumnNames[] = $attribute->getAttributeCode();

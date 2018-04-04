@@ -3,12 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Controller\Adminhtml;
+namespace Magento\ImportProducts\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
-use Magento\ImportExport\Model\Import\Entity\AbstractEntity;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\ImportExport\Model\History as ModelHistory;
+use Magento\ImportProducts\Model\Import\Entity\AbstractEntity;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportProducts\Model\History as ModelHistory;
 
 /**
  * Import controller
@@ -23,31 +23,31 @@ abstract class ImportResult extends Import
     const LIMIT_ERRORS_MESSAGE = 100;
 
     /**
-     * @var \Magento\ImportExport\Model\Report\ReportProcessorInterface
+     * @var \Magento\ImportProducts\Model\Report\ReportProcessorInterface
      */
     protected $reportProcessor;
 
     /**
-     * @var \Magento\ImportExport\Model\History
+     * @var \Magento\ImportProducts\Model\History
      */
     protected $historyModel;
 
     /**
-     * @var \Magento\ImportExport\Helper\Report
+     * @var \Magento\ImportProducts\Helper\Report
      */
     protected $reportHelper;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\ImportExport\Model\Report\ReportProcessorInterface $reportProcessor
-     * @param \Magento\ImportExport\Model\History $historyModel
-     * @param \Magento\ImportExport\Helper\Report $reportHelper
+     * @param \Magento\ImportProducts\Model\Report\ReportProcessorInterface $reportProcessor
+     * @param \Magento\ImportProducts\Model\History $historyModel
+     * @param \Magento\ImportProducts\Helper\Report $reportHelper
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\ImportExport\Model\Report\ReportProcessorInterface $reportProcessor,
-        \Magento\ImportExport\Model\History $historyModel,
-        \Magento\ImportExport\Helper\Report $reportHelper
+        \Magento\ImportProducts\Model\Report\ReportProcessorInterface $reportProcessor,
+        \Magento\ImportProducts\Model\History $historyModel,
+        \Magento\ImportProducts\Helper\Report $reportHelper
     ) {
         parent::__construct($context);
         $this->reportProcessor = $reportProcessor;
@@ -101,7 +101,7 @@ abstract class ImportResult extends Import
     }
 
     /**
-     * @param \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface $errorAggregator
+     * @param \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface $errorAggregator
      * @return array
      */
     protected function getErrorMessages(ProcessingErrorAggregatorInterface $errorAggregator)
@@ -116,7 +116,7 @@ abstract class ImportResult extends Import
 
     /**
      * @param ProcessingErrorAggregatorInterface $errorAggregator
-     * @return \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError[]
+     * @return \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError[]
      */
     protected function getSystemExceptions(ProcessingErrorAggregatorInterface $errorAggregator)
     {

@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import;
+namespace Magento\ImportProducts\Test\Unit\Model\Import;
 
 class ConfigTest extends \PHPUnit_Framework_TestCase
 {
@@ -23,14 +23,14 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
     protected $_cacheId = 'some_id';
 
     /**
-     * @var \Magento\ImportExport\Model\Import\Config
+     * @var \Magento\ImportProducts\Model\Import\Config
      */
     protected $_model;
 
     protected function setUp()
     {
         $this->_readerMock = $this->getMock(
-            'Magento\ImportExport\Model\Import\Config\Reader',
+            'Magento\ImportProducts\Model\Import\Config\Reader',
             [],
             [],
             '',
@@ -56,7 +56,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             $this->returnValue(false)
         );
         $this->_readerMock->expects($this->any())->method('read')->will($this->returnValue($value));
-        $this->_model = new \Magento\ImportExport\Model\Import\Config(
+        $this->_model = new \Magento\ImportProducts\Model\Import\Config(
             $this->_readerMock,
             $this->_configScopeMock,
             $this->_cacheId
@@ -90,7 +90,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             $this->returnValue(false)
         );
         $this->_readerMock->expects($this->any())->method('read')->will($this->returnValue($configData));
-        $this->_model = new \Magento\ImportExport\Model\Import\Config(
+        $this->_model = new \Magento\ImportProducts\Model\Import\Config(
             $this->_readerMock,
             $this->_configScopeMock,
             $this->_cacheId

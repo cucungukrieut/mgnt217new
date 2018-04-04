@@ -3,17 +3,17 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Model\Import;
+namespace Magento\ImportProducts\Model\Import;
 
-class Config extends \Magento\Framework\Config\Data implements \Magento\ImportExport\Model\Import\ConfigInterface
+class Config extends \Magento\Framework\Config\Data implements \Magento\ImportProducts\Model\Import\ConfigInterface
 {
     /**
-     * @param \Magento\ImportExport\Model\Import\Config\Reader $reader
+     * @param \Magento\ImportProducts\Model\Import\Config\Reader $reader
      * @param \Magento\Framework\Config\CacheInterface $cache
      * @param string $cacheId
      */
     public function __construct(
-        \Magento\ImportExport\Model\Import\Config\Reader $reader,
+        \Magento\ImportProducts\Model\Import\Config\Reader $reader,
         \Magento\Framework\Config\CacheInterface $cache,
         $cacheId = 'import_config_cache'
     ) {

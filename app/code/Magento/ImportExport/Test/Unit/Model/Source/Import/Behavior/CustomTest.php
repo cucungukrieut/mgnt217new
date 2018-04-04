@@ -5,11 +5,11 @@
  */
 
 /**
- * Test class for \Magento\ImportExport\Model\Source\Import\Behavior\Custom
+ * Test class for \Magento\ImportProducts\Model\Source\Import\Behavior\Custom
  */
-namespace Magento\ImportExport\Test\Unit\Model\Source\Import\Behavior;
+namespace Magento\ImportProducts\Test\Unit\Model\Source\Import\Behavior;
 
-class CustomTest extends \Magento\ImportExport\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
+class CustomTest extends \Magento\ImportProducts\Test\Unit\Model\Source\Import\AbstractBehaviorTestCase
 {
     /**
      * Expected behavior group code
@@ -24,21 +24,21 @@ class CustomTest extends \Magento\ImportExport\Test\Unit\Model\Source\Import\Abs
      * @var array
      */
     protected $_expectedBehaviors = [
-        \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
-        \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE,
-        \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_ADD_UPDATE,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_DELETE,
+        \Magento\ImportProducts\Model\Import::BEHAVIOR_CUSTOM,
     ];
 
     protected function setUp()
     {
         parent::setUp();
-        $this->_model = new \Magento\ImportExport\Model\Source\Import\Behavior\Custom([]);
+        $this->_model = new \Magento\ImportProducts\Model\Source\Import\Behavior\Custom([]);
     }
 
     /**
      * Test toArray method
      *
-     * @covers \Magento\ImportExport\Model\Source\Import\Behavior\Custom::toArray
+     * @covers \Magento\ImportProducts\Model\Source\Import\Behavior\Custom::toArray
      */
     public function testToArray()
     {
@@ -50,7 +50,7 @@ class CustomTest extends \Magento\ImportExport\Test\Unit\Model\Source\Import\Abs
     /**
      * Test behavior group code
      *
-     * @covers \Magento\ImportExport\Model\Source\Import\Behavior\Custom::getCode
+     * @covers \Magento\ImportProducts\Model\Source\Import\Behavior\Custom::getCode
      */
     public function testGetCode()
     {

@@ -3,36 +3,36 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import\ErrorProcessing;
+namespace Magento\ImportProducts\Test\Unit\Model\Import\ErrorProcessing;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError;
+use Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError;
 
 class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory
      * |\PHPUnit_Framework_MockObject_MockObject
      */
     protected $processingErrorFactoryMock;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregator
      * |\Magento\Framework\TestFramework\Unit\Helper\ObjectManager
      */
     protected $model;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $processingErrorMock1;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $processingErrorMock2;
 
     /**
-     * @var \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
+     * @var \Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $processingErrorMock3;
 
@@ -42,7 +42,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->processingErrorFactoryMock = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorFactory',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorFactory',
             ['create'],
             [],
             '',
@@ -50,7 +50,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->processingErrorMock1 = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError',
             null,
             [],
             '',
@@ -58,7 +58,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->processingErrorMock2 = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError',
             null,
             [],
             '',
@@ -66,7 +66,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->processingErrorMock3 = $this->getMock(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError',
             null,
             [],
             '',
@@ -82,7 +82,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
 
         $this->model = $objectManager->getObject(
-            '\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
+            '\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingErrorAggregator',
             [
                 'errorFactory' => $this->processingErrorFactoryMock
             ]
@@ -284,7 +284,7 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
         //check if is array of objects
         $this->assertInternalType('array', $result);
         $this->assertCount(3, $result);
-        $this->assertInstanceOf('\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError', $result[0]);
+        $this->assertInstanceOf('\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError', $result[0]);
     }
 
     /**
@@ -299,8 +299,8 @@ class ProcessingErrorAggregatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $result);
         $this->assertCount(2, $result);
-        $this->assertInstanceOf('\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError', $result[0]);
-        $this->assertInstanceOf('\Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError', $result[1]);
+        $this->assertInstanceOf('\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError', $result[0]);
+        $this->assertInstanceOf('\Magento\ImportProducts\Model\Import\ErrorProcessing\ProcessingError', $result[1]);
         $this->assertEquals('systemException1', $result[0]->getErrorCode());
         $this->assertEquals('systemException2', $result[1]->getErrorCode());
     }

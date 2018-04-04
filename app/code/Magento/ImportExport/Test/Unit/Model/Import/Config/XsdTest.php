@@ -3,7 +3,7 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportExport\Test\Unit\Model\Import\Config;
+namespace Magento\ImportProducts\Test\Unit\Model\Import\Config;
 
 class XsdTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class XsdTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Skipped on HHVM. Will be fixed in MAGETWO-45033');
         }
         $urnResolver = new \Magento\Framework\Config\Dom\UrnResolver();
-        $this->_xsdSchema = $urnResolver->getRealPath('urn:magento:module:Magento_ImportExport:etc/import.xsd');
+        $this->_xsdSchema = $urnResolver->getRealPath('urn:magento:module:Magento_ImportProducts:etc/import.xsd');
         $this->_xsdValidator = new \Magento\Framework\TestFramework\Unit\Utility\XsdValidator();
     }
 

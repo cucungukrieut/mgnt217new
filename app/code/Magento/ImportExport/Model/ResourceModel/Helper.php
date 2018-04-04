@@ -5,11 +5,11 @@
  */
 
 /**
- * ImportExport MySQL resource helper model
+ * ImportProducts MySQL resource helper model
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-namespace Magento\ImportExport\Model\ResourceModel;
+namespace Magento\ImportProducts\Model\ResourceModel;
 
 class Helper extends \Magento\Framework\DB\Helper
 {
@@ -27,7 +27,7 @@ class Helper extends \Magento\Framework\DB\Helper
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param string $modulePrefix
      */
-    public function __construct(\Magento\Framework\App\ResourceConnection $resource, $modulePrefix = 'importexport')
+    public function __construct(\Magento\Framework\App\ResourceConnection $resource, $modulePrefix = 'ImportProducts')
     {
         parent::__construct($resource, $modulePrefix);
     }

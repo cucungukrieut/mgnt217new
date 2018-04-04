@@ -1264,6 +1264,8 @@ class Product extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity
                     }
                 }
             }
+
+            // Insert data product to DB
             $this->_connection->insertOnDuplicate($tableName, $tableData, ['value']);
         }
         return $this;
@@ -1498,6 +1500,7 @@ class Product extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity
         $productLimit = null;
         $productsQty = null;
 
+        // Get bunch get data dari table importexport_importdata
         while ($bunch = $this->_dataSourceModel->getNextBunch()) {
             $entityRowsIn = [];
             $entityRowsUp = [];
