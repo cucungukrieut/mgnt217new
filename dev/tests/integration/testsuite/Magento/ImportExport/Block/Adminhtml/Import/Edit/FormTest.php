@@ -3,10 +3,10 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Import\Edit;
+namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
 
 /**
- * Tests for block \Magento\ImportProducts\Block\Adminhtml\Import\Edit\FormTest
+ * Tests for block \Magento\ImportExport\Block\Adminhtml\Import\Edit\FormTest
  * @magentoAppArea adminhtml
  */
 class FormTest extends \PHPUnit_Framework_TestCase
@@ -26,7 +26,7 @@ class FormTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
-        $importModel = $objectManager->create('Magento\ImportProducts\Model\Import');
+        $importModel = $objectManager->create('Magento\ImportExport\Model\Import');
         $uniqueBehaviors = $importModel->getUniqueEntityBehaviors();
         foreach (array_keys($uniqueBehaviors) as $behavior) {
             $this->_expectedFieldsets[] = $behavior . '_fieldset';
@@ -41,9 +41,9 @@ class FormTest extends \PHPUnit_Framework_TestCase
         $formBlock = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
             'Magento\Framework\View\LayoutInterface'
         )->createBlock(
-            'Magento\ImportProducts\Block\Adminhtml\Import\Edit\Form'
+            'Magento\ImportExport\Block\Adminhtml\Import\Edit\Form'
         );
-        $prepareForm = new \ReflectionMethod('Magento\ImportProducts\Block\Adminhtml\Import\Edit\Form', '_prepareForm');
+        $prepareForm = new \ReflectionMethod('Magento\ImportExport\Block\Adminhtml\Import\Edit\Form', '_prepareForm');
         $prepareForm->setAccessible(true);
         $prepareForm->invoke($formBlock);
 

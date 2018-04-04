@@ -3,12 +3,12 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ImportProducts\Model;
+namespace Magento\ImportExport\Model;
 
-use Magento\ImportProducts\Model\Import;
+use Magento\ImportExport\Model\Import;
 
 /**
- * @magentoDataFixture Magento/ImportProducts/_files/import_data.php
+ * @magentoDataFixture Magento/ImportExport/_files/import_data.php
  */
 class ImportTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class ImportTest extends \PHPUnit_Framework_TestCase
     protected $_model;
 
     /**
-     * @var \Magento\ImportProducts\Model\Import\Config
+     * @var \Magento\ImportExport\Model\Import\Config
      */
     protected $_importConfig;
 
@@ -36,24 +36,24 @@ class ImportTest extends \PHPUnit_Framework_TestCase
      */
     protected $_entityBehaviors = [
         'catalog_product' => [
-            'token' => \Magento\ImportProducts\Model\Source\Import\Behavior\Basic::class,
+            'token' => \Magento\ImportExport\Model\Source\Import\Behavior\Basic::class,
             'code' => 'basic_behavior',
             'notes' => [
-                \Magento\ImportProducts\Model\Import::BEHAVIOR_REPLACE => "Note: Product IDs will be regenerated."
+                \Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE => "Note: Product IDs will be regenerated."
             ],
         ],
         'customer_composite' => [
-            'token' => \Magento\ImportProducts\Model\Source\Import\Behavior\Basic::class,
+            'token' => \Magento\ImportExport\Model\Source\Import\Behavior\Basic::class,
             'code' => 'basic_behavior',
             'notes' => [],
         ],
         'customer' => [
-            'token' => \Magento\ImportProducts\Model\Source\Import\Behavior\Custom::class,
+            'token' => \Magento\ImportExport\Model\Source\Import\Behavior\Custom::class,
             'code' => 'custom_behavior',
             'notes' => [],
         ],
         'customer_address' => [
-            'token' => \Magento\ImportProducts\Model\Source\Import\Behavior\Custom::Class,
+            'token' => \Magento\ImportExport\Model\Source\Import\Behavior\Custom::Class,
             'code' => 'custom_behavior',
             'notes' => [],
         ],
@@ -65,8 +65,8 @@ class ImportTest extends \PHPUnit_Framework_TestCase
      * @var array
      */
     protected $_uniqueBehaviors = [
-        'basic_behavior' => \Magento\ImportProducts\Model\Source\Import\Behavior\Basic::class,
-        'custom_behavior' => \Magento\ImportProducts\Model\Source\Import\Behavior\Custom::class,
+        'basic_behavior' => \Magento\ImportExport\Model\Source\Import\Behavior\Basic::class,
+        'custom_behavior' => \Magento\ImportExport\Model\Source\Import\Behavior\Custom::class,
     ];
 
     protected function setUp()
@@ -75,10 +75,10 @@ class ImportTest extends \PHPUnit_Framework_TestCase
             \Magento\Framework\Indexer\IndexerRegistry::class
         );
         $this->_importConfig = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
-            \Magento\ImportProducts\Model\Import\Config::class
+            \Magento\ImportExport\Model\Import\Config::class
         );
         $this->_model = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
-            \Magento\ImportProducts\Model\Import::class,
+            \Magento\ImportExport\Model\Import::class,
             [
                 'importConfig' => $this->_importConfig,
                 'indexerRegistry' => $this->indexerRegistry
@@ -87,7 +87,7 @@ class ImportTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \Magento\ImportProducts\Model\Import::_getEntityAdapter
+     * @covers \Magento\ImportExport\Model\Import::_getEntityAdapter
      */
     public function testImportSource()
     {
@@ -117,9 +117,9 @@ class ImportTest extends \PHPUnit_Framework_TestCase
     public function testValidateSource()
     {
         $this->_model->setEntity('catalog_product');
-        /** @var \Magento\ImportProducts\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject $source */
+        /** @var \Magento\ImportExport\Model\Import\AbstractSource|\PHPUnit_Framework_MockObject_MockObject $source */
         $source = $this->getMockForAbstractClass(
-            \Magento\ImportProducts\Model\Import\AbstractSource::class,
+            \Magento\ImportExport\Model\Import\AbstractSource::class,
             [['sku', 'name']]
         );
         $source->expects($this->any())->method('_getNextRow')->will($this->returnValue(false));
@@ -133,7 +133,7 @@ class ImportTest extends \PHPUnit_Framework_TestCase
     public function testValidateSourceException()
     {
         $source = $this->getMockForAbstractClass(
-            \Magento\ImportProducts\Model\Import\AbstractSource::class,
+            \Magento\ImportExport\Model\Import\AbstractSource::class,
             [],
             '',
             false
@@ -161,7 +161,7 @@ class ImportTest extends \PHPUnit_Framework_TestCase
      * Test getEntityBehaviors with all required data
      * Can't check array on equality because this test should be useful for CE
      *
-     * @covers \Magento\ImportProducts\Model\Import::getEntityBehaviors
+     * @covers \Magento\ImportExport\Model\Import::getEntityBehaviors
      */
     public function testGetEntityBehaviors()
     {
@@ -194,7 +194,7 @@ class ImportTest extends \PHPUnit_Framework_TestCase
      * Test getUniqueEntityBehaviors with all required data
      * Can't check array on equality because this test should be useful for CE
      *
-     * @covers \Magento\ImportProducts\Model\Import::getUniqueEntityBehaviors
+     * @covers \Magento\ImportExport\Model\Import::getUniqueEntityBehaviors
      */
     public function testGetUniqueEntityBehaviors()
     {
@@ -221,8 +221,8 @@ class ImportTest extends \PHPUnit_Framework_TestCase
 
         $indexerName = 'catalog_product';
 
-        /** @var  $config \Magento\ImportProducts\Model\Import\ConfigInterface*/
-        $config = $objectManager->create(\Magento\ImportProducts\Model\Import\ConfigInterface::class);
+        /** @var  $config \Magento\ImportExport\Model\Import\ConfigInterface*/
+        $config = $objectManager->create(\Magento\ImportExport\Model\Import\ConfigInterface::class);
 
         $relatedIndexers = $config->getRelatedIndexers($indexerName);
 

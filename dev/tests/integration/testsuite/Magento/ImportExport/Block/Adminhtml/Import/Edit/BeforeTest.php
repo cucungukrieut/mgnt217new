@@ -5,16 +5,16 @@
  */
 
 /**
- * Test class for \Magento\ImportProducts\Block\Adminhtml\Import\Edit\Before
+ * Test class for \Magento\ImportExport\Block\Adminhtml\Import\Edit\Before
  */
-namespace Magento\ImportProducts\Block\Adminhtml\Import\Edit;
+namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
 
 class BeforeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test model
      *
-     * @var \Magento\ImportProducts\Block\Adminhtml\Import\Edit\Before
+     * @var \Magento\ImportExport\Block\Adminhtml\Import\Edit\Before
      */
     protected $_model;
 
@@ -55,7 +55,7 @@ class BeforeTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $importModel = $this->getMock(
-            'Magento\ImportProducts\Model\Import',
+            'Magento\ImportExport\Model\Import',
             ['getEntityBehaviors', 'getUniqueEntityBehaviors'],
             [],
             '',
@@ -78,7 +78,7 @@ class BeforeTest extends \PHPUnit_Framework_TestCase
 
         $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
         $this->_model = $objectManager->create(
-            'Magento\ImportProducts\Block\Adminhtml\Import\Edit\Before',
+            'Magento\ImportExport\Block\Adminhtml\Import\Edit\Before',
             [
                 'importModel' => $importModel,
             ]
@@ -88,7 +88,7 @@ class BeforeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test for getEntityBehaviors method
      *
-     * @covers \Magento\ImportProducts\Block\Adminhtml\Import\Edit\Before::getEntityBehaviors
+     * @covers \Magento\ImportExport\Block\Adminhtml\Import\Edit\Before::getEntityBehaviors
      */
     public function testGetEntityBehaviors()
     {
@@ -100,7 +100,7 @@ class BeforeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test for getUniqueBehaviors method
      *
-     * @covers \Magento\ImportProducts\Block\Adminhtml\Import\Edit\Before::getUniqueBehaviors
+     * @covers \Magento\ImportExport\Block\Adminhtml\Import\Edit\Before::getUniqueBehaviors
      */
     public function testGetUniqueBehaviors()
     {
