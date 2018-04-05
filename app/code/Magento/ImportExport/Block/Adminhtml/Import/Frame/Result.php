@@ -126,7 +126,7 @@ class Result extends \Magento\Backend\Block\Template
     }
 
     /**
-     * Add success import message.
+     * Add success message.
      *
      * @param string[]|string $message Message text
      * @param bool $appendImportButton OPTIONAL Append import button to message?
@@ -146,34 +146,20 @@ class Result extends \Magento\Backend\Block\Template
 
     /**
      * Import button HTML for append to message.
-     * Untuk menampilkan button import setelah validasi file import sukses
      *
      * @return string
      */
     public function getImportButtonHtml()
     {
-        $importURI = '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
-            . $this->getImportStartUrl() . '\', \''
-            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
-            . '\');" class="scalable save"'
-            . ' type="button"><span><span><span>'
-            . __('Import')
-            . '</span></span></span></button>';
-
-        //echo 'untuk testing saja ';
-        //$checkurlimport = '\'' . $this->getImportStartUrl() . '\', \'' . 'import_file' . '\'';
-        return $importURI;
-
-        /**
-        return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\''
-            . $this->getImportStartUrl()
-            . '\', \''
-            . \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE
-            . '\');" class="scalable save"'
-            . ' type="button"><span><span><span>'
-            . __('Import')
-            . '</span></span></span></button>';
-         * */
+        return '&nbsp;&nbsp;<button onclick="varienImport.startImport(\'' .
+            $this->getImportStartUrl() .
+            '\', \'' .
+            \Magento\ImportExport\Model\Import::FIELD_NAME_SOURCE_FILE .
+            '\');" class="scalable save"' .
+            ' type="button"><span><span><span>' .
+            __(
+                'Import'
+            ) . '</span></span></span></button>';
     }
 
     /**
@@ -183,11 +169,6 @@ class Result extends \Magento\Backend\Block\Template
      */
     public function getImportStartUrl()
     {
-        //$checkurl = $this->getUrl('adminhtml/*/start');
-
-
-        //echo 'test';
-
         return $this->getUrl('adminhtml/*/start');
     }
 
@@ -223,25 +204,15 @@ class Result extends \Magento\Backend\Block\Template
 
     /**
      * Return response as JSON.
-     * Return json string html message.....
-     * 23/03/2018
      *
      * @return string
      */
     public function getResponseJson()
     {
         // add messages HTML if it is not already specified
-        //menampilkan pesan validasi
         if (!isset($this->_actions['import_validation_messages'])) {
             $this->addAction('innerHTML', 'import_validation_messages', $this->getMessagesHtml());
         }
-
-        $jsonfile = $this->_jsonEncoder->encode($this->_actions);
-        if ($jsonfile == null){
-            //window.imap_alerts();
-            echo 'json file hahahahaha kosong..';
-        }
-
         return $this->_jsonEncoder->encode($this->_actions);
     }
 }

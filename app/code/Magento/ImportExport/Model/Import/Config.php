@@ -22,26 +22,12 @@ class Config extends \Magento\Framework\Config\Data implements \Magento\ImportEx
 
     /**
      * Retrieve import entities configuration
-     *  Return list entity product, advance pricing, cutomers
      *
      * @return array
      */
     public function getEntities()
     {
-
-        $entityimport = $this->get('entities');
-        /*
-        $entityimportproduct = null;
-        foreach ($entityimport as $key => $value){
-            if ($key == 'catalog_product'){
-                $entityimportproduct = $value;
-            }
-        }*/
-
-        $test = $entityimport;
         return $this->get('entities');
-
-        //return $entityimportproduct;
     }
 
     /**

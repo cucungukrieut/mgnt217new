@@ -31,10 +31,10 @@ class Csv implements ReportProcessorInterface
      */
     protected $sourceCsvFactory;
 
-    //
-     // @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
-
-    //protected $outputCsvFactory;
+    /**
+     * @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
+     */
+    protected $outputCsvFactory;
 
     /**
      * @var \Magento\Framework\Filesystem
@@ -44,18 +44,18 @@ class Csv implements ReportProcessorInterface
     /**
      * @param \Magento\ImportExport\Helper\Report $reportHelper
      * @param Import\Source\CsvFactory $sourceCsvFactory
-     //* @param \Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory
+     * @param \Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory
      * @param \Magento\Framework\Filesystem $filesystem
      */
     public function __construct(
         \Magento\ImportExport\Helper\Report $reportHelper,
         \Magento\ImportExport\Model\Import\Source\CsvFactory $sourceCsvFactory,
-        //\Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory,
+        \Magento\ImportExport\Model\Export\Adapter\CsvFactory $outputCsvFactory,
         \Magento\Framework\Filesystem $filesystem
     ) {
         $this->reportHelper = $reportHelper;
         $this->sourceCsvFactory = $sourceCsvFactory;
-        //$this->outputCsvFactory = $outputCsvFactory;
+        $this->outputCsvFactory = $outputCsvFactory;
         $this->filesystem = $filesystem;
     }
 
@@ -74,17 +74,17 @@ class Csv implements ReportProcessorInterface
         $sourceCsv = $this->createSourceCsvModel($originalFileName);
 
         $outputFileName = $this->generateOutputFileName($originalFileName);
-        //$outputCsv = $this->createOutputCsvModel($outputFileName);
+        $outputCsv = $this->createOutputCsvModel($outputFileName);
 
         $columnsName = $sourceCsv->getColNames();
         array_push($columnsName, self::REPORT_ERROR_COLUMN_NAME);
-        //$outputCsv->setHeaderCols($columnsName);
+        $outputCsv->setHeaderCols($columnsName);
 
         foreach ($sourceCsv as $rowNum => $rowData) {
             $errorMessages = $this->retrieveErrorMessagesByRowNumber($rowNum, $errorAggregator);
             if (!$writeOnlyErrorItems || ($writeOnlyErrorItems && $errorMessages)) {
                 $rowData[self::REPORT_ERROR_COLUMN_NAME] = $errorMessages;
-               // $outputCsv->writeRow($rowData);
+                $outputCsv->writeRow($rowData);
             }
         }
 
@@ -137,8 +137,8 @@ class Csv implements ReportProcessorInterface
 
     /**
      * @param string $outputFileName
-     //* @return \Magento\ImportExport\Model\Export\Adapter\Csv
-     *
+     * @return \Magento\ImportExport\Model\Export\Adapter\Csv
+     */
     protected function createOutputCsvModel($outputFileName)
     {
         return $this->outputCsvFactory->create(
@@ -147,5 +147,5 @@ class Csv implements ReportProcessorInterface
                 'destinationDirectoryCode' => DirectoryList::VAR_DIR,
             ]
         );
-    }*/
+    }
 }

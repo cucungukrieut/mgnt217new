@@ -26,7 +26,7 @@ class ImportTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractIm
      *
      * @var \Magento\ImportExport\Helper\Data|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $_ImportExportData = null;
+    protected $_importExportData = null;
 
     /**
      * @var \Magento\ImportExport\Model\Import\ConfigInterface|\PHPUnit_Framework_MockObject_MockObject
@@ -118,7 +118,7 @@ class ImportTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractIm
         $this->_filesystem = $this->getMockBuilder('\Magento\Framework\Filesystem')
             ->disableOriginalConstructor()
             ->getMock();
-        $this->_ImportExportData = $this->getMockBuilder('\Magento\ImportExport\Helper\Data')
+        $this->_importExportData = $this->getMockBuilder('\Magento\ImportExport\Helper\Data')
             ->disableOriginalConstructor()
             ->getMock();
         $this->_coreConfig = $this->getMockBuilder('\Magento\Framework\App\Config\ScopeConfigInterface')
@@ -184,7 +184,7 @@ class ImportTest extends \Magento\ImportExport\Test\Unit\Model\Import\AbstractIm
             ->setConstructorArgs([
                 $logger,
                 $this->_filesystem,
-                $this->_ImportExportData,
+                $this->_importExportData,
                 $this->_coreConfig,
                 $this->_importConfig,
                 $this->_entityFactory,

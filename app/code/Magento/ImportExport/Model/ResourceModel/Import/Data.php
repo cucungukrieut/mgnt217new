@@ -47,7 +47,7 @@ class Data extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implemen
      */
     protected function _construct()
     {
-        $this->_init('ImportExport_importdata', 'id');
+        $this->_init('importexport_importdata', 'id');
     }
 
     /**
@@ -158,9 +158,6 @@ class Data extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implemen
      */
     public function saveBunch($entity, $behavior, array $data)
     {
-        //$dataencode = $this->jsonHelper->jsonEncode($data);
-        //$kumpulandata = $dataencode->toString();
-
         return $this->getConnection()->insert(
             $this->getMainTable(),
             ['behavior' => $behavior, 'entity' => $entity, 'data' => $this->jsonHelper->jsonEncode($data)]

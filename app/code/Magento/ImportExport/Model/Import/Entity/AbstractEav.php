@@ -82,7 +82,7 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEn
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param ProcessingErrorAggregatorInterface $errorAggregator
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     //* @param \Magento\ImportExport\Model\Export\Factory $collectionFactory
+     * @param \Magento\ImportExport\Model\Export\Factory $collectionFactory
      * @param \Magento\Eav\Model\Config $eavConfig
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -96,15 +96,18 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Import\AbstractEn
         \Magento\Framework\App\ResourceConnection $resource,
         ProcessingErrorAggregatorInterface $errorAggregator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        //\Magento\ImportExport\Model\Export\Factory $collectionFactory,
+        \Magento\ImportExport\Model\Export\Factory $collectionFactory,
         \Magento\Eav\Model\Config $eavConfig,
         array $data = []
     ) {
         parent::__construct($string, $scopeConfig, $importFactory, $resourceHelper, $resource, $errorAggregator, $data);
 
         $this->_storeManager = $storeManager;
-        $this->_attributeCollection = isset($data['attribute_collection']) ? $data['attribute_collection'] : null;
-        //$collectionFactory->create(static::ATTRIBUTE_COLLECTION_NAME);
+        $this->_attributeCollection = isset(
+            $data['attribute_collection']
+        ) ? $data['attribute_collection'] : $collectionFactory->create(
+            static::ATTRIBUTE_COLLECTION_NAME
+        );
 
         if (isset($data['entity_type_id'])) {
             $this->_entityTypeId = $data['entity_type_id'];

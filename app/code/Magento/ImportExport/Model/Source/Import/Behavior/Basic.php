@@ -16,9 +16,9 @@ class Basic extends \Magento\ImportExport\Model\Source\Import\AbstractBehavior
     public function toArray()
     {
         return [
-            \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND => __('Tambah/Update'),
-            \Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE => __('Ganti'),
-            \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE => __('Hapus')
+            \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND => __('Add/Update'),
+            \Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE => __('Replace'),
+            \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE => __('Delete')
         ];
     }
 

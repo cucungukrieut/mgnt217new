@@ -112,7 +112,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
     {
         $logger = $this->getMock('Psr\Log\LoggerInterface', [], [], '', false);
         $filesystem = $this->getMock('Magento\Framework\Filesystem', [], [], '', false);
-        $ImportExportData = $this->getMock('Magento\ImportExport\Helper\Data', [], [], '', false);
+        $importExportData = $this->getMock('Magento\ImportExport\Helper\Data', [], [], '', false);
         $coreConfig = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface', [], [], '', false);
         $importConfig = $this->getMock(
             'Magento\ImportExport\Model\Import\Config',
@@ -158,7 +158,7 @@ class ReportTest extends \PHPUnit_Framework_TestCase
         $import = new \Magento\ImportExport\Model\Import(
             $logger,
             $filesystem,
-            $ImportExportData,
+            $importExportData,
             $coreConfig,
             $importConfig,
             $entityFactory,

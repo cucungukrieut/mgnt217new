@@ -27,7 +27,7 @@ class Helper extends \Magento\Framework\DB\Helper
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param string $modulePrefix
      */
-    public function __construct(\Magento\Framework\App\ResourceConnection $resource, $modulePrefix = 'ImportExport')
+    public function __construct(\Magento\Framework\App\ResourceConnection $resource, $modulePrefix = 'importexport')
     {
         parent::__construct($resource, $modulePrefix);
     }

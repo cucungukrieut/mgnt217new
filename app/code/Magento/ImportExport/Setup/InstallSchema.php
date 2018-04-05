@@ -24,10 +24,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         /**
-         * Create table 'ImportExport_importdata'
+         * Create table 'importexport_importdata'
          */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('ImportExport_importdata'))
+            ->newTable($installer->getTable('importexport_importdata'))
             ->addColumn(
                 'id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,

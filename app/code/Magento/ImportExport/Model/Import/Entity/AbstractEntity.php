@@ -185,7 +185,7 @@ abstract class AbstractEntity
      *
      * @var \Magento\ImportExport\Helper\Data
      */
-    protected $_ImportExportData;
+    protected $_importExportData;
 
     /**
      * Json Helper
@@ -248,7 +248,7 @@ abstract class AbstractEntity
 
     /**
      * @param \Magento\Framework\Json\Helper\Data $jsonHelper
-     * @param \Magento\ImportExport\Helper\Data $ImportExportData
+     * @param \Magento\ImportExport\Helper\Data $importExportData
      * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
      * @param \Magento\Eav\Model\Config $config
      * @param ResourceConnection $resource
@@ -259,7 +259,7 @@ abstract class AbstractEntity
      */
     public function __construct(
         \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Magento\ImportExport\Helper\Data $ImportExportData,
+        \Magento\ImportExport\Helper\Data $importExportData,
         \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
         \Magento\Eav\Model\Config $config,
         ResourceConnection $resource,
@@ -268,7 +268,7 @@ abstract class AbstractEntity
         ProcessingErrorAggregatorInterface $errorAggregator
     ) {
         $this->jsonHelper = $jsonHelper;
-        $this->_ImportExportData = $ImportExportData;
+        $this->_importExportData = $importExportData;
         $this->_resourceHelper = $resourceHelper;
         $this->string = $string;
         $this->errorAggregator = $errorAggregator;
@@ -372,7 +372,7 @@ abstract class AbstractEntity
         $startNewBunch = false;
         $nextRowBackup = [];
         $maxDataSize = $this->_resourceHelper->getMaxDataSize();
-        $bunchSize = $this->_ImportExportData->getBunchSize();
+        $bunchSize = $this->_importExportData->getBunchSize();
 
         $source->rewind();
         $this->_dataSourceModel->cleanBunches();

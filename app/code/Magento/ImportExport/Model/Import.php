@@ -115,7 +115,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
      *
      * @var \Magento\ImportExport\Helper\Data
      */
-    protected $_ImportExportData = null;
+    protected $_importExportData = null;
 
     /**
      * @var \Magento\ImportExport\Model\Import\ConfigInterface
@@ -133,9 +133,9 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     protected $_importData;
 
     /**
-     //* @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
+     * @var \Magento\ImportExport\Model\Export\Adapter\CsvFactory
      */
-    //protected $_csvFactory;
+    protected $_csvFactory;
 
     /**
      * @var \Magento\Framework\HTTP\Adapter\FileTransferFactory
@@ -165,12 +165,12 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     /**
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Filesystem $filesystem
-     * @param \Magento\ImportExport\Helper\Data $ImportExportData
+     * @param \Magento\ImportExport\Helper\Data $importExportData
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $coreConfig
      * @param Import\ConfigInterface $importConfig
      * @param Import\Entity\Factory $entityFactory
      * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
-     //* @param Export\Adapter\CsvFactory $csvFactory
+     * @param Export\Adapter\CsvFactory $csvFactory
      * @param FileTransferFactory $httpFactory
      * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
      * @param Source\Import\Behavior\Factory $behaviorFactory
@@ -183,12 +183,12 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Filesystem $filesystem,
-        \Magento\ImportExport\Helper\Data $ImportExportData,
+        \Magento\ImportExport\Helper\Data $importExportData,
         \Magento\Framework\App\Config\ScopeConfigInterface $coreConfig,
         \Magento\ImportExport\Model\Import\ConfigInterface $importConfig,
         \Magento\ImportExport\Model\Import\Entity\Factory $entityFactory,
         \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
-        //\Magento\ImportExport\Model\Export\Adapter\CsvFactory $csvFactory,
+        \Magento\ImportExport\Model\Export\Adapter\CsvFactory $csvFactory,
         \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory,
         \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Magento\ImportExport\Model\Source\Import\Behavior\Factory $behaviorFactory,
@@ -197,12 +197,12 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
         \Magento\Framework\Stdlib\DateTime\DateTime $localeDate,
         array $data = []
     ) {
-        $this->_ImportExportData = $ImportExportData;
+        $this->_importExportData = $importExportData;
         $this->_coreConfig = $coreConfig;
         $this->_importConfig = $importConfig;
         $this->_entityFactory = $entityFactory;
         $this->_importData = $importData;
-        //$this->_csvFactory = $csvFactory;
+        $this->_csvFactory = $csvFactory;
         $this->_httpFactory = $httpFactory;
         $this->_uploaderFactory = $uploaderFactory;
         $this->indexerRegistry = $indexerRegistry;
@@ -398,7 +398,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
      */
     public function getWorkingDir()
     {
-        return $this->_varDirectory->getAbsolutePath('ImportExport/');
+        return $this->_varDirectory->getAbsolutePath('importexport/');
     }
 
     /**
@@ -440,9 +440,6 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     }
 
     /**
-     * Process Import Data Ke Database
-     * 03/04/2018
-     *
      * @return bool
      */
     protected function processImport()
@@ -453,7 +450,6 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
             $this->getData(self::FIELD_NAME_ALLOWED_ERROR_COUNT)
         );
         try {
-            // Process Import data ke database
             $this->_getEntityAdapter()->importData();
         } catch (\Exception $e) {
             $errorAggregator->addError(
@@ -501,7 +497,7 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
         if (!$adapter->isValid(self::FIELD_NAME_SOURCE_FILE)) {
             $errors = $adapter->getErrors();
             if ($errors[0] == \Zend_Validate_File_Upload::INI_SIZE) {
-                $errorMessage = $this->_ImportExportData->getMaxUploadSizeMessage();
+                $errorMessage = $this->_importExportData->getMaxUploadSizeMessage();
             } else {
                 $errorMessage = __('The file was not uploaded.');
             }
@@ -642,29 +638,23 @@ class Import extends \Magento\ImportExport\Model\AbstractModel
     public function getEntityBehaviors()
     {
         $behaviourData = [];
-        $entities = $this->_importConfig->getEntities(); //hanya satu entity yaitu catalog_product
-        //$entity = $this->_importConfig->getEntities(); //hanya satu entity yaitu catalog_product
+        $entities = $this->_importConfig->getEntities();
         foreach ($entities as $entityCode => $entityData) {
             $behaviorClassName = isset($entityData['behaviorModel']) ? $entityData['behaviorModel'] : null;
-            //$behaviorClassName = isset($entity['behaviorModel']) ? $entity['behaviorModel'] : null;
             if ($behaviorClassName && class_exists($behaviorClassName)) {
-                if ($entityCode == 'catalog_product') { //add y ahmd 03/04/2018
-                    /** @var $behavior \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
-                    $behavior = $this->_behaviorFactory->create($behaviorClassName);
-                    $behaviourData[$entityCode] = [
-                        'token' => $behaviorClassName,
-                        'code' => $behavior->getCode() . '_behavior',
-                        'notes' => $behavior->getNotes($entityCode),
-                    ];
-                }
+                /** @var $behavior \Magento\ImportExport\Model\Source\Import\AbstractBehavior */
+                $behavior = $this->_behaviorFactory->create($behaviorClassName);
+                $behaviourData[$entityCode] = [
+                    'token' => $behaviorClassName,
+                    'code' => $behavior->getCode() . '_behavior',
+                    'notes' => $behavior->getNotes($entityCode),
+                ];
             } else {
-                throw new \Magento\Framework\Exception\LocalizedException( //jika tidak class behavior
+                throw new \Magento\Framework\Exception\LocalizedException(
                     __('The behavior token for %1 is invalid.', $entityCode)
                 );
             }
         }
-
-        //$testbehaviourdata = $behaviourData;
         return $behaviourData;
     }
 

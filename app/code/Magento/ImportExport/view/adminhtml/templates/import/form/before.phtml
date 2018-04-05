@@ -36,7 +36,6 @@ require([
          * @type {Array}
          */
         entityBehaviors: <?php /* @escapeNotVerified */ echo $block->getEntityBehaviors() ?>,
-        //window.alert(this.entityBehaviors);
 
         /**
          * Behaviour notes for import entities
@@ -112,7 +111,7 @@ require([
         },
 
         /**
-         * Show/hide sample file link download
+         * Show/hide sample file link
          * @param {string} entityId
          */
         showSampleFile: function(entityId) {
@@ -130,8 +129,6 @@ require([
 
         /**
          * Handle value change in entity type selector
-         *
-         * event ketika pilihan import data dipilih (product, pricing, customer)
          */
         handleEntityTypeSelector: function() {
             var entity = jQuery('#entity');
@@ -149,8 +146,6 @@ require([
 
         /**
          * Handle value change in behavior selector
-         *
-         * event ketika seleksi action untuk import (add, update, delete)
          */
         handleImportBehaviorSelector: function() {
             var entity = jQuery('#entity');
@@ -186,8 +181,6 @@ require([
             newActionUrl = (newActionUrl ? newActionUrl : form.attr('action')) +
                 (form.attr('action').lastIndexOf('?') != -1 ? '&' : '?')+
                 'form_key=' + encodeURIComponent(form.find('[name="form_key"]').val());
-
-            console.log("ini adalah log" + newActionUrl);
 
             form.trigger('save', [{
                 action: newActionUrl,
@@ -258,18 +251,8 @@ require([
          * Send form data to Start action when file is validated.
          * @param {string} newActionUrl
          * @param {string} sourceFileField
-         *
-         * Used by Import/Frame/Result.php
          */
         startImport: function(newActionUrl, sourceFileField) {
-
-            //var url_string = newActionUrl;
-            //if (url_string != null){
-            //    window.alert("Url string adaan...");
-            //}
-
-            //window.alert(sourceFileField.toString());
-            //alert(newActionUrl);
             jQuery('#' + sourceFileField).removeClass('required-entry');
             this.postToFrame(newActionUrl);
             jQuery('#' + sourceFileField).addClass('required-entry');
