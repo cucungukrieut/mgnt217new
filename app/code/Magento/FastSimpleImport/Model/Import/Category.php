@@ -501,7 +501,7 @@ class Category extends \Magento\ImportExport\Model\Import\AbstractEntity
 
         /** @var CategoryModel $category */
         foreach ($collection as $category) {
-            $structure = explode('/', $category->getData(CategoryModel::KEY_PATH));
+            $structure = explode('/', $category->getData(CategoryModel::KEY_PATH)); // path to array dir
             $pathSize = count($structure);
 
             if ($pathSize > 1) {
