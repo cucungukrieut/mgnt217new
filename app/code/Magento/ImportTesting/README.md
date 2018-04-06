@@ -1,5 +1,7 @@
-# tut-magento2-import
+# Import Testing
 
-simple project for tutorial Magento 2 programming : implement import with (import.xml)
+Implementasi import product dengan memanggil entity [import.xml](/app/code/Magento/ImportTesting/etc/import.xml)
 
-direct link :  http://www.ibnab.com/en/blog/magento-2/magento-2-programming-implement-import-with-import-xml
+    <entity name="import_testing" label="Product Custom" 
+        model="Magento\ImportTesting\Model\Import\ImportTesting" 
+        behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />

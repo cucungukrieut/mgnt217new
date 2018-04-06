@@ -8,8 +8,7 @@ namespace Magento\ImportTesting\Model\Import\Validator;
 use Magento\ImportTesting\Model\Import\ImportTesting\RowValidatorInterface;
 use \Magento\Framework\Validator\AbstractValidator;
 
-class Validator extends AbstractValidator implements RowValidatorInterface
-{
+class Validator extends AbstractValidator implements RowValidatorInterface {
     /**
      * @var RowValidatorInterface[]|AbstractValidator[]
      */
@@ -18,8 +17,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
     /**
      * @param RowValidatorInterface[] $validators
      */
-    public function __construct($validators = [])
-    {
+    public function __construct($validators = []) {
         $this->validators = $validators;
     }
 
@@ -29,8 +27,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
      * @param array $value
      * @return bool
      */
-    public function isValid($value)
-    {
+    public function isValid($value) {
         $returnValue = true;
         $this->_clearMessages();
         foreach ($this->validators as $validator) {
@@ -46,8 +43,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
      * @param \Magento\CatalogImportExport\Model\Import\Product $context
      * @return $this
      */
-    public function init($context)
-    {
+    public function init($context) {
         foreach ($this->validators as $validator) {
             $validator->init($context);
         }

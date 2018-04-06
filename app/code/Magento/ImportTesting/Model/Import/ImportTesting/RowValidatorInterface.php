@@ -5,13 +5,17 @@
  */
 namespace Magento\ImportTesting\Model\Import\ImportTesting;
 
-interface RowValidatorInterface extends \Magento\Framework\Validator\ValidatorInterface
-{
-       const ERROR_INVALID_SKU= 'InvalidValueSKU';
-       const ERROR_SKU_IS_EMPTY = 'EmptySKU';
+use \Magento\Framework\Validator\ValidatorInterface;
+
+interface RowValidatorInterface extends ValidatorInterface {
+
+    const ERROR_INVALID_SKU= 'InvalidValueSKU';
+    const ERROR_SKU_IS_EMPTY = 'EmptySKU';
+
     /**
      * Initialize validator
      *
+     * @param $context
      * @return $this
      */
     public function init($context);

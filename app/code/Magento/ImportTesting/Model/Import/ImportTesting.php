@@ -4,8 +4,14 @@ namespace Magento\ImportTesting\Model\Import;
 use Magento\ImportTesting\Model\Import\ImportTesting\RowValidatorInterface as ValidatorInterface;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Framework\App\ResourceConnection;
+use \Magento\Framework\Json\Helper\Data;
+use \Magento\ImportExport\Model\ResourceModel\Helper;
+use \Magento\Framework\Stdlib\StringUtils;
+use \Magento\Customer\Model\GroupFactory;
+use \Magento\ImportExport\Model\Import;
+use \Magento\ImportExport\Model\Import\Entity\AbstractEntity;
 
-class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity {
+class ImportTesting extends AbstractEntity {
 
     /**
      * @var string
@@ -34,21 +40,8 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      */
     const AKSESORIS_SKU = 'aksesoris_sku';
 
-    /**
-     * @var float
-     */
     const HARGA = 'harga';
-
-    /**
-     * Created Products
-     * @var timestamp
-     */
     const CREATED = 'created';
-
-    /**
-     * Update products
-     * @var timestamp
-     */
     const UPDATED = 'updated';
 
     /**
@@ -64,7 +57,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      * @var array
      */
     protected $_messageTemplates = [
-        ValidatorInterface::ERROR_SKU_IS_EMPTY => 'SKU is empty',
+        ValidatorInterface::ERROR_SKU_IS_EMPTY => 'SKU kosong',
     ];
 
      protected $_permanentAttributes = [self::SKU];
@@ -109,34 +102,30 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
 
 
     /**
-     * Default Constructor
+     * ImportTesting constructor.
      *
-     * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
-     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
+     * @param Data $jsonHelper
      * @param \Magento\ImportExport\Helper\Data $importExportData
      * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
      * @param ResourceConnection $resource
-     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
-     * @param \Magento\Framework\Stdlib\StringUtils $string
+     * @param Helper $resourceHelper
+     * @param StringUtils $string
      * @param ProcessingErrorAggregatorInterface $errorAggregator
-     * @param \Magento\Customer\Model\GroupFactory $groupFactory
+     * @param GroupFactory $groupFactory
      */
-    public function __construct(
-        \Magento\Framework\Json\Helper\Data $jsonHelper,
+    public function __construct(Data $jsonHelper,
         \Magento\ImportExport\Helper\Data $importExportData,
         \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
-        \Magento\Framework\App\ResourceConnection $resource,
-        \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
-        \Magento\Framework\Stdlib\StringUtils $string,
-        ProcessingErrorAggregatorInterface $errorAggregator,
-        \Magento\Customer\Model\GroupFactory $groupFactory
-    ) {
+        ResourceConnection $resource, Helper $resourceHelper,
+        StringUtils $string, ProcessingErrorAggregatorInterface $errorAggregator,
+        GroupFactory $groupFactory )
+    {
         $this->jsonHelper = $jsonHelper;
         $this->_importExportData = $importExportData;
         $this->_resourceHelper = $resourceHelper;
         $this->_dataSourceModel = $importData;
         $this->_resource = $resource;
-        $this->_connection = $resource->getConnection(\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION);
+        $this->_connection = $resource->getConnection(ResourceConnection::DEFAULT_CONNECTION);
         $this->errorAggregator = $errorAggregator;
         $this->groupFactory = $groupFactory;
     }
@@ -147,8 +136,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      *
      * @return array
      */
-    public function getValidColumnNames()
-    {
+    public function getValidColumnNames() {
         return $this->validColumnNames;
     }
 
@@ -158,8 +146,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      *
      * @return string
      */
-    public function getEntityTypeCode()
-    {
+    public function getEntityTypeCode() {
         return 'import_testing';
     }
 
@@ -171,8 +158,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      * @param int $rowNum
      * @return bool
      */
-    public function validateRow(array $rowData, $rowNum)
-    {
+    public function validateRow(array $rowData, $rowNum) {
         if (isset($this->_validatedRows[$rowNum])) {
             return !$this->getErrorAggregator()->isRowInvalid($rowNum);
         }
@@ -193,13 +179,12 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      * @throws \Exception
      * @return bool Result of operation.
      */
-    protected function _importData()
-    {
-        if (\Magento\ImportExport\Model\Import::BEHAVIOR_DELETE == $this->getBehavior()) {
+    protected function _importData() {
+        if (Import::BEHAVIOR_DELETE == $this->getBehavior()) {
             $this->deleteEntity();
-        } elseif (\Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE == $this->getBehavior()) {
+        } elseif (Import::BEHAVIOR_REPLACE == $this->getBehavior()) {
             $this->replaceEntity();
-        } elseif (\Magento\ImportExport\Model\Import::BEHAVIOR_APPEND == $this->getBehavior()) {
+        } elseif (Import::BEHAVIOR_APPEND == $this->getBehavior()) {
             $this->saveEntity();
         }
 
@@ -212,8 +197,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      *
      * @return $this
      */
-    public function saveEntity()
-    {
+    public function saveEntity() {
         $this->saveAndReplaceEntity();
         return $this;
     }
@@ -224,49 +208,46 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      *
      * @return $this
      */
-    public function replaceEntity()
-    {
+    public function replaceEntity() {
         $this->saveAndReplaceEntity();
         return $this;
     }
 
 
     /**
-     * Deletes newsletter subscriber data from raw data.
+     * Deletes data from DB
      *
      * @return $this
      */
-    public function deleteEntity()
-    {
-        $listTitle = [];
+    public function deleteEntity() {
+        $listProducts = [];
         while ($bunch = $this->_dataSourceModel->getNextBunch()) {
             foreach ($bunch as $rowNum => $rowData) {
                 $this->validateRow($rowData, $rowNum);
                 if (!$this->getErrorAggregator()->isRowInvalid($rowNum)) {
-                    $rowTtile = $rowData[self::SKU];
-                    $listTitle[] = $rowTtile;
+                    $rowProducts = $rowData[self::SKU];
+                    $listProducts[] = $rowProducts;
                 }
                 if ($this->getErrorAggregator()->hasToBeTerminated()) {
                     $this->getErrorAggregator()->addRowToSkip($rowNum);
                 }
             }
         }
-        if ($listTitle) {
-            $this->deleteEntityFinish(array_unique($listTitle),self::TABLE_Entity);
+        if ($listProducts) {
+            $this->deleteEntityFinish(array_unique($listProducts),self::TABLE_Entity);
         }
         return $this;
     }
 
 
     /**
-     * Save and replace newsletter subscriber
+     * Save and replace entity (insert/update)
      *
      * @return $this
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function saveAndReplaceEntity()
-    {
+    protected function saveAndReplaceEntity() {
         $behavior = $this->getBehavior();
         $listProducts = [];
         while ($bunch = $this->_dataSourceModel->getNextBunch()) {
@@ -281,9 +262,9 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
                     continue;
                 }
 
-                $rowTtile= $rowData[self::SKU];
-                $listProducts[] = $rowTtile;
-                $entityList[$rowTtile][] = [
+                $rowProducts = $rowData[self::SKU];
+                $listProducts[] = $rowProducts;
+                $entityList[$rowProducts][] = [
                     self::SKU => $rowData[self::SKU],
                     self::NAME => $rowData[self::NAME],
                     self::ENTITY_ID => $rowData[self::ENTITY_ID],
@@ -294,13 +275,14 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
                     self::UPDATED => $rowData[self::UPDATED]
                 ];
             }
-            if (\Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE == $behavior) {
+
+            if (Import::BEHAVIOR_REPLACE == $behavior) {
                 if ($listProducts) {
                     if ($this->deleteEntityFinish(array_unique($listProducts), self::TABLE_Entity)) {
                         $this->saveEntityFinish($entityList, self::TABLE_Entity);
                     }
                 }
-            } elseif (\Magento\ImportExport\Model\Import::BEHAVIOR_APPEND == $behavior) {
+            } elseif (Import::BEHAVIOR_APPEND == $behavior) {
                 $this->saveEntityFinish($entityList, self::TABLE_Entity);
             }
         }
@@ -316,8 +298,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      * @return $this
      * @internal param array $priceData
      */
-    protected function saveEntityFinish(array $entityData, $table)
-    {
+    protected function saveEntityFinish(array $entityData, $table) {
         if ($entityData) {
             $tableName = $this->_connection->getTableName($table);
             $entityInsert = [];
@@ -326,18 +307,18 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
                         $entityInsert[] = $row;
                     }
             }
+
             if ($entityInsert) {
                 $this->_connection->insertOnDuplicate($tableName, $entityInsert,[
-                self::SKU,
-                self::NAME,
-                self::ENTITY_ID,
-                self::STOCK,
-                self::AKSESORIS_SKU,
-                self::HARGA,
-                self::CREATED,
-                self::UPDATED
-
-            ]);
+                    self::SKU,
+                    self::NAME,
+                    self::ENTITY_ID,
+                    self::STOCK,
+                    self::AKSESORIS_SKU,
+                    self::HARGA,
+                    self::CREATED,
+                    self::UPDATED
+                ]);
             }
         }
         return $this;
@@ -351,18 +332,17 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      * @param $table
      * @return bool
      */
-    protected function deleteEntityFinish(array $listTitle, $table)
-    {
+    protected function deleteEntityFinish(array $listTitle, $table) {
         if ($table && $listTitle) {
-                try {
-                    $this->countItemsDeleted += $this->_connection->delete(
-                        $this->_connection->getTableName($table),
-                        $this->_connection->quoteInto('sku IN (?)', $listTitle)
-                    );
-                    return true;
-                } catch (\Exception $e) {
-                    return false;
-                }
+            try {
+                $this->countItemsDeleted += $this->_connection->delete(
+                    $this->_connection->getTableName($table),
+                    $this->_connection->quoteInto('sku IN (?)', $listTitle)
+                );
+                return true;
+            } catch (\Exception $e) {
+                return false;
+            }
         } else {
             return false;
         }

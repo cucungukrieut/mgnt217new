@@ -8,8 +8,8 @@ namespace Magento\ImportTesting\Model\Import\Validator;
 use Magento\Framework\Validator\AbstractValidator;
 use Magento\ImportTesting\Model\Import\ImportTesting\RowValidatorInterface;
 
-abstract class AbstractImportValidator extends AbstractValidator implements RowValidatorInterface
-{
+abstract class AbstractImportValidator extends AbstractValidator implements RowValidatorInterface {
+
     /**
      * @var \Magento\CatalogImportExport\Model\Import\Product
      */
@@ -19,8 +19,7 @@ abstract class AbstractImportValidator extends AbstractValidator implements RowV
      * @param \Magento\CatalogImportExport\Model\Import\Product $context
      * @return $this
      */
-    public function init($context)
-    {
+    public function init($context) {
         $this->context = $context;
         return $this;
     }
