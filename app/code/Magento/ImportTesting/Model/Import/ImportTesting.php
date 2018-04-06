@@ -1,5 +1,5 @@
 <?php
-namespace Ibnab\Tutie\Model\Import;
+namespace Magento\ImportTesting\Model\Import;
 
 use Magento\ImportTesting\Model\Import\ImportTesting\RowValidatorInterface as ValidatorInterface;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
@@ -7,17 +7,55 @@ use Magento\Framework\App\ResourceConnection;
 
 class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity {
 
-    //const TITLE = 'customer_group_code';
+    /**
+     * @var string
+     */
     const SKU = 'sku';
+
+    /**
+     * @var string
+     */
     const NAME = 'name';
+
+    /**
+     * @var int
+     */
     const ENTITY_ID = 'entity_id';
+
+    /**
+     * @var int
+     */
     const STOCK = 'stock';
-    const AKSESORIS_ID = 'aksesoris_id';
-    const KODE_PRODUCT = 'kode_product';
+
+    /**
+     * foreign key untuk aksesoris
+     * SKU (Kode)
+     * @var string
+     */
+    const AKSESORIS_SKU = 'aksesoris_sku';
+
+    /**
+     * @var float
+     */
+    const HARGA = 'harga';
+
+    /**
+     * Created Products
+     * @var timestamp
+     */
     const CREATED = 'created';
+
+    /**
+     * Update products
+     * @var timestamp
+     */
     const UPDATED = 'updated';
 
-    //const TAX = 'tax_class_id';
+    /**
+     * Table Product
+     *
+     * @var string
+     */
     const TABLE_Entity = 'catalog_body';
 
     /**
@@ -40,7 +78,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
     protected $groupFactory;
 
     /**
-     * Valid column names
+     * Validasi column names
      *
      * @array
      */
@@ -49,8 +87,8 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
         self::NAME,
         self::ENTITY_ID,
         self::STOCK,
-        self::AKSESORIS_ID,
-        self::KODE_PRODUCT,
+        self::AKSESORIS_SKU,
+        self::HARGA,
         self::CREATED,
         self::UPDATED,
     ];
@@ -116,13 +154,13 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
 
 
     /**
-     * Entity type code getter.
+     * Entity type code getter (dari file import.xml).
      *
      * @return string
      */
     public function getEntityTypeCode()
     {
-        return 'customer_group';
+        return 'import_testing';
     }
 
 
@@ -135,7 +173,6 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
      */
     public function validateRow(array $rowData, $rowNum)
     {
-        $title = false;
         if (isset($this->_validatedRows[$rowNum])) {
             return !$this->getErrorAggregator()->isRowInvalid($rowNum);
         }
@@ -231,7 +268,7 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
     protected function saveAndReplaceEntity()
     {
         $behavior = $this->getBehavior();
-        $listTitle = [];
+        $listProducts = [];
         while ($bunch = $this->_dataSourceModel->getNextBunch()) {
             $entityList = [];
             foreach ($bunch as $rowNum => $rowData) {
@@ -245,21 +282,21 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
                 }
 
                 $rowTtile= $rowData[self::SKU];
-                $listTitle[] = $rowTtile;
+                $listProducts[] = $rowTtile;
                 $entityList[$rowTtile][] = [
                     self::SKU => $rowData[self::SKU],
                     self::NAME => $rowData[self::NAME],
                     self::ENTITY_ID => $rowData[self::ENTITY_ID],
                     self::STOCK => $rowData[self::STOCK],
-                    self::AKSESORIS_ID => $rowData[self::AKSESORIS_ID],
-                    self::KODE_PRODUCT => $rowData[self::KODE_PRODUCT],
+                    self::AKSESORIS_SKU => $rowData[self::AKSESORIS_SKU],
+                    self::HARGA => $rowData[self::HARGA],
                     self::CREATED => $rowData[self::CREATED],
                     self::UPDATED => $rowData[self::UPDATED]
                 ];
             }
             if (\Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE == $behavior) {
-                if ($listTitle) {
-                    if ($this->deleteEntityFinish(array_unique(  $listTitle), self::TABLE_Entity)) {
+                if ($listProducts) {
+                    if ($this->deleteEntityFinish(array_unique($listProducts), self::TABLE_Entity)) {
                         $this->saveEntityFinish($entityList, self::TABLE_Entity);
                     }
                 }
@@ -283,20 +320,20 @@ class ImportTesting extends \Magento\ImportExport\Model\Import\Entity\AbstractEn
     {
         if ($entityData) {
             $tableName = $this->_connection->getTableName($table);
-            $entityIn = [];
+            $entityInsert = [];
             foreach ($entityData as $id => $entityRows) {
                     foreach ($entityRows as $row) {
-                        $entityIn[] = $row;
+                        $entityInsert[] = $row;
                     }
             }
-            if ($entityIn) {
-                $this->_connection->insertOnDuplicate($tableName, $entityIn,[
+            if ($entityInsert) {
+                $this->_connection->insertOnDuplicate($tableName, $entityInsert,[
                 self::SKU,
                 self::NAME,
                 self::ENTITY_ID,
                 self::STOCK,
-                self::AKSESORIS_ID,
-                self::KODE_PRODUCT,
+                self::AKSESORIS_SKU,
+                self::HARGA,
                 self::CREATED,
                 self::UPDATED
 
