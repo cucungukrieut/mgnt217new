@@ -10,8 +10,14 @@ use \Magento\Framework\Stdlib\StringUtils;
 use \Magento\Customer\Model\GroupFactory;
 use \Magento\ImportExport\Model\Import;
 use \Magento\ImportExport\Model\Import\Entity\AbstractEntity;
+use \Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 
 class ImportTesting extends AbstractEntity {
+
+    /**
+     * @var TransactionManagerInterface
+     */
+    protected $transactionManager;
 
     /**
      * @var string
@@ -38,18 +44,29 @@ class ImportTesting extends AbstractEntity {
      * SKU (Kode)
      * @var string
      */
-    const AKSESORIS_SKU = 'aksesoris_sku';
+    const SKU_AKSESORIS = 'aksesoris_sku';
 
     const HARGA = 'harga';
     const CREATED = 'created';
     const UPDATED = 'updated';
+
+    // Untuk catalog aksesoris
+    const AKSESORIS_SKU = 'sku';
+    const AKSESORIS_NAME = 'name';
+    const AKSESORIS_ENTITYID = 'entity_id';
+    const AKSESORIS_STOCK = 'stock';
+    const AKSESORIS_BODYSKU = 'body_sku';
+    const AKSESORIS_HARGA = 'harga';
+    const AKSESORIS_CREATED = 'created';
+    const AKSESORIS_UPDATED = 'updated';
 
     /**
      * Table Product
      *
      * @var string
      */
-    const TABLE_Entity = 'catalog_body';
+    const TABLE_BODY = 'catalog_body';
+    const TABLE_AKSESORIS = 'catalog_aksesoris';
 
     /**
      * Validation failure message template definitions
@@ -80,10 +97,11 @@ class ImportTesting extends AbstractEntity {
         self::NAME,
         self::ENTITY_ID,
         self::STOCK,
-        self::AKSESORIS_SKU,
+        self::SKU_AKSESORIS,
         self::HARGA,
         self::CREATED,
         self::UPDATED,
+        self::AKSESORIS_BODYSKU,
     ];
 
     /**
@@ -118,7 +136,7 @@ class ImportTesting extends AbstractEntity {
         \Magento\ImportExport\Model\ResourceModel\Import\Data $importData,
         ResourceConnection $resource, Helper $resourceHelper,
         StringUtils $string, ProcessingErrorAggregatorInterface $errorAggregator,
-        GroupFactory $groupFactory )
+        GroupFactory $groupFactory, TransactionManagerInterface $transactionManager )
     {
         $this->jsonHelper = $jsonHelper;
         $this->_importExportData = $importExportData;
@@ -234,7 +252,7 @@ class ImportTesting extends AbstractEntity {
             }
         }
         if ($listProducts) {
-            $this->deleteEntityFinish(array_unique($listProducts),self::TABLE_Entity);
+            $this->deleteBody(array_unique($listProducts),self::TABLE_Entity);
         }
         return $this;
     }
@@ -250,9 +268,12 @@ class ImportTesting extends AbstractEntity {
     protected function saveAndReplaceEntity() {
         $behavior = $this->getBehavior();
         $listProducts = [];
-        while ($bunch = $this->_dataSourceModel->getNextBunch()) {
-            $entityList = [];
-            foreach ($bunch as $rowNum => $rowData) {
+        //$bubunch = $this->_dataSourceModel->getNextBunch();
+        while ($bunch = $this->_dataSourceModel->getNextBunch())
+        {
+            $bodyList = [];
+            foreach ($bunch as $rowNum => $rowData)
+            {
                 if (!$this->validateRow($rowData, $rowNum)) {
                     $this->addRowError(ValidatorInterface::ERROR_SKU_IS_EMPTY, $rowNum);
                     continue;
@@ -264,26 +285,28 @@ class ImportTesting extends AbstractEntity {
 
                 $rowProducts = $rowData[self::SKU];
                 $listProducts[] = $rowProducts;
-                $entityList[$rowProducts][] = [
+                $bodyList[$rowProducts][] = [
                     self::SKU => $rowData[self::SKU],
                     self::NAME => $rowData[self::NAME],
                     self::ENTITY_ID => $rowData[self::ENTITY_ID],
                     self::STOCK => $rowData[self::STOCK],
-                    self::AKSESORIS_SKU => $rowData[self::AKSESORIS_SKU],
+                    self::SKU_AKSESORIS => $rowData[self::SKU_AKSESORIS],
                     self::HARGA => $rowData[self::HARGA],
                     self::CREATED => $rowData[self::CREATED],
                     self::UPDATED => $rowData[self::UPDATED]
                 ];
             }
 
-            if (Import::BEHAVIOR_REPLACE == $behavior) {
-                if ($listProducts) {
-                    if ($this->deleteEntityFinish(array_unique($listProducts), self::TABLE_Entity)) {
-                        $this->saveEntityFinish($entityList, self::TABLE_Entity);
+            if (Import::BEHAVIOR_REPLACE == $behavior)
+            {
+                if ($listProducts)
+                {
+                    if ($this->deleteBody(array_unique($listProducts), self::TABLE_BODY)) {
+                        $this->saveBody($bodyList, self::TABLE_BODY);
                     }
                 }
             } elseif (Import::BEHAVIOR_APPEND == $behavior) {
-                $this->saveEntityFinish($entityList, self::TABLE_Entity);
+                $this->saveBody($bodyList, self::TABLE_BODY);
             }
         }
         return $this;
@@ -293,31 +316,58 @@ class ImportTesting extends AbstractEntity {
     /**
      * Save product.
      *
-     * @param array $entityData
+     * @param array $bodyList
      * @param string $table
      * @return $this
+     * @internal param array $entityData
      * @internal param array $priceData
      */
-    protected function saveEntityFinish(array $entityData, $table) {
-        if ($entityData) {
+    protected function saveBody(array $bodyList, $table) {
+        if ($bodyList) {
             $tableName = $this->_connection->getTableName($table);
-            $entityInsert = [];
-            foreach ($entityData as $id => $entityRows) {
-                    foreach ($entityRows as $row) {
-                        $entityInsert[] = $row;
+            $bodyInsert = [];
+            foreach ($bodyList as $id => $bodyRows) {
+                    foreach ($bodyRows as $row) {
+                        $bodyInsert[] = $row;
                     }
             }
 
-            if ($entityInsert) {
-                $this->_connection->insertOnDuplicate($tableName, $entityInsert,[
+            if ($bodyInsert) {
+                $this->_connection->insertOnDuplicate($tableName, $bodyInsert,[
                     self::SKU,
                     self::NAME,
                     self::ENTITY_ID,
                     self::STOCK,
-                    self::AKSESORIS_SKU,
+                    self::SKU_AKSESORIS,
                     self::HARGA,
                     self::CREATED,
                     self::UPDATED
+                ]);
+            }
+        }
+        return $this;
+    }
+
+    protected function saveAksesoris(array $aksesorisList, $table) {
+        if ($aksesorisList) {
+            $tableName = $this->_connection->getTableName($table);
+            $aksesorisInsert = [];
+            foreach ($aksesorisList as $id => $aksesorisRows) {
+                foreach ($aksesorisRows as $row) {
+                    $aksesorisInsert[] = $row;
+                }
+            }
+
+            if ( $aksesorisInsert) {
+                $this->_connection->insertOnDuplicate($tableName, $aksesorisInsert,[
+                    self::AKSESORIS_SKU,
+                    self::AKSESORIS_NAME,
+                    self::AKSESORIS_ENTITYID,
+                    self::AKSESORIS_STOCK,
+                    self::AKSESORIS_BODYSKU,
+                    self::AKSESORIS_HARGA,
+                    self::AKSESORIS_CREATED,
+                    self::AKSESORIS_UPDATED
                 ]);
             }
         }
@@ -328,16 +378,18 @@ class ImportTesting extends AbstractEntity {
     /**
      * Delete entity
      *
-     * @param array $listTitle
+     * @param array $listProducts
      * @param $table
      * @return bool
+     * @internal param array $bodyList
+     * @internal param array $listTitle
      */
-    protected function deleteEntityFinish(array $listTitle, $table) {
-        if ($table && $listTitle) {
+    protected function deleteBody(array $listProducts, $table) {
+        if ($table && $listProducts) {
             try {
                 $this->countItemsDeleted += $this->_connection->delete(
                     $this->_connection->getTableName($table),
-                    $this->_connection->quoteInto('sku IN (?)', $listTitle)
+                    $this->_connection->quoteInto('sku IN (?)', $listProducts)
                 );
                 return true;
             } catch (\Exception $e) {
@@ -346,5 +398,54 @@ class ImportTesting extends AbstractEntity {
         } else {
             return false;
         }
+    }
+
+
+    /**
+     * Delete products.
+     *
+     * @return $this
+     * @throws \Exception
+     */
+    protected function _deleteProducts()
+    {
+        $productEntityTable = $this->_resourceFactory->create()->getEntityTable();
+
+        while ($bunch = $this->_dataSourceModel->getNextBunch()) {
+            $idsToDelete = [];
+
+            foreach ($bunch as $rowNum => $rowData) {
+                if ($this->validateRow($rowData, $rowNum) && self::SCOPE_DEFAULT == $this->getRowScope($rowData)) {
+                    $idsToDelete[] = $this->_oldSku[$rowData[self::COL_SKU]]['entity_id'];
+                }
+            }
+            if ($idsToDelete) {
+                $this->countItemsDeleted += count($idsToDelete);
+                $this->transactionManager->start($this->_connection);
+                try {
+                    $this->objectRelationProcessor->delete(
+                        $this->transactionManager,
+                        $this->_connection,
+                        $productEntityTable,
+                        $this->_connection->quoteInto('entity_id IN (?)', $idsToDelete),
+                        ['entity_id' => $idsToDelete]
+                    );
+                    $this->_eventManager->dispatch(
+                        'catalog_product_import_bunch_delete_commit_before',
+                        [
+                            'adapter' => $this,
+                            'bunch' => $bunch,
+                            'ids_to_delete' => $idsToDelete
+                        ]
+                    );
+                    $this->transactionManager->commit();
+                } catch (\Exception $e) {
+                    $this->transactionManager->rollBack();
+                    throw $e;
+                }
+                $this->_eventManager->dispatch('catalog_product_import_bunch_delete_after', ['adapter' => $this, 'bunch' => $bunch]);
+            }
+        }
+        return $this;
     }
 }

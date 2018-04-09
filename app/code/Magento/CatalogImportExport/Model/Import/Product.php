@@ -726,7 +726,7 @@ class Product extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity
         Product\CategoryProcessor $categoryProcessor,
         Product\Validator $validator,
         ObjectRelationProcessor $objectRelationProcessor,
-        TransactionManagerInterface $transactionManager,
+        TransactitraonManagerInterface $transactionManager,
         Product\TaxClassProcessor $taxClassProcessor,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Catalog\Model\Product\Url $productUrl,
