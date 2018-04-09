@@ -678,50 +678,6 @@
             "time": "2017-02-27T21:19:07+00:00"
         },
         {
-            "name": "mgtcommerce/module-mgtdevelopertoolbar",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mgtcommerce/Mgt_Developertoolbar.git",
-                "reference": "f3867c492206ccf484c7a057437d6700f8cc83a9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mgtcommerce/Mgt_Developertoolbar/zipball/f3867c492206ccf484c7a057437d6700f8cc83a9",
-                "reference": "f3867c492206ccf484c7a057437d6700f8cc83a9",
-                "shasum": ""
-            },
-            "require": {
-                "magento/framework": "~100.1",
-                "php": ">=5.5.9"
-            },
-            "type": "magento2-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/app/code/Mgt/DeveloperToolbar/registration.php"
-                ],
-                "psr-4": {
-                    "Mgt\\DeveloperToolbar\\": "src/app/code/Mgt/DeveloperToolbar"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Mgt Developer Toolbar",
-            "homepage": "https://www.mgt-commerce.com",
-            "keywords": [
-                "magento developer toolbar",
-                "mgt developer toolbar"
-            ],
-            "time": "2016-10-24T19:31:30+00:00"
-        },
-        {
             "name": "monolog/monolog",
             "version": "1.16.0",
             "source": {

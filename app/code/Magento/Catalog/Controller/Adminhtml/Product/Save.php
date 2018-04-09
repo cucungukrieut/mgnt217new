@@ -119,10 +119,14 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product
 
                 $this->copyToStores($data, $productId);
 
-                $this->messageManager->addSuccess(__('You saved the product.'));
+                //$test =  $this->messageManager->addSuccess(__('You saved the product.'));
+                //$suksessave =
+
+                // Success message for saved product
+                $this->messageManager->addSuccessMessage('Product berhasil disimpan.');
                 $this->getDataPersistor()->clear('catalog_product');
                 if ($product->getSku() != $originalSku) {
-                    $this->messageManager->addNotice(
+                    $this->messageManager->addNoticeMessage(
                         __(
                             'SKU for product %1 has been changed to %2.',
                             $this->_objectManager->get('Magento\Framework\Escaper')->escapeHtml($product->getName()),
@@ -137,40 +141,40 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product
 
                 if ($redirectBack === 'duplicate') {
                     $newProduct = $this->productCopier->copy($product);
-                    $this->messageManager->addSuccess(__('You duplicated the product.'));
+                    $this->messageManager->addSuccessMessage(__('You duplicated the product.'));
                 }
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
                 $this->getDataPersistor()->set('catalog_product', $data);
                 $redirectBack = $productId ? true : 'new';
             } catch (\Exception $e) {
                 $this->_objectManager->get('Psr\Log\LoggerInterface')->critical($e);
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
                 $this->getDataPersistor()->set('catalog_product', $data);
                 $redirectBack = $productId ? true : 'new';
             }
         } else {
             $resultRedirect->setPath('catalog/*/', ['store' => $storeId]);
-            $this->messageManager->addError('No data to save');
+            $this->messageManager->addErrorMessage('No data to save');
             return $resultRedirect;
         }
 
-        if ($redirectBack === 'new') {
+        if ($redirectBack === 'new') { // Jika pilih save & new
             $resultRedirect->setPath(
                 'catalog/*/new',
                 ['set' => $productAttributeSetId, 'type' => $productTypeId]
             );
-        } elseif ($redirectBack === 'duplicate' && isset($newProduct)) {
+        } elseif ($redirectBack === 'duplicate' && isset($newProduct)) { // jika pilih save & duplicate
             $resultRedirect->setPath(
                 'catalog/*/edit',
                 ['id' => $newProduct->getEntityId(), 'back' => null, '_current' => true]
             );
-        } elseif ($redirectBack) {
+        } elseif ($redirectBack) { // jika pilih save saja
             $resultRedirect->setPath(
                 'catalog/*/edit',
                 ['id' => $productId, '_current' => true, 'set' => $productAttributeSetId]
             );
-        } else {
+        } else { // jika pilih save & close
             $resultRedirect->setPath('catalog/*/', ['store' => $storeId]);
         }
         return $resultRedirect;
