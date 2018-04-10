@@ -53,7 +53,7 @@ class Save extends Generic
     {
         $options[] = [
             'id_hard' => 'save_and_new',
-            'label' => __('Save & New'),
+            'label' => __('Save & Baru'),
             'data_attribute' => [
                 'mage-init' => [
                     'buttonAdapter' => [
@@ -101,7 +101,7 @@ class Save extends Generic
 
         $options[] = [
             'id_hard' => 'save_and_close',
-            'label' => __('Save & Close'),
+            'label' => __('Simpan & Close'),
             'data_attribute' => [
                 'mage-init' => [
                     'buttonAdapter' => [

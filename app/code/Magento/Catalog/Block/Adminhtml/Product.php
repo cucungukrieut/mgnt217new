@@ -72,7 +72,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
     {
         $splitButtonOptions = [];
         //testing untuk tombol add product custom
-        $tipeproduct = $this->_typeFactory->create()->getTypes();
+        //$tipeproduct = $this->_typeFactory->create()->getTypes();
 
         $types = $this->_typeFactory->create()->getTypes();
         uasort(
