@@ -218,7 +218,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'entity_id',
             [
-                'header' => __('ID'),
+                'header' => __('Kode'),
                 'type' => 'number',
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
@@ -228,7 +228,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'name',
             [
-                'header' => __('Name'),
+                'header' => __('Nama'),
                 'index' => 'name',
                 'class' => 'xxx'
             ]
@@ -285,7 +285,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn(
             'price',
             [
-                'header' => __('Price'),
+                'header' => __('Harga'),
                 'type' => 'price',
                 'currency_code' => $store->getBaseCurrency()->getCode(),
                 'index' => 'price',
@@ -386,7 +386,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->getMassactionBlock()->addItem(
             'delete',
             [
-                'label' => __('Delete'),
+                'label' => __('Hapus'),
                 'url' => $this->getUrl('catalog/*/massDelete'),
                 'confirm' => __('Are you sure?')
             ]
@@ -398,7 +398,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->getMassactionBlock()->addItem(
             'status',
             [
-                'label' => __('Change Status'),
+                'label' => __('Ganti Status'),
                 'url' => $this->getUrl('catalog/*/massStatus', ['_current' => true]),
                 'additional' => [
                     'visibility' => [

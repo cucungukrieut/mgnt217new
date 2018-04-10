@@ -51,7 +51,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
     {
         $addButtonProps = [
             'id' => 'add_new_product',
-            'label' => __('Tambah Produk'),
+            'label' => __('Tambah Produk'), // label button tambah product
             'class' => 'add',
             'button_class' => '',
             'class_name' => 'Magento\Backend\Block\Widget\Button\SplitButton',
@@ -71,6 +71,9 @@ class Product extends \Magento\Backend\Block\Widget\Container
     protected function _getAddProductButtonOptions()
     {
         $splitButtonOptions = [];
+        //testing untuk tombol add product custom
+        $tipeproduct = $this->_typeFactory->create()->getTypes();
+
         $types = $this->_typeFactory->create()->getTypes();
         uasort(
             $types,
