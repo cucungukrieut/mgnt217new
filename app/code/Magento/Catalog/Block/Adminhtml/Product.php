@@ -43,7 +43,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
 
     /**
      * Prepare button and grid
-     * Untuk tombol tambah product
+     * Untuk tombol tambah product di catalog
      *
      * @return \Magento\Catalog\Block\Adminhtml\Product
      */
@@ -51,7 +51,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
     {
         $addButtonProps = [
             'id' => 'add_new_product',
-            'label' => __('Add Product Baru'),
+            'label' => __('Tambah Produk'),
             'class' => 'add',
             'button_class' => '',
             'class_name' => 'Magento\Backend\Block\Widget\Button\SplitButton',
@@ -64,6 +64,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
 
     /**
      * Retrieve options for 'Add Product' split button
+     * Tambah option button di button tambah product
      *
      * @return array
      */
@@ -105,6 +106,7 @@ class Product extends \Magento\Backend\Block\Widget\Container
 
     /**
      * Check whether it is single store mode
+     *  Check apakah single store atau multiple
      *
      * @return bool
      */

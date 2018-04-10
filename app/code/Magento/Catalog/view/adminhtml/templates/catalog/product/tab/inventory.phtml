@@ -14,7 +14,7 @@
 <?php $_readonly = ''; ?>
 <?php endif; ?>
 <fieldset class="fieldset form-inline">
-<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Advanced test Inventory') ?></span></legend>
+<legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Advanced Inventory') ?></span></legend>
 <br>
 <div id="table_cataloginventory">
 <div class="field">
@@ -74,9 +74,11 @@ toggleValueElements($('inventory_use_config_manage_stock'), $('inventory_use_con
 
         <?php if (!$block->isReadonly()): ?>
         <script>
+
 require(["prototype"], function(){
-toggleValueElements($('inventory_use_config_min_qty'), $('inventory_use_config_min_qty').parentNode);
+    toggleValueElements($('inventory_use_config_min_qty'), $('inventory_use_config_min_qty').parentNode);
 });
+
 </script>
         <?php endif; ?>
     </div>
