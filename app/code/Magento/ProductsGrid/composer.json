@@ -1,15 +1,8 @@
 {
     "name": "webspeaks/productsgrid-magento2",
-    "description": "Product grid example for Magento 2",
+    "description": "Product grid testing Magento 2",
     "type": "magento2-module",
     "version": "0.0.1",
-    "authors": [
-        {
-            "name": "Webspeaks",
-            "email": "arvind@webspeaks.in",
-            "homepage": "http://www.webspeaks.in"
-        }
-    ],
     "license": [
         "OSL-3.0",
         "AFL-3.0"

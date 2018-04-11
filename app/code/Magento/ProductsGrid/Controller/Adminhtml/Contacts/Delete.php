@@ -5,7 +5,7 @@ namespace Magento\ProductsGrid\Controller\Adminhtml\Contacts;
 use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 
-class Delete extends \Magento\Backend\App\Action
+class Delete extends Action
 {
 
     /**
@@ -31,14 +31,14 @@ class Delete extends \Magento\Backend\App\Action
                 $model = $this->_objectManager->create('Magento\ProductsGrid\Model\Contact');
                 $model->load($id);
                 $model->delete();
-                $this->messageManager->addSuccess(__('The contact has been deleted.'));
+                $this->messageManager->addSuccessMessage(__('Contact telah di hapus.'));
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
                 return $resultRedirect->setPath('*/*/edit', ['contact_id' => $id]);
             }
         }
-        $this->messageManager->addError(__('We can\'t find a contact to delete.'));
+        $this->messageManager->addError(__('Tidak dapat mencari kontak untuk di hapus.'));
         return $resultRedirect->setPath('*/*/');
     }
 }

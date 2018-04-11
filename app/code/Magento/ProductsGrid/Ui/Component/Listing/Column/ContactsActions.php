@@ -56,14 +56,14 @@ class ContactsActions extends Column
                 if (isset($item['contact_id'])) {
                     $item[$name]['edit'] = [
                         'href' => $this->urlBuilder->getUrl($this->editUrl, ['contact_id' => $item['contact_id']]),
-                        'label' => __('Edit')
+                        'label' => __('Ubah')
                     ];
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(self::CONTACTS_URL_PATH_DELETE, ['contact_id' => $item['contact_id']]),
-                        'label' => __('Delete'),
+                        'label' => __('Hapus'),
                         'confirm' => [
-                            'title' => __('Delete "${ $.$data.attachment_name }"'),
-                            'message' => __('Are you sure you wan\'t to delete a "${ $.$data.name }"?')
+                            'title' => __('Hapus "${ $.$data.attachment_name }"'),
+                            'message' => __('Anda yakin akan menghapus kontak "${ $.$data.name }"?')
                         ]
                     ];
                 }

@@ -1,11 +1,15 @@
 <?php
-
 namespace Magento\ProductsGrid\Model\ResourceModel;
+
+use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use \Magento\Framework\Model\ResourceModel\Db\Context;
+use \Magento\Framework\Stdlib\DateTime\DateTime;
+use \Magento\Framework\Model\AbstractModel;
 
 /**
  * ProductsGrid mysql resource
  */
-class Contact extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Contact extends AbstractDb
 {
 
     const TBL_ATT_PRODUCT = 'Magento_product_attachment_rel';
@@ -22,11 +26,8 @@ class Contact extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $date
      * @param string|null $resourcePrefix
      */
-    public function __construct(
-        \Magento\Framework\Model\ResourceModel\Db\Context $context,
-        \Magento\Framework\Stdlib\DateTime\DateTime $date,
-        $resourcePrefix = null
-    ) {
+    public function __construct(Context $context, DateTime $date, $resourcePrefix = null)
+    {
         parent::__construct($context, $resourcePrefix);
         $this->_date = $date;
     }
@@ -48,7 +49,7 @@ class Contact extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    protected function _beforeSave(\Magento\Framework\Model\AbstractModel $object)
+    protected function _beforeSave(AbstractModel $object)
     {
         if ($object->isObjectNew() && !$object->hasCreationTime()) {
             $object->setCreationTime($this->_date->gmtDate());

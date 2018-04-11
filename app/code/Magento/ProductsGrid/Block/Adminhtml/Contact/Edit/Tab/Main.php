@@ -1,7 +1,14 @@
 <?php
 namespace Magento\ProductsGrid\Block\Adminhtml\Contact\Edit\Tab;
 
-class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
+use \Magento\Backend\Block\Widget\Form\Generic;
+use \Magento\Backend\Block\Widget\Tab\TabInterface;
+use \Magento\Backend\Block\Template\Context;
+use \Magento\Framework\Registry;
+use \Magento\Framework\Data\FormFactory;
+use \Magento\ProductsGrid\Helper\Data;
+
+class Main extends Generic implements TabInterface
 {
     /**
      * @var \Magento\Store\Model\System\Store
@@ -19,13 +26,9 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      * @param \Magento\Framework\Data\FormFactory $formFactory
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\ProductsGrid\Helper\Data $helper,
-        array $data = []
-    ) {
+    public function __construct(Context $context, Registry $registry,
+                                FormFactory $formFactory, Data $helper, array $data = [])
+    {
         $this->helper = $helper;
         parent::__construct($context, $registry, $formFactory, $data);
     }

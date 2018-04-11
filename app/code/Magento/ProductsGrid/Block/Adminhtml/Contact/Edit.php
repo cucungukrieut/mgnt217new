@@ -2,7 +2,11 @@
 
 namespace Magento\ProductsGrid\Block\Adminhtml\Contact;
 
-class Edit extends \Magento\Backend\Block\Widget\Form\Container
+use \Magento\Backend\Block\Widget\Context;
+use \Magento\Framework\Registry;
+use \Magento\Backend\Block\Widget\Form\Container;
+
+class Edit extends Container
 {
     /**
      * Core registry
@@ -16,16 +20,14 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      * @param \Magento\Framework\Registry $registry
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        array $data = []
-    ) {
+    public function __construct(Context $context, Registry $registry, array $data = [])
+    {
         $this->_coreRegistry = $registry;
         parent::__construct($context, $data);
     }
 
     /**
+     *  Button untuk simpan, edit dan delete
      *
      * @return void
      */
@@ -37,11 +39,11 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
 
         parent::_construct();
 
-        $this->buttonList->update('save', 'label', __('Save Contact'));
+        $this->buttonList->update('save', 'label', __('Simpan'));
         $this->buttonList->add(
             'saveandcontinue',
             [
-                'label' => __('Save and Continue Edit'),
+                'label' => __('Simpan & Edit'),
                 'class' => 'save',
                 'data_attribute' => [
                     'mage-init' => [
@@ -52,7 +54,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
             -100
         );
 
-        $this->buttonList->update('delete', 'label', __('Delete Contact'));
+        $this->buttonList->update('delete', 'label', __('Hapus'));
     }
 
     /**

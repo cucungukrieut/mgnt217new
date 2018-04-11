@@ -10,6 +10,7 @@ class InstallSchema implements InstallSchemaInterface
 {
     /**
      * Installs DB schema for a module
+     * Creating table Magento_contact
      *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context

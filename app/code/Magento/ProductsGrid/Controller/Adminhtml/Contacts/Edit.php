@@ -3,8 +3,10 @@
 namespace Magento\ProductsGrid\Controller\Adminhtml\Contacts;
 
 use Magento\Backend\App\Action;
+use \Magento\Framework\View\Result\PageFactory;
+use \Magento\Framework\Registry;
 
-class Edit extends \Magento\Backend\App\Action
+class Edit extends Action
 {
     /**
      * Core registry
@@ -23,11 +25,8 @@ class Edit extends \Magento\Backend\App\Action
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\Registry $registry
      */
-    public function __construct(
-        Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry
-    ) {
+    public function __construct(Action\Context $context,PageFactory $resultPageFactory, Registry $registry)
+    {
         $this->resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $registry;
         parent::__construct($context);
@@ -68,7 +67,7 @@ class Edit extends \Magento\Backend\App\Action
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->messageManager->addError(__('This contact no longer exists.'));
+                $this->messageManager->addErrorMessage(__('Kontak ini tidak tersedia.'));
                 /** \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 

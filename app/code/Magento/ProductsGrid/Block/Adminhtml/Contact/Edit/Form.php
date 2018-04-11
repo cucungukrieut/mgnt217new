@@ -2,11 +2,13 @@
 
 namespace Magento\ProductsGrid\Block\Adminhtml\Contact\Edit;
 
+use \Magento\Backend\Block\Widget\Form\Generic;
+
 /**
  * Adminhtml attachment edit form block
  *
  */
-class Form extends \Magento\Backend\Block\Widget\Form\Generic
+class Form extends Generic
 {
     /**
      * Prepare form
@@ -17,7 +19,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     {
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create(
-            ['data' => ['id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post']]
+            [
+                'data' =>
+                    [
+                        'id' => 'edit_form',
+                        'action' => $this->getData('action'),
+                        'method' => 'post'
+                    ]
+            ]
         );
         $form->setUseContainer(true);
         $this->setForm($form);

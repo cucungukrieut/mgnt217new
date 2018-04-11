@@ -5,8 +5,12 @@ namespace Magento\ProductsGrid\Controller\Adminhtml\Contacts;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\TestFramework\ErrorLog\Logger;
+use \Magento\Backend\Helper\Js;
+use \Magento\Framework\Exception\LocalizedException;
+use \Magento\Framework\App\ObjectManager;
+use \Magento\ProductsGrid\Model\ResourceModel\Contact;
 
-class Save extends \Magento\Backend\App\Action
+class Save extends Action
 {
     /**
      * @var \Magento\Backend\Helper\Js
@@ -21,11 +25,11 @@ class Save extends \Magento\Backend\App\Action
     /**
      * \Magento\Backend\Helper\Js $jsHelper
      * @param Action\Context $context
+     * @param Js $jsHelper
+     * @param Contact\CollectionFactory $contactCollectionFactory
      */
-    public function __construct(
-        Context $context,
-        \Magento\Backend\Helper\Js $jsHelper,
-        \Magento\ProductsGrid\Model\ResourceModel\Contact\CollectionFactory $contactCollectionFactory
+    public function __construct(Context $context, Js $jsHelper,
+        \Magento\ProductsGrid\Model\ResourceModel\Contact\CollectionFactory $contactCollectionFactory //
     ) {
         $this->_jsHelper = $jsHelper;
         $this->_contactCollectionFactory = $contactCollectionFactory;
@@ -67,18 +71,18 @@ class Save extends \Magento\Backend\App\Action
                 $model->save();
                 $this->saveProducts($model, $data);
 
-                $this->messageManager->addSuccess(__('You saved this contact.'));
+                $this->messageManager->addSuccessMessage(__('Kontak telah disimpan.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['contact_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
-            } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addError($e->getMessage());
+            } catch (LocalizedException $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\RuntimeException $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the contact.'));
+                $this->messageManager->addExceptionMessage($e, __('Ada masalah ketika menyimpan kontak.'));
             }
 
             $this->_getSession()->setFormData($data);
@@ -87,6 +91,13 @@ class Save extends \Magento\Backend\App\Action
         return $resultRedirect->setPath('*/*/');
     }
 
+
+    /**
+     * Save Product
+     *
+     * @param $model
+     * @param $post\
+     */
     public function saveProducts($model, $post)
     {
         // Attach the attachments to contact
@@ -96,10 +107,10 @@ class Save extends \Magento\Backend\App\Action
                 $oldProducts = (array) $model->getProducts($model);
                 $newProducts = (array) $productIds;
 
-                $this->_resources = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
+                $this->_resources = ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
                 $connection = $this->_resources->getConnection();
 
-                $table = $this->_resources->getTableName(\Magento\ProductsGrid\Model\ResourceModel\Contact::TBL_ATT_PRODUCT);
+                $table = $this->_resources->getTableName(Contact::TBL_ATT_PRODUCT);
                 $insert = array_diff($newProducts, $oldProducts);
                 $delete = array_diff($oldProducts, $newProducts);
 
@@ -116,7 +127,7 @@ class Save extends \Magento\Backend\App\Action
                     $connection->insertMultiple($table, $data);
                 }
             } catch (Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the contact.'));
+                $this->messageManager->addExceptionMessage($e, __('Ada masalah ketika menyimpan kontak.'));
             }
         }
 

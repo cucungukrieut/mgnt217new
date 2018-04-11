@@ -18,7 +18,7 @@
             <!-- here we can add buttons -->
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add New Contact</item>
+                <item name="label" xsi:type="string" translate="true">Tambah Produk</item>
                 <item name="class" xsi:type="string">primary</item>
                 <item name="url" xsi:type="string">*/*/new</item>
             </item>
@@ -162,7 +162,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">desc</item>
-                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="label" xsi:type="string" translate="true">Kode</item>
                 </item>
             </argument>
         </column>
@@ -171,7 +171,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="label" xsi:type="string" translate="true">Nama</item>
                 </item>
             </argument>
         </column>
@@ -180,7 +180,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">number</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Age</item>
+                    <item name="label" xsi:type="string" translate="true">Umur</item>
                 </item>
             </argument>
         </column>
@@ -189,7 +189,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Address</item>
+                    <item name="label" xsi:type="string" translate="true">Alamat</item>
                 </item>
             </argument>
         </column>
@@ -198,7 +198,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Phone</item>
+                    <item name="label" xsi:type="string" translate="true">Telp</item>
                 </item>
             </argument>
         </column>
@@ -208,7 +208,7 @@
                     <item name="filter" xsi:type="string">dateRange</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
-                    <item name="label" xsi:type="string" translate="true">Created On</item>
+                    <item name="label" xsi:type="string" translate="true">Created</item>
                 </item>
             </argument>
         </column>
@@ -218,7 +218,7 @@
                     <item name="filter" xsi:type="string">dateRange</item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
                     <item name="dataType" xsi:type="string">date</item>
-                    <item name="label" xsi:type="string" translate="true">Updated On</item>
+                    <item name="label" xsi:type="string" translate="true">Updated</item>
                 </item>
             </argument>
         </column>

@@ -2,9 +2,16 @@
 
 namespace Magento\ProductsGrid\Block\Adminhtml\Contact\Edit\Tab;
 
+use \Magento\Backend\Block\Widget\Grid\Extended;
 use Magento\ProductsGrid\Model\ContactFactory;
+use \Magento\Backend\Block\Template\Context;
+use \Magento\Backend\Helper\Data;
+use \Magento\Framework\Registry;
+use \Magento\Framework\ObjectManagerInterface;
+use \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
-class Products extends \Magento\Backend\Block\Widget\Grid\Extended
+
+class Products extends Extended
 {
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
@@ -30,18 +37,15 @@ class Products extends \Magento\Backend\Block\Widget\Grid\Extended
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magento\Framework\Registry $registry
-     * @param ContactFactory $attachmentFactory
+     * @param ObjectManagerInterface $objectManager
+     * @param ContactFactory $contactFactory
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      * @param array $data
+     * @internal param ContactFactory $attachmentFactory
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Helper\Data $backendHelper,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\ObjectManagerInterface $objectManager,
-        ContactFactory $contactFactory,
-        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
-        array $data = []
+    public function __construct(Context $context, Data $backendHelper, Registry $registry,
+        ObjectManagerInterface $objectManager, ContactFactory $contactFactory,
+        CollectionFactory $productCollectionFactory, array $data = []
     ) {
         $this->contactFactory = $contactFactory;
         $this->productCollectionFactory = $productCollectionFactory;
