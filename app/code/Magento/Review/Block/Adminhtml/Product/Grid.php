@@ -92,19 +92,48 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
             ]
         );
 
-        $this->addColumn('name', ['header' => __('Name'), 'index' => 'name']);
+        $this->addColumn(
+            'name',
+            [
+                'header' => __('Name'),
+                'index' => 'name'
+            ]
+        );
 
         if ((int)$this->getRequest()->getParam('store', 0)) {
-            $this->addColumn('custom_name', ['header' => __('Product Store Name'), 'index' => 'custom_name']);
+            $this->addColumn(
+                'custom_name',
+                [
+                    'header' => __('Product Store Name'),
+                    'index' => 'custom_name'
+                ]
+            );
         }
 
-        $this->addColumn('sku', ['header' => __('SKU'), 'index' => 'sku']);
+        $this->addColumn(
+            'sku',
+            [
+                'header' => __('SKU'),
+                'index' => 'sku'
+            ]
+        );
 
-        $this->addColumn('price', ['header' => __('Price'), 'type' => 'currency', 'index' => 'price']);
+        $this->addColumn(
+            'price',
+            [
+                'header' => __('Price'),
+                'type' => 'currency',
+                'index' => 'price'
+            ]
+        );
 
         $this->addColumn(
             'qty',
-            ['header' => __('Quantity'), 'type' => 'number', 'index' => 'qty']
+            [
+                'header' => __('Quantity'),
+                'type' => 'number',
+                'index' => 'qty'
+            ]
         );
 
         $this->addColumn(

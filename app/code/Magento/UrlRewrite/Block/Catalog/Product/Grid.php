@@ -40,9 +40,23 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
             ]
         );
 
-        $this->addColumn('name', ['header' => __('Name'), 'index' => 'name']);
+        $this->addColumn(
+            'name',
+            [
+                'header' => __('Name'),
+                'index' => 'name'
+            ]
+        );
 
-        $this->addColumn('sku', ['header' => __('SKU'), 'width' => 80, 'index' => 'sku']);
+        $this->addColumn(
+            'sku',
+            [
+                'header' => __('SKU'),
+                'width' => 80,
+                'index' => 'sku'
+            ]
+        );
+
         $this->addColumn(
             'status',
             [

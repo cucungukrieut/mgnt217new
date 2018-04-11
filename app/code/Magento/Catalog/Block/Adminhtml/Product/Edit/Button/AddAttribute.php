@@ -16,7 +16,7 @@ class AddAttribute extends Generic
     public function getButtonData()
     {
         return [
-            'label' => __('Add Attribute'),
+            'label' => __('Add Attribute Produk'),
             'class' => 'action-secondary',
             'data_attribute' => [
                 'mage-init' => [

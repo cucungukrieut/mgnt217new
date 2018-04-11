@@ -26,7 +26,11 @@ class Formattribute extends \Magento\Backend\Block\Widget\Form\Generic
         $fieldset->addField(
             'new_attribute',
             'text',
-            ['label' => __('Name'), 'name' => 'new_attribute', 'required' => true]
+            [
+                'label' => __('Name'),
+                'name' => 'new_attribute',
+                'required' => true
+            ]
         );
 
         $fieldset->addField(
@@ -36,7 +40,10 @@ class Formattribute extends \Magento\Backend\Block\Widget\Form\Generic
                 'text' => $this->getLayout()->createBlock(
                     'Magento\Backend\Block\Widget\Button'
                 )->setData(
-                    ['label' => __('Add Attribute'), 'onclick' => 'this.form.submit();', 'class' => 'add']
+                    ['label' => __('Add Attribute'),
+                        'onclick' => 'this.form.submit();',
+                        'class' => 'add'
+                    ]
                 )->toHtml()
             ]
         );

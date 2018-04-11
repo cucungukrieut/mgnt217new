@@ -321,6 +321,8 @@ class Edit extends \Magento\Backend\Block\Widget
     /**
      * Get dropdown options for save split button
      *
+     * Untuk button save product baru atau edit product
+     *
      * @return array
      */
     protected function _getSaveSplitButtonOptions()
@@ -329,7 +331,7 @@ class Edit extends \Magento\Backend\Block\Widget
         if (!$this->getRequest()->getParam('popup')) {
             $options[] = [
                 'id' => 'edit-button',
-                'label' => __('Save & Edit'),
+                'label' => __('Save dan Edit'),
                 'data_attribute' => [
                     'mage-init' => [
                         'button' => ['event' => 'saveAndContinueEdit', 'target' => '[data-form=edit-product]'],
@@ -341,7 +343,7 @@ class Edit extends \Magento\Backend\Block\Widget
 
         $options[] = [
             'id' => 'new-button',
-            'label' => __('Save & New'),
+            'label' => __('Save dan New'),
             'data_attribute' => [
                 'mage-init' => [
                     'button' => ['event' => 'saveAndNew', 'target' => '[data-form=edit-product]'],
@@ -351,7 +353,7 @@ class Edit extends \Magento\Backend\Block\Widget
         if (!$this->getRequest()->getParam('popup') && $this->getProduct()->isDuplicable()) {
             $options[] = [
                 'id' => 'duplicate-button',
-                'label' => __('Save & Duplicate'),
+                'label' => __('Save dan Duplicate'),
                 'data_attribute' => [
                     'mage-init' => [
                         'button' => ['event' => 'saveAndDuplicate', 'target' => '[data-form=edit-product]'],
@@ -361,7 +363,7 @@ class Edit extends \Magento\Backend\Block\Widget
         }
         $options[] = [
             'id' => 'close-button',
-            'label' => __('Save & Close'),
+            'label' => __('Save dan Close'),
             'data_attribute' => [
                 'mage-init' => ['button' => ['event' => 'save', 'target' => '[data-form=edit-product]']],
             ],

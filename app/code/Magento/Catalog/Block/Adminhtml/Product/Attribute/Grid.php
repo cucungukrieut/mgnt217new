@@ -55,6 +55,18 @@ class Grid extends AbstractGrid
     }
 
     /**
+     * Get path (Root directory)
+     * add by ahmd 11/04/2018
+     * @return \Magento\Framework\Filesystem\Directory\ReadInterface
+     */
+    protected function _percobaan(){
+        $testing = $this->getRootDirectory();
+
+        return $testing;
+    }
+
+
+    /**
      * Prepare product attributes grid columns
      *
      * @return $this

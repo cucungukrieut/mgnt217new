@@ -157,8 +157,23 @@ class Product extends \Magento\Backend\Block\Widget\Grid\Extended
                 'column_css_class' => 'col-id'
             ]
         );
-        $this->addColumn('name', ['header' => __('Name'), 'index' => 'name']);
-        $this->addColumn('sku', ['header' => __('SKU'), 'index' => 'sku']);
+
+        $this->addColumn(
+            'name',
+            [
+                'header' => __('Name'),
+                'index' => 'name'
+            ]
+        );
+
+        $this->addColumn(
+            'sku',
+            [
+                'header' => __('SKU'),
+                'index' => 'sku'
+            ]
+        );
+
         $this->addColumn(
             'price',
             [

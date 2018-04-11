@@ -102,7 +102,11 @@ class Main extends \Magento\Backend\Block\Template
         $this->addChild(
             'add_group_button',
             'Magento\Backend\Block\Widget\Button',
-            ['label' => __('Add New'), 'onclick' => 'editSet.addGroup();', 'class' => 'add']
+            [
+                'label' => __('Add New'),
+                'onclick' => 'editSet.addGroup();',
+                'class' => 'add'
+            ]
         );
 
         $this->getToolbar()->addChild(

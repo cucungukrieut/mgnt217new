@@ -47,8 +47,12 @@ class Main extends AbstractMain
 
         $frontendInputElm = $form->getElement('frontend_input');
         $additionalTypes = [
-            ['value' => 'price', 'label' => __('Price')],
-            ['value' => 'media_image', 'label' => __('Media Image')],
+            ['value' => 'price',
+                'label' => __('Price')
+            ],
+            ['value' => 'media_image',
+                'label' => __('Media Image')
+            ],
         ];
         $additionalReadOnlyTypes = ['gallery' => __('Gallery')];
         if (isset($additionalReadOnlyTypes[$attributeObject->getFrontendInput()])) {

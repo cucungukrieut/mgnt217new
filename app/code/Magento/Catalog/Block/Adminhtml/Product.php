@@ -6,6 +6,7 @@
 
 /**
  * Catalog manage products block
+ * First class when open catalog
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
@@ -41,8 +42,9 @@ class Product extends \Magento\Backend\Block\Widget\Container
         parent::__construct($context, $data);
     }
 
-    /**
+    /*********************************
      * Prepare button and grid
+     * *******************************
      * Untuk tombol tambah product di catalog
      *
      * @return \Magento\Catalog\Block\Adminhtml\Product
