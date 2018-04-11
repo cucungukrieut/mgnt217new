@@ -57,6 +57,8 @@ class Product extends \Magento\Backend\Block\Widget\Container
             'class_name' => 'Magento\Backend\Block\Widget\Button\SplitButton',
             'options' => $this->_getAddProductButtonOptions(),
         ];
+        //$listbutton = $this->_getAddProductButtonOptions();
+
         $this->buttonList->add('add_new', $addButtonProps);
 
         return parent::_prepareLayout();

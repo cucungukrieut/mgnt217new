@@ -50,6 +50,7 @@ class Grid extends AbstractGrid
         $collection = $this->_collectionFactory->create()->addVisibleFilter();
         $this->setCollection($collection);
 
+
         return parent::_prepareCollection();
     }
 

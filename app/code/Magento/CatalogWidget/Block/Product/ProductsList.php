@@ -315,6 +315,8 @@ class ProductsList extends \Magento\Catalog\Block\Product\AbstractProduct implem
                     ->setLimit($this->getProductsPerPage())
                     ->setTotalLimit($this->getProductsCount())
                     ->setCollection($this->getProductCollection());
+
+                //$productkoleksi = $this->getProductCollection();
             }
             if ($this->pager instanceof \Magento\Framework\View\Element\AbstractBlock) {
                 return $this->pager->toHtml();
