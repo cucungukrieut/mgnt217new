@@ -22,34 +22,28 @@ class ImportTesting extends AbstractEntity {
     /**
      * @var string
      */
-    const SKU = 'sku';
-
-    /**
-     * @var string
-     */
-    const NAME = 'name';
-
-    /**
-     * @var int
-     */
-    const ENTITY_ID = 'entity_id';
-
-    /**
-     * @var int
-     */
-    const STOCK = 'stock';
-
-    /**
-     * foreign key untuk aksesoris
-     * SKU (Kode)
-     * @var string
-     */
-    const SKU_AKSESORIS = 'aksesoris_sku';
-
-    const HARGA = 'harga';
     const CREATED = 'created';
     const UPDATED = 'updated';
+    const SKU = 'sku';
+    const NAME = 'name';
+    const ENTITY_ID = 'entity_id';
+    const STOCK = 'stock';
+    const SKU_AKSESORIS = 'aksesoris_sku';
+    const HARGA = 'harga';
+    const DESKRIPSI = 'deskripsi';
+    const KATEGORI = 'kategori';
+    const BERAT = 'berat';
+    const TYPE = 'type';
+    const IMG_URL = 'img_url';
+    const GRAMASI = 'gramasi';
+    const LEBAR = 'lebar';
+    const JENIS_KAIN = 'jenis_kain';
+    const KODE_KElOMPOK = 'kode_kelompok';
+    const KATEGORI_WARNA = 'kategori_warna';
 
+
+
+    // nanti dulu
     // Untuk catalog aksesoris
     const AKSESORIS_SKU = 'sku';
     const AKSESORIS_NAME = 'name';
@@ -93,15 +87,24 @@ class ImportTesting extends AbstractEntity {
      * @array
      */
     protected $validColumnNames = [
+        self::CREATED,
+        self::UPDATED,
         self::SKU,
         self::NAME,
         self::ENTITY_ID,
         self::STOCK,
         self::SKU_AKSESORIS,
         self::HARGA,
-        self::CREATED,
-        self::UPDATED,
-        self::AKSESORIS_BODYSKU,
+        self::DESKRIPSI,
+        self::KATEGORI,
+        self::BERAT ,
+        self::TYPE,
+        self::IMG_URL,
+        self::GRAMASI,
+        self::LEBAR,
+        self::JENIS_KAIN,
+        self::KODE_KElOMPOK,
+        self::KATEGORI_WARNA
     ];
 
     /**
@@ -286,14 +289,24 @@ class ImportTesting extends AbstractEntity {
                 $rowProducts = $rowData[self::SKU];
                 $listProducts[] = $rowProducts;
                 $bodyList[$rowProducts][] = [
+                    self::CREATED => $rowData[self::CREATED],
+                    self::UPDATED => $rowData[self::UPDATED],
                     self::SKU => $rowData[self::SKU],
                     self::NAME => $rowData[self::NAME],
                     self::ENTITY_ID => $rowData[self::ENTITY_ID],
                     self::STOCK => $rowData[self::STOCK],
                     self::SKU_AKSESORIS => $rowData[self::SKU_AKSESORIS],
                     self::HARGA => $rowData[self::HARGA],
-                    self::CREATED => $rowData[self::CREATED],
-                    self::UPDATED => $rowData[self::UPDATED]
+                    self::DESKRIPSI => $rowData[self::DESKRIPSI],
+                    self::KATEGORI => $rowData[self::KATEGORI],
+                    self::BERAT => $rowData[self::BERAT],
+                    self::TYPE => $rowData[self::TYPE],
+                    self::IMG_URL => $rowData[self::IMG_URL],
+                    self::GRAMASI => $rowData[self::GRAMASI],
+                    self::LEBAR => $rowData[self::LEBAR],
+                    self::JENIS_KAIN => $rowData[self::JENIS_KAIN],
+                    self::KODE_KElOMPOK => $rowData[self::KODE_KElOMPOK],
+                    self::KATEGORI_WARNA => $rowData[self::KATEGORI_WARNA]
                 ];
             }
 
@@ -334,20 +347,38 @@ class ImportTesting extends AbstractEntity {
 
             if ($bodyInsert) {
                 $this->_connection->insertOnDuplicate($tableName, $bodyInsert,[
+                    self::CREATED,
+                    self::UPDATED,
                     self::SKU,
                     self::NAME,
                     self::ENTITY_ID,
                     self::STOCK,
                     self::SKU_AKSESORIS,
                     self::HARGA,
-                    self::CREATED,
-                    self::UPDATED
+                    self::DESKRIPSI,
+                    self::KATEGORI,
+                    self::BERAT ,
+                    self::TYPE,
+                    self::IMG_URL,
+                    self::GRAMASI,
+                    self::LEBAR,
+                    self::JENIS_KAIN,
+                    self::KODE_KElOMPOK,
+                    self::KATEGORI_WARNA
                 ]);
             }
         }
         return $this;
     }
 
+
+    /**
+     * Temporary unavailable
+     *
+     * @param array $aksesorisList
+     * @param $table
+     * @return $this
+     */
     protected function saveAksesoris(array $aksesorisList, $table) {
         if ($aksesorisList) {
             $tableName = $this->_connection->getTableName($table);
@@ -402,7 +433,7 @@ class ImportTesting extends AbstractEntity {
 
 
     /**
-     * Delete products.
+     * Delete products. (Temporary unavailable)
      *
      * @return $this
      * @throws \Exception
