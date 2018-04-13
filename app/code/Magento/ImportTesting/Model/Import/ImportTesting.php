@@ -25,7 +25,7 @@ class ImportTesting extends AbstractEntity {
     const CREATED = 'created';
     const UPDATED = 'updated';
     const SKU = 'sku';
-    const NAME = 'name';
+    const NAME = 'nama';
     const ENTITY_ID = 'entity_id';
     const STOCK = 'stock';
     const SKU_AKSESORIS = 'aksesoris_sku';
@@ -38,8 +38,8 @@ class ImportTesting extends AbstractEntity {
     const GRAMASI = 'gramasi';
     const LEBAR = 'lebar';
     const JENIS_KAIN = 'jenis_kain';
-    const KODE_KElOMPOK = 'kode_kelompok';
     const KATEGORI_WARNA = 'kategori_warna';
+    const SERNO = 'serno';
 
 
 
@@ -103,8 +103,8 @@ class ImportTesting extends AbstractEntity {
         self::GRAMASI,
         self::LEBAR,
         self::JENIS_KAIN,
-        self::KODE_KElOMPOK,
-        self::KATEGORI_WARNA
+        self::KATEGORI_WARNA,
+        self::SERNO
     ];
 
     /**
@@ -255,7 +255,7 @@ class ImportTesting extends AbstractEntity {
             }
         }
         if ($listProducts) {
-            $this->deleteBody(array_unique($listProducts),self::TABLE_Entity);
+            $this->deleteBody(array_unique($listProducts),self::TABLE_BODY);
         }
         return $this;
     }
@@ -305,8 +305,8 @@ class ImportTesting extends AbstractEntity {
                     self::GRAMASI => $rowData[self::GRAMASI],
                     self::LEBAR => $rowData[self::LEBAR],
                     self::JENIS_KAIN => $rowData[self::JENIS_KAIN],
-                    self::KODE_KElOMPOK => $rowData[self::KODE_KElOMPOK],
-                    self::KATEGORI_WARNA => $rowData[self::KATEGORI_WARNA]
+                    self::KATEGORI_WARNA => $rowData[self::KATEGORI_WARNA],
+                    self::SERNO => $rowData[self::SERNO]
                 ];
             }
 
@@ -363,8 +363,8 @@ class ImportTesting extends AbstractEntity {
                     self::GRAMASI,
                     self::LEBAR,
                     self::JENIS_KAIN,
-                    self::KODE_KElOMPOK,
-                    self::KATEGORI_WARNA
+                    self::KATEGORI_WARNA,
+                    self::SERNO
                 ]);
             }
         }
