@@ -1,9 +1,14 @@
 <?php
 
-namespace Magento\CatalogML\Block\Adminhtml\Contact\Edit\Tab;
+namespace Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab;
 
 use Magento\CatalogML\Model\ContactFactory;
 
+
+/**
+ * Class Products
+ * @package Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab
+ */
 class Products extends \Magento\Backend\Block\Widget\Grid\Extended
 {
     /**
@@ -111,7 +116,7 @@ class Products extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareColumns()
     {
         /* @var $model \Magento\CatalogML\Model\Slide */
-        $model = $this->_objectManager->get('\Magento\CatalogML\Model\Contact');
+        $model = $this->_objectManager->get('\Magento\CatalogML\Model\ProdukML');
 
         $this->addColumn(
             'in_product',

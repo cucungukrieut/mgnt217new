@@ -1,10 +1,15 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
 use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 
+
+/**
+ * Class Delete
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class Delete extends \Magento\Backend\App\Action
 {
 
@@ -28,7 +33,7 @@ class Delete extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
             try {
-                $model = $this->_objectManager->create('Magento\CatalogML\Model\Contact');
+                $model = $this->_objectManager->create('Magento\CatalogML\Model\ProdukML');
                 $model->load($id);
                 $model->delete();
                 $this->messageManager->addSuccessMessage(__('Produk telah di hapus.'));
@@ -38,7 +43,7 @@ class Delete extends \Magento\Backend\App\Action
                 return $resultRedirect->setPath('*/*/edit', ['produk_id' => $id]);
             }
         }
-        $this->messageManager->addErrorMessage(__('Tidak bisa menemukan produk untuk dihapus.'));
+        $this->messageManager->addErrorMessage(__('Tidak ada produk untuk dihapus.'));
         return $resultRedirect->setPath('*/*/');
     }
 }

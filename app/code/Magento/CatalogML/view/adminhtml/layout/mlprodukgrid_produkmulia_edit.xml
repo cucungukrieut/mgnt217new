@@ -4,16 +4,17 @@
     <body>
 
         <referenceContainer name="content">
-            <block class="Magento\CatalogML\Block\Adminhtml\Contact\Edit" name="mlprodukgrid_contact_edit"/>
+            <block class="Magento\CatalogML\Block\Adminhtml\ProdukML\Edit" name="mlprodukgrid_produkml_edit"/>
         </referenceContainer>
 
+        <!-- Tab untuk form add, edit, delete produk -->
         <referenceContainer name="left">
-            <block class="Magento\CatalogML\Block\Adminhtml\Contact\Edit\Tabs" name="mlprodukgrid_contact_edit_tabs">
-                <block class="Magento\CatalogML\Block\Adminhtml\Contact\Edit\Tab\Main" name="mlprodukgrid_contact_edit_tab_main"/>
+            <block class="Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tabs" name="mlprodukgrid_produkml_edit_tabs">
+                <block class="Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab\Main" name="mlprodukgrid_produkml_edit_tab_main"/>
 
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
-                    <argument name="block" xsi:type="string">mlprodukgrid_contact_edit_tab_main</argument>
+                    <argument name="block" xsi:type="string">mlprodukgrid_produkml_edit_tab_main</argument>
                 </action>
 
                 <action method="addTab">

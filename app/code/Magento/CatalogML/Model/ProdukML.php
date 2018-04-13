@@ -4,7 +4,7 @@ namespace Magento\CatalogML\Model;
 
 use Magento\Framework\DataObject\IdentityInterface;
 
-class Contact extends \Magento\Framework\Model\AbstractModel implements IdentityInterface
+class ProdukML extends \Magento\Framework\Model\AbstractModel implements IdentityInterface
 {
 
     /**
@@ -31,7 +31,7 @@ class Contact extends \Magento\Framework\Model\AbstractModel implements Identity
      */
     protected function _construct()
     {
-        $this->_init('Magento\CatalogML\Model\ResourceModel\Contact');
+        $this->_init('Magento\CatalogML\Model\ResourceModel\ProdukML');
     }
 
     /**
@@ -44,16 +44,18 @@ class Contact extends \Magento\Framework\Model\AbstractModel implements Identity
         return [self::CACHE_TAG . '_' . $this->getId()];
     }
 
-    public function getProducts(\Magento\CatalogML\Model\Contact $object)
+
+    /**
+     * Get products from DB table
+     * @param ProdukML $object
+     * @return array
+     */
+    public function getProducts(\Magento\CatalogML\Model\ProdukML $object)
     {
-        $tbl = $this->getResource()->getTable(\Magento\CatalogML\Model\ResourceModel\Contact::TBL_ATT_PRODUCT);
-        $select = $this->getResource()->getConnection()->select()->from(
-            $tbl,
-            ['product_id']
-        )
-        ->where(
-            'produk_id = ?',
-            (int)$object->getId()
+        $tbl = $this->getResource()->getTable(\Magento\CatalogML\Model\ResourceModel\ProdukML::TBL_ATT_PRODUCT);
+        $select = $this->getResource()->getConnection()
+            ->select()->from($tbl, ['product_id'])
+            ->where('produk_id = ?', (int)$object->getId()
         );
         return $this->getResource()->getConnection()->fetchCol($select);
     }

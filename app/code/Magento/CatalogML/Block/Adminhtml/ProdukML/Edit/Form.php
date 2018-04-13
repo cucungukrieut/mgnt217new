@@ -1,10 +1,12 @@
 <?php
 
-namespace Magento\CatalogML\Block\Adminhtml\Contact\Edit;
+namespace Magento\CatalogML\Block\Adminhtml\ProdukML\Edit;
 
 /**
+ * Class Form
  * Adminhtml attachment edit form block
  *
+ * @package Magento\CatalogML\Block\Adminhtml\ProdukML\Edit
  */
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {

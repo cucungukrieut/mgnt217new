@@ -1,10 +1,15 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
+
+/**
+ * Class Index
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class Index extends \Magento\Backend\App\Action
 {
 
@@ -35,9 +40,8 @@ class Index extends \Magento\Backend\App\Action
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->addBreadcrumb(__('List Produk'),__('List Produk'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Produk'));
-        $resultPage->getConfig()->getTitle()
-            ->prepend(__('List Produk'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Produk ML'));
+        $resultPage->getConfig()->getTitle()->prepend(__('List Produk'));
 
         return $resultPage;
     }
@@ -49,6 +53,6 @@ class Index extends \Magento\Backend\App\Action
      */
     /*protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Magento_CatalogML::contacts');
+        return $this->_authorization->isAllowed('Magento_CatalogML::ProdukMulia');
     }*/
 }

@@ -1,9 +1,13 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
 use Magento\Backend\App\Action;
 
+/**
+ * Class Edit
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
@@ -38,7 +42,7 @@ class Edit extends \Magento\Backend\App\Action
      */
     /*protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Webspeaks_Contact::attachment_save');
+        return $this->_authorization->isAllowed('Magento_ProdukML::attachment_save');
     }*/
 
     /**
@@ -55,7 +59,7 @@ class Edit extends \Magento\Backend\App\Action
     }
 
     /**
-     * Edit Contacts
+     * Edit ProdukMulia
      *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -63,7 +67,7 @@ class Edit extends \Magento\Backend\App\Action
     public function execute()
     {
         $id = $this->getRequest()->getParam('produk_id');
-        $model = $this->_objectManager->create('Magento\CatalogML\Model\Contact');
+        $model = $this->_objectManager->create('Magento\CatalogML\Model\ProdukML');
 
         if ($id) {
             $model->load($id);
@@ -86,8 +90,8 @@ class Edit extends \Magento\Backend\App\Action
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
         $resultPage->addBreadcrumb(
-            $id ? __('Edit Contact') : __('Produk Baru'),
-            $id ? __('Edit Contact') : __('Produk Baru')
+            $id != null ? __('Edit Produk') : __('Produk Baru'),
+            $id != null ? __('Edit Produk') : __('Produk Baru')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Produk'));
         $resultPage->getConfig()->getTitle()

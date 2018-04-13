@@ -3,10 +3,14 @@
 namespace Magento\CatalogML\Block\Adminhtml;
 
 /**
- * Adminhtml contact content block
+ * Class ProdukML || Adminhtml ProdukML content block
+ * @package Magento\CatalogML\Block\Adminhtml
  */
-class Contact extends \Magento\Backend\Block\Widget\Grid\Container
+class ProdukML extends \Magento\Backend\Block\Widget\Grid\Container
 {
+
+    protected $data = [];
+
     /**
      * Block constructor
      *

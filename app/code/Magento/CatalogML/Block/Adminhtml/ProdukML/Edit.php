@@ -1,7 +1,12 @@
 <?php
 
-namespace Magento\CatalogML\Block\Adminhtml\Contact;
+namespace Magento\CatalogML\Block\Adminhtml\ProdukML;
 
+
+/**
+ * Class Edit
+ * @package Magento\CatalogML\Block\Adminhtml\ProdukML
+ */
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
     /**
@@ -33,7 +38,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     {
         $this->_objectId = 'produk_id';
         $this->_blockGroup = 'Magento_CatalogML';
-        $this->_controller = 'adminhtml_contact';
+        $this->_controller = 'adminhtml_produkml';
 
         parent::_construct();
 

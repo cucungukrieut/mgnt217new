@@ -1,6 +1,11 @@
 <?php
-namespace Magento\CatalogML\Model\ResourceModel\Contact;
+namespace Magento\CatalogML\Model\ResourceModel\ProdukML;
 
+
+/**
+ * Class Collection
+ * @package Magento\CatalogML\Model\ResourceModel\ProdukML
+ */
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
@@ -15,6 +20,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('Magento\CatalogML\Model\Contact', 'Magento\CatalogML\Model\ResourceModel\Contact');
+        $this->_init('Magento\CatalogML\Model\ProdukML', 'Magento\CatalogML\Model\ResourceModel\ProdukML');
     }
 }

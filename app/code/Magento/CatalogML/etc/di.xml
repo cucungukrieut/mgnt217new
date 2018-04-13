@@ -3,24 +3,24 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="contacts_grid_data_source" xsi:type="string">Magento\CatalogML\Model\ResourceModel\Contact\Grid\Collection</item>
+                <item name="produkmulia_grid_data_source" xsi:type="string">Magento\CatalogML\Model\ResourceModel\ProdukML\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\CatalogML\Model\ResourceModel\Contact\Grid\Collection">
+    <type name="Magento\CatalogML\Model\ResourceModel\ProdukML\Grid\Collection">
         <arguments>
             <!-- untuk nama table create ketika install module (setup:upgrade) -->
             <argument name="mainTable" xsi:type="string">catalog_body</argument>
             <argument name="eventPrefix" xsi:type="string">magento_contact_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">magento_contact_grid_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\CatalogML\Model\ResourceModel\Contact</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\CatalogML\Model\ResourceModel\ProdukML</argument>
         </arguments>
     </type>
 
     <virtualType name="ContactGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
-            <argument name="collection" xsi:type="object" shared="false">Magento\CatalogML\Model\ResourceModel\Contact\Collection</argument>
+            <argument name="collection" xsi:type="object" shared="false">Magento\CatalogML\Model\ResourceModel\ProdukML\Collection</argument>
             <argument name="filterPool" xsi:type="object" shared="false">ContactGrrdFilterPool</argument>
         </arguments>
     </virtualType>

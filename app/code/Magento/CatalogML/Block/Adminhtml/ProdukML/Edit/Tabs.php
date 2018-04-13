@@ -1,9 +1,10 @@
 <?php
 
-namespace Magento\CatalogML\Block\Adminhtml\Contact\Edit;
+namespace Magento\CatalogML\Block\Adminhtml\ProdukML\Edit;
 
 /**
- * Admin page left menu
+ * Class Tabs || Admin page left menu
+ * @package Magento\CatalogML\Block\Adminhtml\ProdukML\Edit
  */
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
 {

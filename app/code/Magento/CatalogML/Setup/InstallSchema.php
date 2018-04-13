@@ -6,6 +6,12 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\DB\Ddl\Table;
 
+
+/**
+ * Class InstallSchema
+ * For create table if not exist when install module or upgrade
+ * @package Magento\CatalogML\Setup
+ */
 class InstallSchema implements InstallSchemaInterface
 {
     /**

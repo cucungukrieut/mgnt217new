@@ -1,10 +1,15 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
 use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 
+
+/**
+ * Class ProductsGrid
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class ProductsGrid extends \Magento\Backend\App\Action
 {
 

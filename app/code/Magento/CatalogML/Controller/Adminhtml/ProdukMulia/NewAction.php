@@ -1,7 +1,12 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
+
+/**
+ * Class NewAction
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class NewAction extends \Magento\Backend\App\Action
 {
     /**

@@ -1,6 +1,11 @@
 <?php
 namespace Magento\CatalogML\Helper;
 
+
+/**
+ * Class Data
+ * @package Magento\CatalogML\Helper
+ */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
 
@@ -34,6 +39,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getProductsGridUrl()
     {
-        return $this->_backendUrl->getUrl('mlprodukgrid/contacts/products', ['_current' => true]);
+        return $this->_backendUrl->getUrl('mlprodukgrid/produkmulia/products', ['_current' => true]);
     }
 }

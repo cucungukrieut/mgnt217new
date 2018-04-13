@@ -5,7 +5,7 @@ namespace Magento\CatalogML\Model\ResourceModel;
 /**
  * ProductsGrid mysql resource
  */
-class Contact extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class ProdukML extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 
     const TBL_ATT_PRODUCT = 'catalog_body_attachment_rel';

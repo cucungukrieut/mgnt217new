@@ -1,6 +1,11 @@
 <?php
-namespace Magento\CatalogML\Block\Adminhtml\Contact\Edit\Tab;
+namespace Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab;
 
+
+/**
+ * Class Main
+ * @package Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab
+ */
 class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
@@ -32,13 +37,15 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
     /**
      * Prepare form
-     *
+     ***************************************************
+     * FORM UNTUK MENAMBAH, EDIT DAN DELETE DATA PRODUK
+     ***************************************************
      * @return $this
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     protected function _prepareForm()
     {
-        /* @var $model \Magento\CatalogML\Model\Contact */
+        /* @var $model \Magento\CatalogML\Model\ProdukML */
         $model = $this->_coreRegistry->registry('ml_produk');
 
         /** @var \Magento\Framework\Data\Form $form */
@@ -48,9 +55,28 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
         $fieldset = $form->addFieldset('base_fieldset', ['legend' => __('Informasi Produk')]);
 
+
+        // FIELD FORM ISIAN DATA PRODUK
         if ($model->getId()) {
-            $fieldset->addField('produk_id', 'hidden', ['nama' => 'produk_id']);
+            $fieldset->addField(
+                'produk_id',
+                'hidden',
+                [
+                    'nama' => 'produk_id'
+                ]
+            );
         }
+
+        $fieldset->addField(
+            'sku',
+            'text',
+            [
+                'name' => 'sku',
+                'label' => __('SKU'),
+                'title' => __('SKU'),
+                'required' => true,
+            ]
+        );
 
         $fieldset->addField(
             'nama',
@@ -96,7 +122,10 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $dataproduk = $model->getData();
+
         $form->setValues($model->getData());
+
         $this->setForm($form);
 
         return parent::_prepareForm();
@@ -109,7 +138,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabLabel()
     {
-        return __('Main');
+        return __('Produk ML');
     }
 
     /**
@@ -119,7 +148,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabTitle()
     {
-        return __('Main');
+        return __('Produk ML');
     }
 
     /**

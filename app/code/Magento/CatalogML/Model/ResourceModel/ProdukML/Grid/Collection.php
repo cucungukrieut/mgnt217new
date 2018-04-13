@@ -1,6 +1,6 @@
 <?php
 
-namespace Magento\CatalogML\Model\ResourceModel\Contact\Grid;
+namespace Magento\CatalogML\Model\ResourceModel\ProdukML\Grid;
 
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Search\AggregationInterface;
@@ -9,7 +9,7 @@ use Magento\Framework\Search\AggregationInterface;
  * Class Collection
  * Collection for displaying grid of sales documents
  */
-class Collection extends \Magento\CatalogML\Model\ResourceModel\Contact\Collection implements SearchResultInterface
+class Collection extends \Magento\CatalogML\Model\ResourceModel\ProdukML\Collection implements SearchResultInterface
 {
     /**
      * @var AggregationInterface

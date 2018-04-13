@@ -1,11 +1,16 @@
 <?php
 
-namespace Magento\CatalogML\Controller\Adminhtml\Contacts;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\TestFramework\ErrorLog\Logger;
 
+
+/**
+ * Class Save
+ * @package Magento\CatalogML\Controller\Adminhtml\ProdukMulia
+ */
 class Save extends \Magento\Backend\App\Action
 {
     /**
@@ -14,7 +19,7 @@ class Save extends \Magento\Backend\App\Action
     protected $_jsHelper;
 
     /**
-     * @var \Magento\CatalogML\Model\ResourceModel\Contact\CollectionFactory
+     * @var \Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory
      */
     protected $_contactCollectionFactory;
 
@@ -25,7 +30,7 @@ class Save extends \Magento\Backend\App\Action
     public function __construct(
         Context $context,
         \Magento\Backend\Helper\Js $jsHelper,
-        \Magento\CatalogML\Model\ResourceModel\Contact\CollectionFactory $contactCollectionFactory
+        \Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory $contactCollectionFactory
     ) {
         $this->_jsHelper = $jsHelper;
         $this->_contactCollectionFactory = $contactCollectionFactory;
@@ -48,21 +53,22 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-
+        $id = $this->getRequest()->getParam('produk_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
 
-            /** @var \Magento\CatalogML\Model\Contact $model */
-            $model = $this->_objectManager->create('Magento\CatalogML\Model\Contact');
+            /** @var \Magento\CatalogML\Model\ProdukML $model */
+            $model = $this->_objectManager->create('Magento\CatalogML\Model\ProdukML');
 
-            $id = $this->getRequest()->getParam('produk_id');
+
             if ($id) {
                 $model->load($id);
             }
 
             $model->setData($data);
 
+            //$model->setData($data);
             try {
                 $model->save();
                 $this->saveProducts($model, $data);
@@ -78,7 +84,7 @@ class Save extends \Magento\Backend\App\Action
             } catch (\RuntimeException $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Terjadi masalah ketika menyimpan produk.'));
+                $this->messageManager->addExceptionMessage($e,__('Terjadi masalah ketika menyimpan produk. ') . $e->getMessage());
             }
 
             $this->_getSession()->setFormData($data);
@@ -99,7 +105,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->_resources = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
                 $connection = $this->_resources->getConnection();
 
-                $table = $this->_resources->getTableName(\Magento\CatalogML\Model\ResourceModel\Contact::TBL_ATT_PRODUCT);
+                $table = $this->_resources->getTableName(\Magento\CatalogML\Model\ResourceModel\ProdukML::TBL_ATT_PRODUCT);
                 $insert = array_diff($newProducts, $oldProducts);
                 $delete = array_diff($oldProducts, $newProducts);
 
@@ -115,8 +121,10 @@ class Save extends \Magento\Backend\App\Action
                     }
                     $connection->insertMultiple($table, $data);
                 }
+
+                $data = $data;
             } catch (Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Terjadi masalah ketika menyimpan produk.'));
+                $this->messageManager->addExceptionMessage($e, __('Terjadi masalah ketika menyimpan produk. ') . $e->getMessage());
             }
         }
 
