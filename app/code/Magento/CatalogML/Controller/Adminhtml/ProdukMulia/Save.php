@@ -21,7 +21,7 @@ class Save extends \Magento\Backend\App\Action
     /**
      * @var \Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory
      */
-    protected $_contactCollectionFactory;
+    protected $_cllectionFactory;
 
     /**
      * \Magento\Backend\Helper\Js $jsHelper
@@ -30,10 +30,10 @@ class Save extends \Magento\Backend\App\Action
     public function __construct(
         Context $context,
         \Magento\Backend\Helper\Js $jsHelper,
-        \Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory $contactCollectionFactory
+        \Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory $collectionFactory
     ) {
         $this->_jsHelper = $jsHelper;
-        $this->_contactCollectionFactory = $contactCollectionFactory;
+        $this->_collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
 
@@ -53,7 +53,7 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-        $id = $this->getRequest()->getParam('produk_id');
+        $id = (int)$this->getRequest()->getParam('produk_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {

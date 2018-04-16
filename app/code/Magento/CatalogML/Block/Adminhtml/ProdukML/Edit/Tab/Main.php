@@ -122,6 +122,32 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField(
+            'created',
+            'date',
+            [
+                'name' => 'created',
+                'label' => __('Created'),
+                'title' => __('Created'),
+                'required' => true,
+                'date_format' => 'yyyy-MM-dd',
+                'time_format' => 'hh:mm:ss'
+            ]
+        );
+
+        $fieldset->addField(
+            'updated',
+            'date',
+            [
+                'name' => 'updated',
+                'label' => __('Updated'),
+                'title' => __('Updated'),
+                'required' => true,
+                'date_format' => 'yyyy-MM-dd',
+                'time_format' => 'hh:mm:ss'
+            ]
+        );
+
         $dataproduk = $model->getData();
 
         $form->setValues($model->getData());

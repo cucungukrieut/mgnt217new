@@ -44,6 +44,7 @@ class ContactsActions extends Column
 
     /**
      * Prepare Data Source
+     * Tambahan action untuk table row (column action)
      *
      * @param array $dataSource
      * @return array
