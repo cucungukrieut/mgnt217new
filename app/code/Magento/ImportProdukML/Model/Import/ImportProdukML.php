@@ -29,13 +29,13 @@ class ImportProdukML extends AbstractEntity {
     const PRODUK_isactive = 'isactive';
     const PRODUK_qty_bruto = 'qty_bruto';
     const PRODUK_qty_netto = 'qty_netto';
+    const PRODUK_kategori = 'kategori';
     const PRODUK_harga = 'harga';
-    const PRODUK_gramasi = 'gramasi';
     const PRODUK_lebar = 'lebar';
+    const PRODUK_gramasi = 'gramasi';
     const PRODUK_lot = 'lot';
-    const PRODUK_kode_warna = 'kode_warna';
     const PRODUK_img_url = 'img_url';
-    const PRODUK_koderol = 'koderol';
+    const PRODUK_kode_warna = 'kategori_warna';
 
 
     /**
@@ -77,13 +77,13 @@ class ImportProdukML extends AbstractEntity {
         self::PRODUK_isactive,
         self::PRODUK_qty_bruto,
         self::PRODUK_qty_netto,
+        self::PRODUK_kategori,
         self::PRODUK_harga,
-        self::PRODUK_gramasi,
         self::PRODUK_lebar,
+        self::PRODUK_gramasi,
         self::PRODUK_lot,
-        self::PRODUK_kode_warna,
         self::PRODUK_img_url,
-        self::PRODUK_koderol
+        self::PRODUK_kode_warna
     ];
 
     /**
@@ -276,13 +276,13 @@ class ImportProdukML extends AbstractEntity {
                     self::PRODUK_isactive => $rowData[self::PRODUK_isactive],
                     self::PRODUK_qty_bruto => $rowData[self::PRODUK_qty_bruto],
                     self::PRODUK_qty_netto => $rowData[self::PRODUK_qty_netto],
+                    self::PRODUK_kategori => $rowData[self::PRODUK_kategori],
                     self::PRODUK_harga => $rowData[self::PRODUK_harga],
-                    self::PRODUK_gramasi => $rowData[self::PRODUK_gramasi],
                     self::PRODUK_lebar => $rowData[self::PRODUK_lebar],
+                    self::PRODUK_gramasi => $rowData[self::PRODUK_gramasi],
                     self::PRODUK_lot => $rowData[self::PRODUK_lot],
-                    self::PRODUK_kode_warna => $rowData[self::PRODUK_kode_warna],
                     self::PRODUK_img_url => $rowData[self::PRODUK_img_url],
-                    self::PRODUK_koderol => $rowData[self::PRODUK_koderol]
+                    self::PRODUK_kode_warna => $rowData[self::PRODUK_kode_warna]
                 ];
             }
 
@@ -330,13 +330,13 @@ class ImportProdukML extends AbstractEntity {
                     self::PRODUK_isactive,
                     self::PRODUK_qty_bruto,
                     self::PRODUK_qty_netto,
+                    self::PRODUK_kategori,
                     self::PRODUK_harga,
-                    self::PRODUK_gramasi,
                     self::PRODUK_lebar,
+                    self::PRODUK_gramasi,
                     self::PRODUK_lot,
-                    self::PRODUK_kode_warna,
                     self::PRODUK_img_url,
-                    self::PRODUK_koderol
+                    self::PRODUK_kode_warna
                 ]);
             }
         }

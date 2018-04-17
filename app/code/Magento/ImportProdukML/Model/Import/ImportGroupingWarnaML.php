@@ -24,7 +24,7 @@ class ImportGroupingWarnaML extends AbstractEntity {
      */
     const GROUPINGWARNA_created = 'created';
     const GROUPINGWARNA_updated = 'updated';
-    const GROUPINGWARNA_kode = 'grouping_kode';
+    const GROUPINGWARNA_kode = 'kode_resep';
     const GROUPINGWARNA_custom_kode = 'custom_kode';
     const GROUPINGWARNA_nama = 'nama';
     const GROUPINGWARNA_isactive = 'isactive';
@@ -35,7 +35,7 @@ class ImportGroupingWarnaML extends AbstractEntity {
      *
      * @var string
      */
-    const TABLE_GROUPING_PRODUK = 'catalogml_grouping_warna';
+    const TABLE_GROUPING_WARNA = 'catalogml_grouping_warna';
 
     /**
      * Validation failure message template definitions
@@ -219,7 +219,7 @@ class ImportGroupingWarnaML extends AbstractEntity {
             }
         }
         if ($listProducts) {
-            $this->deleteBody(array_unique($listProducts),self::TABLE_GROUPING_PRODUK);
+            $this->deleteBody(array_unique($listProducts),self::TABLE_GROUPING_WARNA);
         }
         return $this;
     }
@@ -266,12 +266,12 @@ class ImportGroupingWarnaML extends AbstractEntity {
             {
                 if ($listProducts)
                 {
-                    if ($this->deleteBody(array_unique($listProducts), self::TABLE_GROUPING_PRODUK)) {
-                        $this->saveBody($bodyList, self::TABLE_GROUPING_PRODUK);
+                    if ($this->deleteBody(array_unique($listProducts), self::TABLE_GROUPING_WARNA)) {
+                        $this->saveBody($bodyList, self::TABLE_GROUPING_WARNA);
                     }
                 }
             } elseif (Import::BEHAVIOR_APPEND == $behavior) {
-                $this->saveBody($bodyList, self::TABLE_GROUPING_PRODUK);
+                $this->saveBody($bodyList, self::TABLE_GROUPING_WARNA);
             }
         }
         return $this;
