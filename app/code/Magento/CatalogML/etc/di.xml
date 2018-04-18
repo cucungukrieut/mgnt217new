@@ -11,7 +11,7 @@
     <type name="Magento\CatalogML\Model\ResourceModel\ProdukML\Grid\Collection">
         <arguments>
             <!-- untuk nama table create ketika install module (setup:upgrade) -->
-            <argument name="mainTable" xsi:type="string">catalog_body</argument>
+            <argument name="mainTable" xsi:type="string">catalogml_grouping_produk</argument>
             <argument name="eventPrefix" xsi:type="string">magento_contact_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">magento_contact_grid_collection</argument>
             <argument name="resourceModel" xsi:type="string">Magento\CatalogML\Model\ResourceModel\ProdukML</argument>

@@ -53,7 +53,7 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-        $id = (int)$this->getRequest()->getParam('produk_id');
+        $id = (int)$this->getRequest()->getParam('grouping_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
@@ -76,7 +76,7 @@ class Save extends \Magento\Backend\App\Action
                 $this->messageManager->addSuccessMessage(__('Anda telah menyimpan produk ini'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
-                    return $resultRedirect->setPath('*/*/edit', ['produk_id' => $model->getId(), '_current' => true]);
+                    return $resultRedirect->setPath('*/*/edit', ['grouping_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
@@ -88,7 +88,7 @@ class Save extends \Magento\Backend\App\Action
             }
 
             $this->_getSession()->setFormData($data);
-            return $resultRedirect->setPath('*/*/edit', ['produk_id' => $this->getRequest()->getParam('produk_id')]);
+            return $resultRedirect->setPath('*/*/edit', ['grouping_id' => $this->getRequest()->getParam('grouping_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }
@@ -110,14 +110,14 @@ class Save extends \Magento\Backend\App\Action
                 $delete = array_diff($oldProducts, $newProducts);
 
                 if ($delete) {
-                    $where = ['produk_id = ?' => (int)$model->getId(), 'product_id IN (?)' => $delete];
+                    $where = ['grouping_id = ?' => (int)$model->getId(), 'product_id IN (?)' => $delete];
                     $connection->delete($table, $where);
                 }
 
                 if ($insert) {
                     $data = [];
                     foreach ($insert as $product_id) {
-                        $data[] = ['produk_id' => (int)$model->getId(), 'product_id' => (int)$product_id];
+                        $data[] = ['grouping_id' => (int)$model->getId(), 'product_id' => (int)$product_id];
                     }
                     $connection->insertMultiple($table, $data);
                 }

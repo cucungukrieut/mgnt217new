@@ -36,7 +36,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     protected function _construct()
     {
-        $this->_objectId = 'produk_id';
+        $this->_objectId = 'grouping_id';
         $this->_blockGroup = 'Magento_CatalogML';
         $this->_controller = 'adminhtml_produkml';
 

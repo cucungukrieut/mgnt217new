@@ -31,7 +31,7 @@
             <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
             <argument name="name" xsi:type="string">produkmulia_grid_data_source</argument>
             <!-- the same data source name as above -->
-            <argument name="primaryFieldName" xsi:type="string">produk_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">grouping_id</argument>
             <!-- our model's primary key -->
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <!-- the field used in ajax url's of grid. just define this as id -->
@@ -114,7 +114,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns.ids</item>
-                    <item name="indexField" xsi:type="string">produk_id</item>
+                    <item name="indexField" xsi:type="string">grouping_id</item>
                 </item>
             </argument>
 
@@ -145,22 +145,23 @@
                 </item>
             </argument>
         </paging>
-
     </container>
 
+
+    <!-- Start Column Grid -->
     <columns name="produkmulia_grid_columns">
        <!-- this is columns section name, used above in spinner -->
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">produk_id</item>
+                    <item name="indexField" xsi:type="string">grouping_id</item>
                 </item>
             </argument>
         </selectionsColumn>
 
         <!-- this is for the first column which allows to select multiple columns -->
         <!-- below are different column types based on our models -->
-        <column name="produk_id">
+        <column name="grouping_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
@@ -170,62 +171,12 @@
             </argument>
         </column>
 
-        <column name="sku">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="sorting" xsi:type="string">desc</item>
-                    <item name="label" xsi:type="string" translate="true">SKU</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="nama">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Nama</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="stock">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">number</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Stok</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="harga">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Harga</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="deskripsi">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="label" xsi:type="string" translate="true">Deskripsi</item>
-                </item>
-            </argument>
-        </column>
-
-        <!--column name="creation_time" class="Magento\Ui\Component\Listing\Columns\Date"-->
+        <!--column name="creation_time" class="Magento\Ui\Component\Listing\Columns\Date"--> <!--use for current date -->
         <column name="created">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">dateRange</item>
-                    <!--item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item-->
+                    <!--item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item--> <!-- get current date -->
                     <item name="dataType" xsi:type="string">date</item>
                     <item name="label" xsi:type="string" translate="true">Created</item>
                 </item>
@@ -244,12 +195,64 @@
             </argument>
         </column>
 
-        <actionsColumn name="actions" class="Magento\CatalogML\Ui\Component\Listing\Column\ContactsActions">
+        <column name="sku">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">desc</item>
+                    <item name="label" xsi:type="string" translate="true">Grouping Kode</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="nama">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Custom Kode</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="stock">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">number</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Nama</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="harga">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Active</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="deskripsi">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Deskripsi</item>
+                </item>
+            </argument>
+        </column>
+        <!-- End Column Grid -->
+
+        <!-- For Action Column -->
+        <actionsColumn name="actions" class="Magento\CatalogML\Ui\Component\Listing\Column\ProdukActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">107</item>
-                    <item name="indexField" xsi:type="string">produk_id</item>
+                    <item name="indexField" xsi:type="string">grouping_id</item>
                 </item>
             </argument>
         </actionsColumn>

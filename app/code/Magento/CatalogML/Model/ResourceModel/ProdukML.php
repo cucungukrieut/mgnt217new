@@ -8,7 +8,7 @@ namespace Magento\CatalogML\Model\ResourceModel;
 class ProdukML extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 
-    const TBL_ATT_PRODUCT = 'catalog_body_attachment_rel';
+    const TBL_ATT_PRODUCT = 'catalogml_grouping_produk_attachment_rel';
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -38,7 +38,7 @@ class ProdukML extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('catalog_body', 'produk_id');
+        $this->_init('catalogml_grouping_produk', 'grouping_id');
     }
 
     /**

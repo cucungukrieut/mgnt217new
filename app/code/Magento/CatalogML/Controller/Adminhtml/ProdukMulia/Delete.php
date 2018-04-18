@@ -28,7 +28,7 @@ class Delete extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('produk_id');
+        $id = $this->getRequest()->getParam('grouping_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {
@@ -40,7 +40,7 @@ class Delete extends \Magento\Backend\App\Action
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage($e->getMessage());
-                return $resultRedirect->setPath('*/*/edit', ['produk_id' => $id]);
+                return $resultRedirect->setPath('*/*/edit', ['grouping_id' => $id]);
             }
         }
         $this->messageManager->addErrorMessage(__('Tidak ada produk untuk dihapus.'));

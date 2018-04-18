@@ -66,7 +66,7 @@ class Edit extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('produk_id');
+        $id = $this->getRequest()->getParam('grouping_id');
         $model = $this->_objectManager->create('Magento\CatalogML\Model\ProdukML');
 
         if ($id) {

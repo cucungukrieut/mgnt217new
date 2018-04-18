@@ -67,7 +67,7 @@ class Products extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
         $this->setUseAjax(true);
-        if ($this->getRequest()->getParam('produk_id')) {
+        if ($this->getRequest()->getParam('grouping_id')) {
             $this->setDefaultFilter(array('in_product' => 1));
         }
     }
@@ -212,7 +212,7 @@ class Products extends \Magento\Backend\Block\Widget\Grid\Extended
 
     protected function getContact()
     {
-        $contactId = $this->getRequest()->getParam('produk_id');
+        $contactId = $this->getRequest()->getParam('grouping_id');
         $contact   = $this->contactFactory->create();
         if ($contactId) {
             $contact->load($contactId);

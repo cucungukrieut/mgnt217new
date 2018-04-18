@@ -1,7 +1,7 @@
 <?php
-namespace Magento\ImportGroupingProdukML\Model\Import;
+namespace Magento\ImportProdukML\Model\Import;
 
-use Magento\ImportGroupingProdukML\Model\Import\ImportGroupingProdukML\RowValidatorInterface as ValidatorInterface;
+use Magento\ImportProdukML\Model\Import\ImportProdukML\RowValidatorInterface as ValidatorInterface;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Framework\App\ResourceConnection;
 use \Magento\Framework\Json\Helper\Data;
@@ -12,7 +12,7 @@ use \Magento\ImportExport\Model\Import;
 use \Magento\ImportExport\Model\Import\Entity\AbstractEntity;
 use \Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 
-class ImportGroupingProdukML extends AbstractEntity {
+class ImportGroupingWarnaML extends AbstractEntity {
 
     /**
      * @var TransactionManagerInterface
@@ -22,12 +22,12 @@ class ImportGroupingProdukML extends AbstractEntity {
     /**
      * Master Produk
      */
-    const GROUPINGPRODUK_created = 'created';
-    const GROUPINGPRODUK_updated = 'updated';
-    const GROUPINGPRODUK_kode = 'grouping_kode';
-    const GROUPINGPRODUK_custom_kode = 'custom_kode';
-    const GROUPINGPRODUK_nama = 'nama';
-    const GROUPINGPRODUK_isactive = 'isactive';
+    const GROUPINGWARNA_created = 'created';
+    const GROUPINGWARNA_updated = 'updated';
+    const GROUPINGWARNA_kode = 'kode_resep';
+    const GROUPINGWARNA_custom_kode = 'custom_kode';
+    const GROUPINGWARNA_nama = 'nama';
+    const GROUPINGWARNA_isactive = 'isactive';
 
 
     /**
@@ -35,7 +35,7 @@ class ImportGroupingProdukML extends AbstractEntity {
      *
      * @var string
      */
-    const TABLE_GROUPING_PRODUK = 'catalogml_grouping_produk';
+    const TABLE_GROUPING_WARNA = 'catalogml_grouping_warna';
 
     /**
      * Validation failure message template definitions
@@ -46,7 +46,7 @@ class ImportGroupingProdukML extends AbstractEntity {
         ValidatorInterface::ERROR_KODE_IS_EMPTY => 'KODE kosong',
     ];
 
-     protected $_permanentAttributes = [self::GROUPINGPRODUK_kode];
+     protected $_permanentAttributes = [self::GROUPINGWARNA_kode];
 
     /**
      * If we should check column names
@@ -62,12 +62,12 @@ class ImportGroupingProdukML extends AbstractEntity {
      * @array
      */
     protected $validColumnNames = [
-        self::GROUPINGPRODUK_created,
-        self::GROUPINGPRODUK_updated,
-        self::GROUPINGPRODUK_kode,
-        self::GROUPINGPRODUK_custom_kode,
-        self::GROUPINGPRODUK_nama,
-        self::GROUPINGPRODUK_isactive
+        self::GROUPINGWARNA_created,
+        self::GROUPINGWARNA_updated,
+        self::GROUPINGWARNA_kode,
+        self::GROUPINGWARNA_custom_kode,
+        self::GROUPINGWARNA_nama,
+        self::GROUPINGWARNA_isactive
     ];
 
     /**
@@ -86,7 +86,7 @@ class ImportGroupingProdukML extends AbstractEntity {
 
 
     /**
-     * ImportGroupingProdukML constructor.
+     * ImportGroupingWarnaML constructor.
      *
      * @param Data $jsonHelper
      * @param \Magento\ImportExport\Helper\Data $importExportData
@@ -132,7 +132,7 @@ class ImportGroupingProdukML extends AbstractEntity {
      * @return string
      */
     public function getEntityTypeCode() {
-        return 'import_grouping_produkml';
+        return 'import_grouping_warna';
     }
 
 
@@ -149,7 +149,7 @@ class ImportGroupingProdukML extends AbstractEntity {
         }
 
         $this->_validatedRows[$rowNum] = true;
-        if (!isset($rowData[self::GROUPINGPRODUK_kode]) || empty($rowData[self::GROUPINGPRODUK_kode])) {
+        if (!isset($rowData[self::GROUPINGWARNA_kode]) || empty($rowData[self::GROUPINGWARNA_kode])) {
             $this->addRowError(ValidatorInterface::ERROR_KODE_IS_EMPTY, $rowNum);
             return false;
         }
@@ -210,7 +210,7 @@ class ImportGroupingProdukML extends AbstractEntity {
             foreach ($bunch as $rowNum => $rowData) {
                 $this->validateRow($rowData, $rowNum);
                 if (!$this->getErrorAggregator()->isRowInvalid($rowNum)) {
-                    $rowProducts = $rowData[self::GROUPINGPRODUK_kode];
+                    $rowProducts = $rowData[self::GROUPINGWARNA_kode];
                     $listProducts[] = $rowProducts;
                 }
                 if ($this->getErrorAggregator()->hasToBeTerminated()) {
@@ -219,7 +219,7 @@ class ImportGroupingProdukML extends AbstractEntity {
             }
         }
         if ($listProducts) {
-            $this->deleteBody(array_unique($listProducts),self::TABLE_GROUPING_PRODUK);
+            $this->deleteBody(array_unique($listProducts),self::TABLE_GROUPING_WARNA);
         }
         return $this;
     }
@@ -250,15 +250,15 @@ class ImportGroupingProdukML extends AbstractEntity {
                     continue;
                 }
 
-                $rowProducts = $rowData[self::GROUPINGPRODUK_kode];
+                $rowProducts = $rowData[self::GROUPINGWARNA_kode];
                 $listProducts[] = $rowProducts;
                 $bodyList[$rowProducts][] = [
-                    self::GROUPINGPRODUK_created => $rowData[self::GROUPINGPRODUK_created],
-                    self::GROUPINGPRODUK_updated => $rowData[self::GROUPINGPRODUK_updated],
-                    self::GROUPINGPRODUK_custom_kode => $rowData[self::GROUPINGPRODUK_custom_kode],
-                    self::GROUPINGPRODUK_kode => $rowData[self::GROUPINGPRODUK_kode],
-                    self::GROUPINGPRODUK_nama => $rowData[self::GROUPINGPRODUK_nama],
-                    self::GROUPINGPRODUK_isactive => $rowData[self::GROUPINGPRODUK_isactive]
+                    self::GROUPINGWARNA_created => $rowData[self::GROUPINGWARNA_created],
+                    self::GROUPINGWARNA_updated => $rowData[self::GROUPINGWARNA_updated],
+                    self::GROUPINGWARNA_custom_kode => $rowData[self::GROUPINGWARNA_custom_kode],
+                    self::GROUPINGWARNA_kode => $rowData[self::GROUPINGWARNA_kode],
+                    self::GROUPINGWARNA_nama => $rowData[self::GROUPINGWARNA_nama],
+                    self::GROUPINGWARNA_isactive => $rowData[self::GROUPINGWARNA_isactive]
                 ];
             }
 
@@ -266,12 +266,12 @@ class ImportGroupingProdukML extends AbstractEntity {
             {
                 if ($listProducts)
                 {
-                    if ($this->deleteBody(array_unique($listProducts), self::TABLE_GROUPING_PRODUK)) {
-                        $this->saveBody($bodyList, self::TABLE_GROUPING_PRODUK);
+                    if ($this->deleteBody(array_unique($listProducts), self::TABLE_GROUPING_WARNA)) {
+                        $this->saveBody($bodyList, self::TABLE_GROUPING_WARNA);
                     }
                 }
             } elseif (Import::BEHAVIOR_APPEND == $behavior) {
-                $this->saveBody($bodyList, self::TABLE_GROUPING_PRODUK);
+                $this->saveBody($bodyList, self::TABLE_GROUPING_WARNA);
             }
         }
         return $this;
@@ -299,12 +299,12 @@ class ImportGroupingProdukML extends AbstractEntity {
 
             if ($bodyInsert) {
                 $this->_connection->insertOnDuplicate($tableName, $bodyInsert,[
-                    self::GROUPINGPRODUK_created,
-                    self::GROUPINGPRODUK_updated,
-                    self::GROUPINGPRODUK_kode,
-                    self::GROUPINGPRODUK_custom_kode,
-                    self::GROUPINGPRODUK_nama,
-                    self::GROUPINGPRODUK_isactive
+                    self::GROUPINGWARNA_created,
+                    self::GROUPINGWARNA_updated,
+                    self::GROUPINGWARNA_kode,
+                    self::GROUPINGWARNA_custom_kode,
+                    self::GROUPINGWARNA_nama,
+                    self::GROUPINGWARNA_isactive
                 ]);
             }
         }

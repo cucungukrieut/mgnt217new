@@ -1,7 +1,7 @@
 <?php
-namespace Magento\ImportWarnaML\Model\Import;
+namespace Magento\ImportProdukML\Model\Import;
 
-use Magento\ImportWarnaML\Model\Import\ImportWarnaML\RowValidatorInterface as ValidatorInterface;
+use Magento\ImportProdukML\Model\Import\ImportProdukML\RowValidatorInterface as ValidatorInterface;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Framework\App\ResourceConnection;
 use \Magento\Framework\Json\Helper\Data;

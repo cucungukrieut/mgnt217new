@@ -7,7 +7,7 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
-class ContactsActions extends Column
+class ProdukActions extends Column
 {
     /** Url path */
     const PRODUK_URL_PATH_EDIT = 'mlprodukgrid/produkmulia/edit';
@@ -54,13 +54,13 @@ class ContactsActions extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
                 $name = $this->getData('name');
-                if (isset($item['produk_id'])) {
+                if (isset($item['grouping_id'])) {
                     $item[$name]['edit'] = [
-                        'href' => $this->urlBuilder->getUrl($this->editUrl, ['produk_id' => $item['produk_id']]),
+                        'href' => $this->urlBuilder->getUrl($this->editUrl, ['grouping_id' => $item['grouping_id']]),
                         'label' => __('Edit')
                     ];
                     $item[$name]['delete'] = [
-                        'href' => $this->urlBuilder->getUrl(self::PRODUK_URL_PATH_DELETE, ['produk_id' => $item['produk_id']]),
+                        'href' => $this->urlBuilder->getUrl(self::PRODUK_URL_PATH_DELETE, ['grouping_id' => $item['grouping_id']]),
                         'label' => __('Hapus'),
                         'confirm' => [
                             'title' => __('Hapus "${ $.$data.attachment_name }"'),

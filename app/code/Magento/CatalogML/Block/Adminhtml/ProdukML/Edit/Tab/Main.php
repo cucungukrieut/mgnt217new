@@ -59,68 +59,13 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         // FIELD FORM ISIAN DATA PRODUK
         if ($model->getId()) {
             $fieldset->addField(
-                'produk_id',
+                'grouping_id',
                 'hidden',
                 [
-                    'nama' => 'produk_id'
+                    'nama' => 'grouping_id'
                 ]
             );
         }
-
-        $fieldset->addField(
-            'sku',
-            'text',
-            [
-                'name' => 'sku',
-                'label' => __('SKU'),
-                'title' => __('SKU'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'nama',
-            'text',
-            [
-                'name' => 'nama',
-                'label' => __('Nama'),
-                'title' => __('Nama'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'stock',
-            'text',
-            [
-                'name' => 'stock',
-                'label' => __('Stok'),
-                'title' => __('Stok'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'harga',
-            'text',
-            [
-                'name' => 'harga',
-                'label' => __('Harga'),
-                'title' => __('Harga'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'deskripsi',
-            'textarea',
-            [
-                'name' => 'deskripsi',
-                'label' => __('Deskripsi'),
-                'title' => __('Deskripsi'),
-                'required' => true,
-            ]
-        );
 
         $fieldset->addField(
             'created',
@@ -148,7 +93,52 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        $dataproduk = $model->getData();
+        $fieldset->addField(
+            'custom_kode',
+            'text',
+            [
+                'name' => 'custom_kode',
+                'label' => __('Custom Kode'),
+                'title' => __('Custom Kode'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'nama',
+            'text',
+            [
+                'name' => 'nama',
+                'label' => __('Nama'),
+                'title' => __('Nama'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'active',
+            'checkbox',
+            [
+                'name' => 'isactive',
+                'label' => __('Active'),
+                'title' => __('Active'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'deskripsi',
+            'textarea',
+            [
+                'name' => 'deskripsi',
+                'label' => __('Deskripsi'),
+                'title' => __('Deskripsi'),
+                'required' => true,
+            ]
+        );
+
+
+        //$dataproduk = $model->getData();
 
         $form->setValues($model->getData());
 

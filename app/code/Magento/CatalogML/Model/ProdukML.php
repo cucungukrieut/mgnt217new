@@ -55,7 +55,7 @@ class ProdukML extends \Magento\Framework\Model\AbstractModel implements Identit
         $tbl = $this->getResource()->getTable(\Magento\CatalogML\Model\ResourceModel\ProdukML::TBL_ATT_PRODUCT);
         $select = $this->getResource()->getConnection()
             ->select()->from($tbl, ['product_id'])
-            ->where('produk_id = ?', (int)$object->getId()
+            ->where('grouping_id = ?', (int)$object->getId()
         );
         return $this->getResource()->getConnection()->fetchCol($select);
     }

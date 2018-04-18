@@ -375,7 +375,7 @@ class ImportProdukML extends AbstractEntity {
      *
      * @return $this
      * @throws \Exception
-     */
+     *
     protected function _deleteProducts()
     {
         $productEntityTable = $this->_resourceFactory->create()->getEntityTable();
@@ -416,5 +416,5 @@ class ImportProdukML extends AbstractEntity {
             }
         }
         return $this;
-    }
+    }*/
 }
