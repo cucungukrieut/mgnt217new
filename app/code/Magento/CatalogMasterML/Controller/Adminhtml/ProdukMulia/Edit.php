@@ -90,8 +90,8 @@ class Edit extends \Magento\Backend\App\Action
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
         $resultPage->addBreadcrumb(
-            $id ? __('Edit Produk') : __('Produk Baru'),
-            $id ? __('Edit Produk') : __('Produk Baru')
+            $id != null ? __('Edit Produk') : __('Produk Baru'),
+            $id != null ? __('Edit Produk') : __('Produk Baru')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Produk'));
         $resultPage->getConfig()->getTitle()

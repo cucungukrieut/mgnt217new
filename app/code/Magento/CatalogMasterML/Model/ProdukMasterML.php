@@ -49,7 +49,7 @@ class ProdukMasterML extends \Magento\Framework\Model\AbstractModel implements I
      * Get products from DB table
      * @param ProdukMasterML $object
      * @return array
-
+     */
     public function getProducts(\Magento\CatalogMasterML\Model\ProdukMasterML $object)
     {
         $tbl = $this->getResource()->getTable(\Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML::TBL_ATT_PRODUCT);
@@ -60,5 +60,5 @@ class ProdukMasterML extends \Magento\Framework\Model\AbstractModel implements I
 
         //$arrayproduk = $this->getResource()->getConnection()->fetchCol($select);
         return $this->getResource()->getConnection()->fetchCol($select);
-    }*/
+    }
 }

@@ -39,19 +39,53 @@ class InstallSchema implements InstallSchemaInterface
                 )
                 ->addColumn('created', Table::TYPE_DATETIME, null, ['nullable' => false])
                 ->addColumn('updated', Table::TYPE_DATETIME, null, ['nullable' => false])
-                ->addColumn('kode', Table::TYPE_TEXT, 150, ['nullable' => false], 'Kode / Value')
-                ->addColumn('nama', Table::TYPE_TEXT, 500, ['default' => ''], 'Nama Produk')
-                ->addColumn('isactive', Table::TYPE_TEXT, 1, ['nullable' => false])
-                ->addColumn('qty_bruto', Table::TYPE_DECIMAL, null, ['nullable' => false])
+                ->addColumn('kode', Table::TYPE_TEXT, 150, ['nullable' => false])
+                ->addColumn('nama', Table::TYPE_TEXT, 500, ['nullable' => false])
+                ->addColumn('isactive', Table::TYPE_INTEGER, 1, ['nullable' => false])
+                ->addColumn('qty_bruto', Table::TYPE_DECIMAL, null, ['nullable' => true])
                 ->addColumn('qty_netto', Table::TYPE_DECIMAL, null, ['nullable' => false])
-                ->addColumn('kategori', Table::TYPE_TEXT, 10, ['nullable' => false])
-                ->addColumn('harga', Table::TYPE_DECIMAL, null, ['nullable' => true])
+                ->addColumn('kategori', Table::TYPE_TEXT, 10, ['nullable' => true])
+                ->addColumn('harga', Table::TYPE_DECIMAL, null, ['nullable' => false])
                 ->addColumn('lebar', Table::TYPE_TEXT, 15, ['nullable' => true])
                 ->addColumn('gramasi', Table::TYPE_TEXT, 15, ['nullable' => true])
                 ->addColumn('lot', Table::TYPE_TEXT, 25, ['nullable' => true])
                 ->addColumn('img_url', Table::TYPE_TEXT, 500, ['nullable' => true])
                 ->addColumn('kategori_warna', Table::TYPE_TEXT, 25, ['nullable' => false])
                 ->setComment('Catalog Master ML Table');
+
+            $installer->getConnection()->createTable($table);
+        }
+
+        if (!$installer->tableExists('catalogml_produk_attachment_rel')) {
+            $table = $installer->getConnection()
+                ->newTable($installer->getTable('catalogml_produk_attachment_rel'))
+                ->addColumn('produk_id', Table::TYPE_INTEGER, 10, ['nullable' => false, 'unsigned' => true])
+                ->addColumn('product_id', Table::TYPE_INTEGER, 10, ['nullable' => false, 'unsigned' => true], 'Magento Product Id')
+                ->addForeignKey(
+                    $installer->getFkName(
+                        'catalogml_produk',
+                        'produk_id',
+                        'catalogml_produk_attachment_rel',
+                        'produk_id'
+                    ),
+                    'produk_id',
+                    $installer->getTable('catalogml_produk'),
+                    'produk_id',
+                    Table::ACTION_CASCADE
+                )
+                ->addForeignKey(
+                    $installer->getFkName(
+                        'catalogml_produk_attachment_rel',
+                        'produk_id',
+                        'catalog_product_entity',
+                        'entity_id'
+                    ),
+                    'product_id',
+                    $installer->getTable('catalog_product_entity'),
+                    'entity_id',
+                    Table::ACTION_CASCADE
+                )
+                ->setComment('CatalogMasterML Product Attachment relation table');
 
             $installer->getConnection()->createTable($table);
         }

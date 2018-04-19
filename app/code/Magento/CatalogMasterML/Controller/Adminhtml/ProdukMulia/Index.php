@@ -39,9 +39,9 @@ class Index extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->addBreadcrumb(__('List Master Produk'),__('List Master Produk'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Produk Master ML'));
-        $resultPage->getConfig()->getTitle()->prepend(__('List Master Produk'));
+        $resultPage->addBreadcrumb(__('List Produk'),__('List Produk'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Produk ML'));
+        $resultPage->getConfig()->getTitle()->prepend(__('List Produk'));
 
         return $resultPage;
     }

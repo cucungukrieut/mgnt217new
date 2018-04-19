@@ -31,7 +31,7 @@
             <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
             <argument name="name" xsi:type="string">produkmulia_grid_data_source</argument>
             <!-- the same data source name as above -->
-            <argument name="primaryFieldName" xsi:type="string">grouping_id</argument>
+            <argument name="primaryFieldName" xsi:type="string">produk_id</argument>
             <!-- our model's primary key -->
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <!-- the field used in ajax url's of grid. just define this as id -->
@@ -114,7 +114,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.ids</item>
-                    <item name="indexField" xsi:type="string">grouping_id</item>
+                    <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
             </argument>
 
@@ -320,7 +320,7 @@
         <!-- End Column Grid -->
 
         <!-- For Action Column -->
-        <actionsColumn name="actions" class="Magento\CatalogML\Ui\Component\Listing\Column\ProdukActions">
+        <actionsColumn name="actions" class="Magento\CatalogMasterML\Ui\Component\Listing\Column\ProdukActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>

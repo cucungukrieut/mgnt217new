@@ -94,12 +94,23 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'kode',
+            'grouping_kode',
             'text',
             [
-                'name' => 'kode',
-                'label' => __('Kode'),
-                'title' => __('Kode'),
+                'name' => 'grouping_kode',
+                'label' => __('Grouping Kode'),
+                'title' => __('Grouping Kode'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'custom_kode',
+            'text',
+            [
+                'name' => 'custom_kode',
+                'label' => __('Custom Kode'),
+                'title' => __('Custom Kode'),
                 'required' => true,
             ]
         );
@@ -116,100 +127,23 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'isactive',
+            'active',
             'checkbox',
             [
                 'name' => 'isactive',
                 'label' => __('Active'),
                 'title' => __('Active'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'qty_bruto',
-            'text',
-            [
-                'name' => 'qty_bruto',
-                'label' => __('Qty Bruto'),
-                'title' => __('Qty Bruto'),
                 'required' => false,
             ]
         );
 
         $fieldset->addField(
-            'qty_netto',
-            'text',
+            'deskripsi',
+            'textarea',
             [
-                'name' => 'qty_netto',
-                'label' => __('Qty Netto'),
-                'title' => __('Qty Netto'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'kategori',
-            'text',
-            [
-                'name' => 'kategori',
-                'label' => __('Kategori'),
-                'title' => __('Kategori'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'harga',
-            'text',
-            [
-                'name' => 'harga',
-                'label' => __('Harga'),
-                'title' => __('Harga'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'lebar',
-            'text',
-            [
-                'name' => 'lebar',
-                'label' => __('Lebar'),
-                'title' => __('Lebar'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'gramasi',
-            'text',
-            [
-                'name' => 'gramasi',
-                'label' => __('Gramasi'),
-                'title' => __('Gramasi'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'lot',
-            'text',
-            [
-                'name' => 'lot',
-                'label' => __('Lot'),
-                'title' => __('Lot'),
-                'required' => false,
-            ]
-        );
-
-        $fieldset->addField(
-            'kategori_warna',
-            'text',
-            [
-                'name' => 'kategori_warna',
-                'label' => __('Kategori Warna'),
-                'title' => __('Kategori Warna'),
+                'name' => 'deskripsi',
+                'label' => __('Deskripsi'),
+                'title' => __('Deskripsi'),
                 'required' => false,
             ]
         );
@@ -231,7 +165,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabLabel()
     {
-        return __('Produk Master ML');
+        return __('Produk ML');
     }
 
     /**
@@ -241,7 +175,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabTitle()
     {
-        return __('Produk Master ML');
+        return __('Produk ML');
     }
 
     /**

@@ -59,6 +59,6 @@ class MassDelete extends Products
             __('Total %1 record telah di hapus.', $productDeleted)
         );
 
-        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('catalogmasterml/*/index');
+        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('catalogml/*/index');
     }
 }

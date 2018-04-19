@@ -8,7 +8,7 @@ namespace Magento\CatalogMasterML\Model\ResourceModel;
 class ProdukMasterML extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 
-    //const TBL_ATT_PRODUCT = 'catalogml_produk_attachment_rel';
+    const TBL_ATT_PRODUCT = 'catalogml_produk_attachment_rel';
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime

@@ -10,7 +10,7 @@
 
     <type name="Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML\Grid\Collection">
         <arguments>
-            <!-- untuk nama table ketika load grid -->
+            <!-- untuk nama table create ketika install module (setup:upgrade) -->
             <argument name="mainTable" xsi:type="string">catalogml_produk</argument>
             <argument name="eventPrefix" xsi:type="string">magento_contact_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">magento_contact_grid_collection</argument>
