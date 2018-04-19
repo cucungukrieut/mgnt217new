@@ -1,10 +1,10 @@
 <?php
-namespace Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab;
+namespace Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab;
 
 
 /**
  * Class Main
- * @package Magento\CatalogML\Block\Adminhtml\ProdukML\Edit\Tab
+ * @package Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab
  */
 class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
@@ -14,7 +14,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected $store;
 
     /**
-    * @var \Magento\CatalogML\Helper\Data $helper
+    * @var \Magento\CatalogMasterML\Helper\Data $helper
     */
     protected $helper;
 
@@ -28,7 +28,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\CatalogML\Helper\Data $helper,
+        \Magento\CatalogMasterML\Helper\Data $helper,
         array $data = []
     ) {
         $this->helper = $helper;
@@ -45,7 +45,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     protected function _prepareForm()
     {
-        /* @var $model \Magento\CatalogML\Model\ProdukML */
+        /* @var $model \Magento\CatalogMasterML\Model\ProdukMasterML */
         $model = $this->_coreRegistry->registry('ml_produk');
 
         /** @var \Magento\Framework\Data\Form $form */
@@ -59,10 +59,10 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         // FIELD FORM ISIAN DATA PRODUK
         if ($model->getId()) {
             $fieldset->addField(
-                'grouping_id',
+                'produk_id',
                 'hidden',
                 [
-                    'nama' => 'grouping_id'
+                    'nama' => 'produk_id'
                 ]
             );
         }
@@ -94,23 +94,12 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'grouping_kode',
+            'kode',
             'text',
             [
-                'name' => 'grouping_kode',
-                'label' => __('Grouping Kode'),
-                'title' => __('Grouping Kode'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'custom_kode',
-            'text',
-            [
-                'name' => 'custom_kode',
-                'label' => __('Custom Kode'),
-                'title' => __('Custom Kode'),
+                'name' => 'kode',
+                'label' => __('Kode'),
+                'title' => __('Kode'),
                 'required' => true,
             ]
         );
@@ -127,23 +116,100 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'active',
+            'isactive',
             'checkbox',
             [
                 'name' => 'isactive',
                 'label' => __('Active'),
                 'title' => __('Active'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'qty_bruto',
+            'text',
+            [
+                'name' => 'qty_bruto',
+                'label' => __('Qty Bruto'),
+                'title' => __('Qty Bruto'),
                 'required' => false,
             ]
         );
 
         $fieldset->addField(
-            'deskripsi',
-            'textarea',
+            'qty_netto',
+            'text',
             [
-                'name' => 'deskripsi',
-                'label' => __('Deskripsi'),
-                'title' => __('Deskripsi'),
+                'name' => 'qty_netto',
+                'label' => __('Qty Netto'),
+                'title' => __('Qty Netto'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'kategori',
+            'text',
+            [
+                'name' => 'kategori',
+                'label' => __('Kategori'),
+                'title' => __('Kategori'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'harga',
+            'text',
+            [
+                'name' => 'harga',
+                'label' => __('Harga'),
+                'title' => __('Harga'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'lebar',
+            'text',
+            [
+                'name' => 'lebar',
+                'label' => __('Lebar'),
+                'title' => __('Lebar'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'gramasi',
+            'text',
+            [
+                'name' => 'gramasi',
+                'label' => __('Gramasi'),
+                'title' => __('Gramasi'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'lot',
+            'text',
+            [
+                'name' => 'lot',
+                'label' => __('Lot'),
+                'title' => __('Lot'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'kategori_warna',
+            'text',
+            [
+                'name' => 'kategori_warna',
+                'label' => __('Kategori Warna'),
+                'title' => __('Kategori Warna'),
                 'required' => false,
             ]
         );
@@ -165,7 +231,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabLabel()
     {
-        return __('Produk ML');
+        return __('Produk Master ML');
     }
 
     /**
@@ -175,7 +241,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabTitle()
     {
-        return __('Produk ML');
+        return __('Produk Master ML');
     }
 
     /**

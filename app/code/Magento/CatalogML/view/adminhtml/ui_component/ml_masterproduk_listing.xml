@@ -2,14 +2,14 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="context" xsi:type="configurableObject">
         <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\Context</argument>
-        <argument name="namespace" xsi:type="string">ml_produk_listing</argument>
+        <argument name="namespace" xsi:type="string">ml_masterproduk_listing</argument>
         <!-- this should be same as the file name or uicomponentname -->
     </argument>
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">ml_produk_listing.produkmulia_grid_data_source</item>
-             <!-- the format here is uicomponentname.datasourcename -->
-            <item name="deps" xsi:type="string">ml_produk_listing.produkmulia_grid_data_source</item>
+            <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
+            <!-- the format here is uicomponentname.datasourcename -->
+            <item name="deps" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
             <!-- the format here is uicomponentname.datasourcename -->
         </item>
         <item name="spinner" xsi:type="string">produkmulia_grid_columns</item>
@@ -61,7 +61,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="storageConfig" xsi:type="array">
-                        <item name="namespace" xsi:type="string">ml_produk_listing</item>
+                        <item name="namespace" xsi:type="string">ml_masterproduk_listing</item>
                     </item>
                 </item>
             </argument>
@@ -71,7 +71,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="columnsData" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
                     </item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
                     <item name="displayArea" xsi:type="string">dataGridActions</item>
@@ -82,10 +82,10 @@
         <filterSearch name="fulltext">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="provider" xsi:type="string">ml_produk_listing.produkmulia_grid_data_source</item>
-                    <item name="chipsProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top.listing_filters_chips</item>
+                    <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.listing_filters_chips</item>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.search</item>
                     </item>
                 </item>
@@ -95,15 +95,15 @@
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="columnsProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns</item>
+                    <item name="columnsProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.filters</item>
                     </item>
                     <item name="childDefaults" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top.listing_filters</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.listing_filters</item>
                         <item name="imports" xsi:type="array">
-                            <item name="visible" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns.${ $.index }:visible</item>
+                            <item name="visible" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.${ $.index }:visible</item>
                         </item>
                     </item>
                 </item>
@@ -113,7 +113,7 @@
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.ids</item>
                     <item name="indexField" xsi:type="string">grouping_id</item>
                 </item>
             </argument>
@@ -138,10 +138,10 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.paging</item>
                     </item>
-                    <item name="selectProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.ids</item>
                 </item>
             </argument>
         </paging>
@@ -150,22 +150,22 @@
 
     <!-- Start Column Grid -->
     <columns name="produkmulia_grid_columns">
-       <!-- this is columns section name, used above in spinner -->
+        <!-- this is columns section name, used above in spinner -->
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">0</item>
-                    <item name="indexField" xsi:type="string">grouping_id</item>
+                    <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
             </argument>
         </selectionsColumn>
 
         <!-- this is for the first column which allows to select multiple columns -->
         <!-- below are different column types based on our models -->
-        <column name="grouping_id">
+        <column name="produk_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
+                    <item name="filte r" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">desc</item>
                     <item name="sortOrder" xsi:type="number">1</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
@@ -199,34 +199,23 @@
             </argument>
         </column>
 
-        <column name="grouping_kode">
+        <column name="kode">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">desc</item>
                     <item name="sortOrder" xsi:type="number">4</item>
-                    <item name="label" xsi:type="string" translate="true">Grouping Kode</item>
+                    <item name="label" xsi:type="string" translate="true">Kode</item>
                 </item>
             </argument>
         </column>
 
-        <column name="custom_kode"> <!-- sesuaikan dengan column DB -->
+        <column name="nama"> <!-- sesuaikan dengan column DB -->
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="sortOrder" xsi:type="number">5</item>
-                    <item name="label" xsi:type="string" translate="true">Custom Kode</item>
-                </item>
-            </argument>
-        </column>
-
-        <column name="nama">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">number</item>
-                    <item name="sorting" xsi:type="string">asc</item>
-                    <item name="sortOrder" xsi:type="number">6</item>
                     <item name="label" xsi:type="string" translate="true">Nama</item>
                 </item>
             </argument>
@@ -235,24 +224,99 @@
         <column name="isactive">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
+                    <item name="filter" xsi:type="string">number</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="sortOrder" xsi:type="number">7</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
                     <item name="label" xsi:type="string" translate="true">Active</item>
                 </item>
             </argument>
         </column>
 
-        <column name="deskripsi">
+        <column name="qty_bruto">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">number</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                    <item name="label" xsi:type="string" translate="true">Qty Bruto</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="qty_netto">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">number</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">8</item>
+                    <item name="label" xsi:type="string" translate="true">Qty Netto</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="kategori">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="sorting" xsi:type="string">asc</item>
-                    <item name="sortOrder" xsi:type="number">8</item>
-                    <item name="label" xsi:type="string" translate="true">Deskripsi</item>
+                    <item name="sortOrder" xsi:type="number">9</item>
+                    <item name="label" xsi:type="string" translate="true">Kategori</item>
                 </item>
             </argument>
         </column>
+
+        <column name="harga">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">number</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="label" xsi:type="string" translate="true">Harga</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="lebar">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">11</item>
+                    <item name="label" xsi:type="string" translate="true">Lebar</item>
+                </item>
+            </argument>
+        </column>
+        <column name="gramasi">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">12</item>
+                    <item name="label" xsi:type="string" translate="true">Gramasi</item>
+                </item>
+            </argument>
+        </column>
+        <column name="lot">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">13</item>
+                    <item name="label" xsi:type="string" translate="true">Lot</item>
+                </item>
+            </argument>
+        </column>
+        <column name="kategori_warna">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="sortOrder" xsi:type="number">14</item>
+                    <item name="label" xsi:type="string" translate="true">Kategori Warna</item>
+                </item>
+            </argument>
+        </column>
+
         <!-- End Column Grid -->
 
         <!-- For Action Column -->
@@ -261,7 +325,7 @@
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
                     <item name="resizeDefaultWidth" xsi:type="string">107</item>
-                    <item name="indexField" xsi:type="string">grouping_id</item>
+                    <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
             </argument>
         </actionsColumn>
@@ -271,8 +335,8 @@
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/grid/sticky/sticky</item>
-                <item name="toolbarProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.listing_top</item>
-                <item name="listingProvider" xsi:type="string">ml_produk_listing.ml_produk_listing.produkmulia_grid_columns</item>
+                <item name="toolbarProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top</item>
+                <item name="listingProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
             </item>
         </argument>
     </container>

@@ -1,10 +1,10 @@
 <?php
-namespace Magento\CatalogML\Helper;
+namespace Magento\CatalogMasterML\Helper;
 
 
 /**
  * Class Data
- * @package Magento\CatalogML\Helper
+ * @package Magento\CatalogMasterML\Helper
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
