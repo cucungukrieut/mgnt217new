@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="ml_produk_listing"/>
+            <uiComponent name="ml_masterproduk_listing"/>
         </referenceContainer>
     </body>
 </page>

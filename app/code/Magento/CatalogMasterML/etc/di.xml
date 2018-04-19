@@ -3,7 +3,8 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="produkmulia_grid_data_source" xsi:type="string">Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML\Grid\Collection</item>
+                <!-- register handle grid data source -->
+                <item name="produkmasterml_grid_data_source" xsi:type="string">Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
@@ -12,8 +13,8 @@
         <arguments>
             <!-- untuk nama table create ketika install module (setup:upgrade) -->
             <argument name="mainTable" xsi:type="string">catalogml_produk</argument>
-            <argument name="eventPrefix" xsi:type="string">magento_contact_grid_collection</argument>
-            <argument name="eventObject" xsi:type="string">magento_contact_grid_collection</argument>
+            <argument name="eventPrefix" xsi:type="string">magento_produk_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">magento_produk_grid_collection</argument>
             <argument name="resourceModel" xsi:type="string">Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML</argument>
         </arguments>
     </type>

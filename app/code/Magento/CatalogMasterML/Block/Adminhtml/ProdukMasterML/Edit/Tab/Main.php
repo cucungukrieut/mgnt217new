@@ -46,7 +46,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected function _prepareForm()
     {
         /* @var $model \Magento\CatalogMasterML\Model\ProdukMasterML */
-        $model = $this->_coreRegistry->registry('ml_produk');
+        $model = $this->_coreRegistry->registry('ml_masterproduk');
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
@@ -94,23 +94,12 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'grouping_kode',
+            'kode',
             'text',
             [
-                'name' => 'grouping_kode',
-                'label' => __('Grouping Kode'),
-                'title' => __('Grouping Kode'),
-                'required' => true,
-            ]
-        );
-
-        $fieldset->addField(
-            'custom_kode',
-            'text',
-            [
-                'name' => 'custom_kode',
-                'label' => __('Custom Kode'),
-                'title' => __('Custom Kode'),
+                'name' => 'kode',
+                'label' => __('Kode'),
+                'title' => __('Kode'),
                 'required' => true,
             ]
         );
@@ -133,26 +122,100 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'isactive',
                 'label' => __('Active'),
                 'title' => __('Active'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'qty_bruto',
+            'text',
+            [
+                'name' => 'qty_bruto',
+                'label' => __('Qty Bruto'),
+                'title' => __('Qty Bruto'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'qty_netto',
+            'text',
+            [
+                'name' => 'qty_netto',
+                'label' => __('Qty Netto'),
+                'title' => __('Qty Netto'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'kategori',
+            'text',
+            [
+                'name' => 'kategori',
+                'label' => __('Kategori'),
+                'title' => __('Kategori'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'harga',
+            'text',
+            [
+                'name' => 'harga',
+                'label' => __('Harga'),
+                'title' => __('Harga'),
+                'required' => true,
+            ]
+        );
+
+        $fieldset->addField(
+            'lebar',
+            'text',
+            [
+                'name' => 'lebar',
+                'label' => __('Lebar'),
+                'title' => __('Lebar'),
                 'required' => false,
             ]
         );
 
         $fieldset->addField(
-            'deskripsi',
-            'textarea',
+            'gramasi',
+            'text',
             [
-                'name' => 'deskripsi',
-                'label' => __('Deskripsi'),
-                'title' => __('Deskripsi'),
+                'name' => 'gramasi',
+                'label' => __('Gramasi'),
+                'title' => __('Gramasi'),
+                'required' => false,
+            ]
+        );
+
+        $fieldset->addField(
+            'lot',
+            'text',
+            [
+                'name' => 'lot',
+                'label' => __('Lot'),
+                'title' => __('Lot'),
                 'required' => false,
             ]
         );
 
 
-        //$dataproduk = $model->getData();
+        $fieldset->addField(
+            'kategori_warna',
+            'text',
+            [
+                'name' => 'kategori_warna',
+                'label' => __('Kategori Warna'),
+                'title' => __('Kategori Warna'),
+                'required' => true,
+            ]
+        );
 
         $form->setValues($model->getData());
-
         $this->setForm($form);
 
         return parent::_prepareForm();
@@ -165,7 +228,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabLabel()
     {
-        return __('Produk ML');
+        return __('Produk Master ML');
     }
 
     /**
@@ -175,7 +238,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabTitle()
     {
-        return __('Produk ML');
+        return __('Produk Master ML');
     }
 
     /**

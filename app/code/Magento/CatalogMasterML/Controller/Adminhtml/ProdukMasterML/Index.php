@@ -1,6 +1,6 @@
 <?php
 
-namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia;
+namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
@@ -8,7 +8,7 @@ use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Class Index
- * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia
+ * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML
  */
 class Index extends \Magento\Backend\App\Action
 {
@@ -39,9 +39,10 @@ class Index extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->addBreadcrumb(__('List Produk'),__('List Produk'));
-        $resultPage->getConfig()->getTitle()->prepend(__('Produk ML'));
-        $resultPage->getConfig()->getTitle()->prepend(__('List Produk'));
+
+        $resultPage->addBreadcrumb(__('List Master Produk'),__('List Master Produk'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Produk Master ML'));
+        $resultPage->getConfig()->getTitle()->prepend(__('List Master Produk'));
 
         return $resultPage;
     }
@@ -53,6 +54,6 @@ class Index extends \Magento\Backend\App\Action
      */
     /*protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Magento_CatalogMasterML::ProdukMulia');
+        return $this->_authorization->isAllowed('Magento_CatalogMasterML::ProdukMasterML');
     }*/
 }

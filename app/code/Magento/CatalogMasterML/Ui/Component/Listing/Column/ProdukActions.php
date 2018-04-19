@@ -10,8 +10,8 @@ use Magento\Framework\UrlInterface;
 class ProdukActions extends Column
 {
     /** Url path */
-    const PRODUK_URL_PATH_EDIT = 'mlprodukgrid/produkmulia/edit';
-    const PRODUK_URL_PATH_DELETE = 'mlprodukgrid/produkmulia/delete';
+    const PRODUK_URL_PATH_EDIT = 'mlprodukgrid/produkmasterml/edit';
+    const PRODUK_URL_PATH_DELETE = 'mlprodukgrid/produkmasterml/delete';
 
     /** @var UrlInterface */
     protected $urlBuilder;

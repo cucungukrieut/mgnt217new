@@ -1,6 +1,6 @@
 <?php
 
-namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia;
+namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML;
 
 use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
@@ -8,7 +8,7 @@ use Magento\TestFramework\ErrorLog\Logger;
 
 /**
  * Class Delete
- * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia
+ * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML
  */
 class Delete extends \Magento\Backend\App\Action
 {

@@ -56,39 +56,6 @@ class InstallSchema implements InstallSchemaInterface
             $installer->getConnection()->createTable($table);
         }
 
-        if (!$installer->tableExists('catalogml_produk_attachment_rel')) {
-            $table = $installer->getConnection()
-                ->newTable($installer->getTable('catalogml_produk_attachment_rel'))
-                ->addColumn('produk_id', Table::TYPE_INTEGER, 10, ['nullable' => false, 'unsigned' => true])
-                ->addColumn('product_id', Table::TYPE_INTEGER, 10, ['nullable' => false, 'unsigned' => true], 'Magento Product Id')
-                ->addForeignKey(
-                    $installer->getFkName(
-                        'catalogml_produk',
-                        'produk_id',
-                        'catalogml_produk_attachment_rel',
-                        'produk_id'
-                    ),
-                    'produk_id',
-                    $installer->getTable('catalogml_produk'),
-                    'produk_id',
-                    Table::ACTION_CASCADE
-                )
-                ->addForeignKey(
-                    $installer->getFkName(
-                        'catalogml_produk_attachment_rel',
-                        'produk_id',
-                        'catalog_product_entity',
-                        'entity_id'
-                    ),
-                    'product_id',
-                    $installer->getTable('catalog_product_entity'),
-                    'entity_id',
-                    Table::ACTION_CASCADE
-                )
-                ->setComment('CatalogMasterML Product Attachment relation table');
-
-            $installer->getConnection()->createTable($table);
-        }
 
         $installer->endSetup();
     }

@@ -36,10 +36,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * get products tab Url in admin
      * @return string
-     */
+     *
     public function getProductsGridUrl()
     {
         //path from xml layout
-        return $this->_backendUrl->getUrl('mlprodukgrid/produkmulia/products', ['_current' => true]);
-    }
+        return $this->_backendUrl->getUrl('mlprodukgrid/produkmasterml/products', ['_current' => true]);
+    }*/
 }

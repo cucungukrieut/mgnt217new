@@ -10,19 +10,19 @@ class ProdukMasterML extends \Magento\Framework\Model\AbstractModel implements I
     /**
      * CMS page cache tag
      */
-    const CACHE_TAG = 'ml_produk_grid';
+    const CACHE_TAG = 'ml_masterproduk_grid';
 
     /**
      * @var string
      */
-    protected $_cacheTag = 'ml_produk_grid';
+    protected $_cacheTag = 'ml_masterproduk_grid';
 
     /**
      * Prefix of model events names
      *
      * @var string
      */
-    protected $_eventPrefix = 'ml_produk_grid';
+    protected $_eventPrefix = 'ml_masterproduk_grid';
 
     /**
      * Initialize resource model
@@ -49,7 +49,7 @@ class ProdukMasterML extends \Magento\Framework\Model\AbstractModel implements I
      * Get products from DB table
      * @param ProdukMasterML $object
      * @return array
-     */
+     *
     public function getProducts(\Magento\CatalogMasterML\Model\ProdukMasterML $object)
     {
         $tbl = $this->getResource()->getTable(\Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML::TBL_ATT_PRODUCT);
@@ -60,5 +60,5 @@ class ProdukMasterML extends \Magento\Framework\Model\AbstractModel implements I
 
         //$arrayproduk = $this->getResource()->getConnection()->fetchCol($select);
         return $this->getResource()->getConnection()->fetchCol($select);
-    }
+    }*/
 }

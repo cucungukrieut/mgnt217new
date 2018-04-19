@@ -1,11 +1,11 @@
 <?php
 
-namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia;
+namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML;
 
 
 /**
  * Class NewAction
- * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia
+ * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML
  */
 class NewAction extends \Magento\Backend\App\Action
 {

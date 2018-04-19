@@ -9,7 +9,8 @@ namespace Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
-     * @var string
+     * @var string id
+     * untuk check id (used on massdelete)
      */
     protected $_idFieldName = 'produk_id';
 

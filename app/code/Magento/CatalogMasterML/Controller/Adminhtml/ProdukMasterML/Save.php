@@ -1,6 +1,6 @@
 <?php
 
-namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia;
+namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -9,7 +9,7 @@ use Magento\TestFramework\ErrorLog\Logger;
 
 /**
  * Class Save
- * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia
+ * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML
  */
 class Save extends \Magento\Backend\App\Action
 {
@@ -91,42 +91,6 @@ class Save extends \Magento\Backend\App\Action
             return $resultRedirect->setPath('*/*/edit', ['produk_id' => $this->getRequest()->getParam('produk_id')]);
         }
         return $resultRedirect->setPath('*/*/');
-    }
-
-    public function saveProducts($model, $post)
-    {
-        // Attach the attachments to contact
-        if (isset($post['products'])) {
-            $productIds = $this->_jsHelper->decodeGridSerializedInput($post['products']);
-            try {
-                $oldProducts = (array) $model->getProducts($model);
-                $newProducts = (array) $productIds;
-
-                $this->_resources = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
-                $connection = $this->_resources->getConnection();
-
-                $table = $this->_resources->getTableName(\Magento\CatalogMasterML\Model\ResourceModel\ProdukMasterML::TBL_ATT_PRODUCT);
-                $insert = array_diff($newProducts, $oldProducts);
-                $delete = array_diff($oldProducts, $newProducts);
-
-                if ($delete) {
-                    $where = ['produk_id = ?' => (int)$model->getId(), 'product_id IN (?)' => $delete];
-                    $connection->delete($table, $where);
-                }
-
-                if ($insert) {
-                    $data = [];
-                    foreach ($insert as $product_id) {
-                        $data[] = ['produk_id' => (int)$model->getId(), 'product_id' => (int)$product_id];
-                    }
-                    $connection->insertMultiple($table, $data);
-                }
-
-                $data = $data;
-            } catch (Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Terjadi masalah ketika menyimpan produk. ') . $e->getMessage());
-            }
-        }
 
     }
 }

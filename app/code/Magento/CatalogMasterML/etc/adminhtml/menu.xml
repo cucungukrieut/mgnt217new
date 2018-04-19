@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Magento_CatalogMasterML::catalogmasterml" title="Catalog Master ML" module="Magento_CatalogMasterML" sortOrder="100" parent="Magento_Catalog::catalog" resource="Magento_CatalogMasterML::catalogmasterml" action="mlprodukgrid/produkmulia"/>
+    <menu> <!-- action is menu link -->
+        <add id="Magento_CatalogMasterML::catalogmasterml" title="Catalog Master ML" module="Magento_CatalogMasterML" sortOrder="100" parent="Magento_Catalog::catalog" resource="Magento_CatalogMasterML::catalogmasterml" action="mlprodukgrid/produkmasterml"/>
     </menu>
 </config>

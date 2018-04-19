@@ -5,14 +5,15 @@
         <argument name="namespace" xsi:type="string">ml_masterproduk_listing</argument>
         <!-- this should be same as the file name or uicomponentname -->
     </argument>
+
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
+            <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmasterml_grid_data_source</item>
             <!-- the format here is uicomponentname.datasourcename -->
-            <item name="deps" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
+            <item name="deps" xsi:type="string">ml_masterproduk_listing.produkmasterml_grid_data_source</item>
             <!-- the format here is uicomponentname.datasourcename -->
         </item>
-        <item name="spinner" xsi:type="string">produkmulia_grid_columns</item>
+        <item name="spinner" xsi:type="string">produkmasterml_grid_columns</item>
         <!-- the format here is columns name defined below -->
         <item name="buttons" xsi:type="array">
             <!-- here we can add buttons -->
@@ -24,12 +25,13 @@
             </item>
         </item>
     </argument>
-    <dataSource name="produkmulia_grid_data_source">
+
+    <dataSource name="produkmasterml_grid_data_source">
         <!-- this is data source name, this is used at many places -->
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">ContactGridDataProvider</argument>
             <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
-            <argument name="name" xsi:type="string">produkmulia_grid_data_source</argument>
+            <argument name="name" xsi:type="string">produkmasterml_grid_data_source</argument>
             <!-- the same data source name as above -->
             <argument name="primaryFieldName" xsi:type="string">produk_id</argument>
             <!-- our model's primary key -->
@@ -39,9 +41,9 @@
                 <item name="config" xsi:type="array">
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
-                    <item name="storageConfig" xsi:type="array">
+                    <!--item name="storageConfig" xsi:type="array">
                         <item name="indexField" xsi:type="string">entity_id</item>
-                    </item>
+                    </item-->
                 </item>
             </argument>
             <!-- keep above same always -->
@@ -71,7 +73,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="columnsData" xsi:type="array">
-                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
+                        <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmasterml_grid_columns</item>
                     </item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
                     <item name="displayArea" xsi:type="string">dataGridActions</item>
@@ -82,7 +84,7 @@
         <filterSearch name="fulltext">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmulia_grid_data_source</item>
+                    <item name="provider" xsi:type="string">ml_masterproduk_listing.produkmasterml_grid_data_source</item>
                     <item name="chipsProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.listing_filters_chips</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
@@ -95,7 +97,7 @@
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="columnsProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
+                    <item name="columnsProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmasterml_grid_columns</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.filters</item>
@@ -103,7 +105,7 @@
                     <item name="childDefaults" xsi:type="array">
                         <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.listing_filters</item>
                         <item name="imports" xsi:type="array">
-                            <item name="visible" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.${ $.index }:visible</item>
+                            <item name="visible" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmasterml_grid_columns.${ $.index }:visible</item>
                         </item>
                     </item>
                 </item>
@@ -113,7 +115,7 @@
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmaster_grid_columns.ids</item>
                     <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
             </argument>
@@ -124,7 +126,7 @@
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Hapus yang dipilih</item>
                         <!--item name="url" xsi:type="url" path="wsslider/slider/massDelete"/-->
-                        <item name="url" xsi:type="url" path="catalogml/*/massDelete"/>
+                        <item name="url" xsi:type="url" path="magento_catalogmasterml/produkmasterml/mssDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Hapus item</item>
                             <item name="message" xsi:type="string" translate="true">Anda yakin ingin menghapus data yang dipilih?</item>
@@ -141,7 +143,7 @@
                         <item name="provider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.paging</item>
                     </item>
-                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmasterml_grid_columns.ids</item>
                 </item>
             </argument>
         </paging>
@@ -149,7 +151,7 @@
 
 
     <!-- Start Column Grid -->
-    <columns name="produkmulia_grid_columns">
+    <columns name="produkmaster_grid_columns">
         <!-- this is columns section name, used above in spinner -->
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
@@ -166,7 +168,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filte r" xsi:type="string">text</item>
-                    <item name="sorting" xsi:type="string">desc</item>
+                    <item name="sorting" xsi:type="string">asc</item>
                     <item name="sortOrder" xsi:type="number">1</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
                 </item>
@@ -336,7 +338,7 @@
             <item name="config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/grid/sticky/sticky</item>
                 <item name="toolbarProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.listing_top</item>
-                <item name="listingProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmulia_grid_columns</item>
+                <item name="listingProvider" xsi:type="string">ml_masterproduk_listing.ml_masterproduk_listing.produkmasterml_grid_columns</item>
             </item>
         </argument>
     </container>

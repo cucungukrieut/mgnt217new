@@ -4,29 +4,29 @@
     <body>
 
         <referenceContainer name="content">
-            <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit" name="mlprodukgrid_produkmulia_edit"/>
+            <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit" name="mlprodukgrid_produkmasterml_edit"/>
         </referenceContainer>
 
         <!-- Tab untuk form add, edit, delete produk -->
         <referenceContainer name="left">
-            <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tabs" name="mlprodukgrid_produkmulia_edit_tabs">
+            <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tabs" name="mlprodukgrid_produkmasterml_edit_tabs">
                 <!-- add form main on tab -->
-                <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab\Main" name="mlprodukgrid_produkmulia_edit_tab_main"/>
+                <block class="Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab\Main" name="mlprodukgrid_produkmasterml_edit_tab_main"/>
 
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
-                    <argument name="block" xsi:type="string">mlprodukgrid_produkmulia_edit_tab_main</argument>
+                    <argument name="block" xsi:type="string">mlprodukgrid_produkmasterml_edit_tab_main</argument>
                 </action>
 
-                <action method="addTab">
+                <!--action method="addTab">
                     <argument name="name" xsi:type="string">attachment_products</argument>
                     <argument name="block" xsi:type="array">
                         <item name="label" xsi:type="string">Testing Tab</item>
                         <item name="title" xsi:type="string">Testing Tab</item>
-                        <item name="url" xsi:type="helper" helper="Magento\CatalogMasterML\Helper\Data::getProductsGridUrl"></item>
+                        <item name="url" xsi:type="helper" helper="Magento\CatalogMasterML\Helper\Data::getProductsGridUrl"/>
                         <item name="class" xsi:type="string">ajax</item>
                     </argument>
-                </action>
+                </action-->
 
             </block>
         </referenceContainer>

@@ -16,6 +16,6 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
         parent::_construct();
         $this->setId('produk_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(__('Informasi Produk'));
+        $this->setTitle(__('Master Produk'));
     }
 }

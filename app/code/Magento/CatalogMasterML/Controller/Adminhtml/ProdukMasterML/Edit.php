@@ -1,12 +1,12 @@
 <?php
 
-namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia;
+namespace Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML;
 
 use Magento\Backend\App\Action;
 
 /**
  * Class Edit
- * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMulia
+ * @package Magento\CatalogMasterML\Controller\Adminhtml\ProdukMasterML
  */
 class Edit extends \Magento\Backend\App\Action
 {
@@ -59,7 +59,7 @@ class Edit extends \Magento\Backend\App\Action
     }
 
     /**
-     * Edit ProdukMulia
+     * Edit ProdukMasterML
      *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -73,6 +73,7 @@ class Edit extends \Magento\Backend\App\Action
             $model->load($id);
             if (!$model->getId()) {
                 $this->messageManager->addErrorMessage(__('Produk tidak tersedia.'));
+
                 /** \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 
@@ -85,7 +86,7 @@ class Edit extends \Magento\Backend\App\Action
             $model->setData($data);
         }
 
-        $this->_coreRegistry->register('ml_produk', $model);
+        $this->_coreRegistry->register('ml_masterproduk', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();

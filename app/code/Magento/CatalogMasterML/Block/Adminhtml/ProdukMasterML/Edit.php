@@ -38,7 +38,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     {
         $this->_objectId = 'produk_id';
         $this->_blockGroup = 'Magento_CatalogMasterML';
-        $this->_controller = 'adminhtml_produkml';
+        $this->_controller = 'adminhtml_produkmasterml';
 
         parent::_construct();
 
