@@ -37,11 +37,11 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
 
         parent::_construct();
 
-        $this->buttonList->update('save', 'label', __('Save MasterProduct'));
+        $this->buttonList->update('save', 'label', __('Simpan roduct'));
         $this->buttonList->add(
             'saveandcontinue',
             [
-                'label' => __('Save and Continue Edit'),
+                'label' => __('Simpan & Edit'),
                 'class' => 'save',
                 'data_attribute' => [
                     'mage-init' => [
@@ -52,7 +52,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
             -100
         );
 
-        $this->buttonList->update('delete', 'label', __('Delete MasterProduct'));
+        $this->buttonList->update('delete', 'label', __('Hapus Product'));
     }
 
     /**

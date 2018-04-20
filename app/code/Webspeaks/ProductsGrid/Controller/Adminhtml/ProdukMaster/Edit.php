@@ -68,7 +68,7 @@ class Edit extends \Magento\Backend\App\Action
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->messageManager->addErrorMessage(__('This contact no longer exists.'));
+                $this->messageManager->addErrorMessage(__('Produk ini sudah tidak tersedia.'));
                 /** \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 

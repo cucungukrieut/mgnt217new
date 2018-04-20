@@ -67,18 +67,18 @@ class Save extends \Magento\Backend\App\Action
                 $model->save();
                 $this->saveProducts($model, $data);
 
-                $this->messageManager->addSuccess(__('You saved this contact.'));
+                $this->messageManager->addSuccessMessage(__('Anda telah menyimpan produk ini.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['produk_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\RuntimeException $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the contact.'));
+                $this->messageManager->addExceptionMessage($e, __('Ada yang salah ketika menyimpan produk.'));
             }
 
             $this->_getSession()->setFormData($data);
@@ -116,7 +116,7 @@ class Save extends \Magento\Backend\App\Action
                     $connection->insertMultiple($table, $data);
                 }
             } catch (Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the contact.'));
+                $this->messageManager->addExceptionMessage($e, __('Ada yang salah ketika menyimpan produk.'));
             }
         }
 
