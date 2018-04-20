@@ -18,7 +18,7 @@
             <!-- here we can add buttons -->
             <item name="add" xsi:type="array">
                 <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add Product</item>
+                <item name="label" xsi:type="string" translate="true">Tambah Produk</item>
                 <item name="class" xsi:type="string">primary</item>
                 <item name="url" xsi:type="string">*/*/new</item>
             </item>
