@@ -5,14 +5,15 @@
         <argument name="namespace" xsi:type="string">produkmaster_listing</argument>
         <!-- this should be same as the file name or uicomponentname -->
     </argument>
+
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">produkmaster_listing.contacts_grid_data_source</item>
+            <item name="provider" xsi:type="string">produkmaster_listing.produk_grid_data_source</item>
              <!-- the format here is uicomponentname.datasourcename -->
-            <item name="deps" xsi:type="string">produkmaster_listing.contacts_grid_data_source</item>
+            <item name="deps" xsi:type="string">produkmaster_listing.produk_grid_data_source</item>
             <!-- the format here is uicomponentname.datasourcename -->
         </item>
-        <item name="spinner" xsi:type="string">contacts_grid_columns</item>
+        <item name="spinner" xsi:type="string">produk_grid_columns</item>
         <!-- the format here is columns name defined below -->
         <item name="buttons" xsi:type="array">
             <!-- here we can add buttons -->
@@ -24,12 +25,13 @@
             </item>
         </item>
     </argument>
-    <dataSource name="contacts_grid_data_source">
+
+    <dataSource name="produk_grid_data_source">
         <!-- this is data source name, this is used at many places -->
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">ContactGridDataProvider</argument>
             <!-- <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument> -->
-            <argument name="name" xsi:type="string">contacts_grid_data_source</argument>
+            <argument name="name" xsi:type="string">produk_grid_data_source</argument>
             <!-- the same data source name as above -->
             <argument name="primaryFieldName" xsi:type="string">produk_id</argument>
             <!-- our model's primary key -->
@@ -49,7 +51,6 @@
     </dataSource>
 
     <container name="listing_top">
-
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="template" xsi:type="string">ui/grid/toolbar</item>
@@ -71,7 +72,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="columnsData" xsi:type="array">
-                        <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns</item>
+                        <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns</item>
                     </item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
                     <item name="displayArea" xsi:type="string">dataGridActions</item>
@@ -82,7 +83,7 @@
         <filterSearch name="fulltext">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="provider" xsi:type="string">produkmaster_listing.contacts_grid_data_source</item>
+                    <item name="provider" xsi:type="string">produkmaster_listing.produk_grid_data_source</item>
                     <item name="chipsProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top.listing_filters_chips</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top.bookmarks</item>
@@ -95,7 +96,7 @@
         <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="columnsProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns</item>
+                    <item name="columnsProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns</item>
                     <item name="storageConfig" xsi:type="array">
                         <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.filters</item>
@@ -103,7 +104,7 @@
                     <item name="childDefaults" xsi:type="array">
                         <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top.listing_filters</item>
                         <item name="imports" xsi:type="array">
-                            <item name="visible" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns.${ $.index }:visible</item>
+                            <item name="visible" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns.${ $.index }:visible</item>
                         </item>
                     </item>
                 </item>
@@ -113,7 +114,7 @@
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns.ids</item>
                     <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
             </argument>
@@ -139,14 +140,14 @@
                         <item name="provider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top.bookmarks</item>
                         <item name="namespace" xsi:type="string">current.paging</item>
                     </item>
-                    <item name="selectProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns.ids</item>
                 </item>
             </argument>
         </paging>
 
     </container>
 
-    <columns name="contacts_grid_columns">
+    <columns name="produk_grid_columns">
 
        <!-- this is columns section name, used above in spinner -->
         <selectionsColumn name="ids">
@@ -334,7 +335,7 @@
             <item name="config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/grid/sticky/sticky</item>
                 <item name="toolbarProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.listing_top</item>
-                <item name="listingProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.contacts_grid_columns</item>
+                <item name="listingProvider" xsi:type="string">produkmaster_listing.produkmaster_listing.produk_grid_columns</item>
             </item>
         </argument>
     </container>

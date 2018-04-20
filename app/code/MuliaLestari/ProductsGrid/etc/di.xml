@@ -3,7 +3,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="contacts_grid_data_source" xsi:type="string">MuliaLestari\ProductsGrid\Model\ResourceModel\MasterProduct\Grid\Collection</item>
+                <item name="produk_grid_data_source" xsi:type="string">MuliaLestari\ProductsGrid\Model\ResourceModel\MasterProduct\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
