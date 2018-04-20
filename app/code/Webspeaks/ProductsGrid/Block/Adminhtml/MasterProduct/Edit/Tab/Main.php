@@ -1,11 +1,6 @@
 <?php
-namespace Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab;
+namespace Webspeaks\ProductsGrid\Block\Adminhtml\MasterProduct\Edit\Tab;
 
-
-/**
- * Class Main
- * @package Magento\CatalogMasterML\Block\Adminhtml\ProdukMasterML\Edit\Tab
- */
 class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
     /**
@@ -14,7 +9,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected $store;
 
     /**
-    * @var \Magento\CatalogMasterML\Helper\Data $helper
+    * @var \Webspeaks\ProductsGrid\Helper\Data $helper
     */
     protected $helper;
 
@@ -28,7 +23,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\CatalogMasterML\Helper\Data $helper,
+        \Webspeaks\ProductsGrid\Helper\Data $helper,
         array $data = []
     ) {
         $this->helper = $helper;
@@ -37,24 +32,21 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
     /**
      * Prepare form
-     ***************************************************
-     * FORM UNTUK MENAMBAH, EDIT DAN DELETE DATA PRODUK
-     ***************************************************
+     *
      * @return $this
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     protected function _prepareForm()
     {
-        /* @var $model \Magento\CatalogMasterML\Model\ProdukMasterML */
-        $model = $this->_coreRegistry->registry('ml_masterproduk');
+        /* @var $model \Webspeaks\ProductsGrid\Model\Contact */
+        $model = $this->_coreRegistry->registry('ws_contact');
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
 
-        $form->setHtmlIdPrefix('produk_');
+        $form->setHtmlIdPrefix('contact_');
 
-        $fieldset = $form->addFieldset('base_fieldset', ['legend' => __('Informasi Produk')]);
-
+        $fieldset = $form->addFieldset('base_fieldset', ['legend' => __('MasterProduct Information')]);
 
         // FIELD FORM ISIAN DATA PRODUK
         if ($model->getId()) {
@@ -122,6 +114,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'isactive',
                 'label' => __('Active'),
                 'title' => __('Active'),
+                'checked' => true,
                 'required' => true,
             ]
         );
@@ -228,7 +221,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabLabel()
     {
-        return __('Produk Master ML');
+        return __('Main');
     }
 
     /**
@@ -238,7 +231,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function getTabTitle()
     {
-        return __('Produk Master ML');
+        return __('Main');
     }
 
     /**
