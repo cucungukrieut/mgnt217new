@@ -122,7 +122,7 @@
                     <item name="config" xsi:type="array">
                         <item name="type" xsi:type="string">delete</item>
                         <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="wsproductsgrid/produkmaster/mssDelete"/>
+                        <item name="url" xsi:type="url" path="wsproductsgrid/produkmaster/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Hapus Produk</item>
                             <item name="message" xsi:type="string" translate="true">Anda yakin ingin menghapus data produk yang dipilih?</item>
@@ -147,10 +147,13 @@
     </container>
 
     <columns name="contacts_grid_columns">
+
        <!-- this is columns section name, used above in spinner -->
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
                     <item name="sortOrder" xsi:type="number">0</item>
                     <item name="indexField" xsi:type="string">produk_id</item>
                 </item>
