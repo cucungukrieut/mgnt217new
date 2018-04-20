@@ -3,7 +3,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="ws_contacts_listing"/>
+            <uiComponent name="produkmaster_listing"/>
         </referenceContainer>
     </body>
 </page>

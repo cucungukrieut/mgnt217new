@@ -39,7 +39,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected function _prepareForm()
     {
         /* @var $model \MuliaLestari\ProductsGrid\Model\Contact */
-        $model = $this->_coreRegistry->registry('ws_contact');
+        $model = $this->_coreRegistry->registry('produk_master');
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();

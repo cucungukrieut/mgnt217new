@@ -74,7 +74,7 @@ class Edit extends \Magento\Backend\App\Action
             $model->setData($data);
         }
 
-        $this->_coreRegistry->register('ws_contact', $model);
+        $this->_coreRegistry->register('produk_master', $model);
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
