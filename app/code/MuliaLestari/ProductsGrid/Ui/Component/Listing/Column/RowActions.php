@@ -70,7 +70,7 @@ class RowActions extends Column
             }
         }
 
-        $data = $dataSource;
+        //$data = $dataSource;
         return $dataSource;
     }
 }

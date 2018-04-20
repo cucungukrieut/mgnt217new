@@ -7,15 +7,6 @@ use Magento\TestFramework\ErrorLog\Logger;
 
 class Delete extends \Magento\Backend\App\Action
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    /*protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Webspeaks_Contact::atachment_delete');
-    }*/
-
     /**
      * Delete action
      *

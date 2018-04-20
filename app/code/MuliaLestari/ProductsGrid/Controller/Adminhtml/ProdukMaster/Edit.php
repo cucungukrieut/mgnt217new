@@ -33,13 +33,6 @@ class Edit extends \Magento\Backend\App\Action
         parent::__construct($context);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    /*protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('MuliaLestari_MasterProduct::attachment_save');
-    }*/
 
     /**
      * Init actions

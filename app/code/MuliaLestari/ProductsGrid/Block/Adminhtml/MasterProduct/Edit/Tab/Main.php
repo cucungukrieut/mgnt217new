@@ -46,7 +46,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
         $form->setHtmlIdPrefix('contact_');
 
-        $fieldset = $form->addFieldset('base_fieldset', ['legend' => __('MasterProduct Information')]);
+        $fieldset = $form->addFieldset('base_fieldset', ['legend' => __('Informasi Master Product')]);
 
         // FIELD FORM ISIAN DATA PRODUK
         if ($model->getId()) {

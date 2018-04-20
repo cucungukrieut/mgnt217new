@@ -5,8 +5,7 @@ namespace MuliaLestari\ProductsGrid\Controller\Adminhtml\ProdukMaster;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends \Magento\Backend\App\Action
-{
+class Index extends \Magento\Backend\App\Action {
 
     /**
      * @var PageFactory
@@ -17,10 +16,7 @@ class Index extends \Magento\Backend\App\Action
      * @param Context $context
      * @param PageFactory $resultPageFactory
      */
-    public function __construct(
-        Context $context,
-        PageFactory $resultPageFactory
-    ) {
+    public function __construct(Context $context, PageFactory $resultPageFactory) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }
@@ -40,14 +36,4 @@ class Index extends \Magento\Backend\App\Action
 
         return $resultPage;
     }
-
-    /**
-     * Is the user allowed to view the attachment grid.
-     *
-     * @return bool
-     */
-    /*protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('MuliaLestari_ProductsGrid::contacts');
-    }*/
 }

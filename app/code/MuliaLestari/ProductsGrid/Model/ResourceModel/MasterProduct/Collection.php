@@ -5,6 +5,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 {
     /**
      * @var string
+     * getting product id for grid product
      */
     protected $_idFieldName = 'produk_id';
 
