@@ -4,20 +4,18 @@
  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Catalog\Controller\Adminhtml\Product;
+namespace Magento\CatalogML\Controller\Adminhtml\ProdukMulia;
 
-use Magento\CatalogML\Controller\Adminhtml\ProdukMulia\Products;
+
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Catalog\Controller\Adminhtml\Product\Builder;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\CatalogML\Model\ResourceModel\ProdukML\CollectionFactory;
+use Magento\Framework\App\ResponseInterface;
 
-class MassDelete extends Products
+class MassDelete extends \Magento\Backend\App\Action
 {
     /**
-     * Massactions filter
-     *
      * @var Filter
      */
     protected $filter;
@@ -29,36 +27,35 @@ class MassDelete extends Products
 
     /**
      * @param Context $context
-     * @param Builder $productBuilder
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(
-        Context $context,
-        Builder $productBuilder,
-        Filter $filter,
-        CollectionFactory $collectionFactory
-    ) {
+    public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
+    {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
-        parent::__construct($context, $productBuilder);
+        parent::__construct($context);
     }
 
     /**
-     * @return \Magento\Backend\Model\View\Result\Redirect
+     * Dispatch request
+     *
+     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
+     * @throws \Magento\Framework\Exception\NotFoundException
      */
     public function execute()
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
-        $productDeleted = 0;
-        foreach ($collection->getItems() as $product) {
-            $product->delete();
-            $productDeleted++;
-        }
-        $this->messageManager->addSuccessMessage(
-            __('Total %1 record telah di hapus.', $productDeleted)
-        );
+        $collectionSize = $collection->getSize();
 
-        return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('catalogml/*/index');
+        foreach ($collection as $item) {
+            $item->delete();
+        }
+
+        $this->messageManager->addSuccessMessage(__('A total of %1 element(s) have been deleted.', $collectionSize));
+
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        return $resultRedirect->setPath('*/*/');
     }
 }

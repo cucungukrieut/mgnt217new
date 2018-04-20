@@ -51,7 +51,7 @@ class MassDelete extends \Magento\Backend\App\Action
             $item->delete();
         }
 
-        $this->messageManager->addSuccessMessage(__('A total of %1 element(s) have been deleted.', $collectionSize));
+        $this->messageManager->addSuccessMessage(__('Total %1 master produk telah dihapus.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
