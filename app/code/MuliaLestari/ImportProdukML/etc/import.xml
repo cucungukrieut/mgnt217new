@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd">
+    <entity name="import_master_produkml" label="Product Master ML" model="MuliaLestari\ImportProdukML\Model\Import\ImportProdukML" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+    <entity name="import_grouping_produkml" label="Product Grouping ML" model="MuliaLestari\ImportProdukML\Model\Import\ImportGroupingProdukML" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+    <entity name="import_grouping_warna" label="Warna Grouping ML" model="MuliaLestari\ImportProdukML\Model\Import\ImportGroupingWarnaML" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+    <entity name="import_master_warna" label="Warna Master ML" model="MuliaLestari\ImportProdukML\Model\Import\ImportWarnaML" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+</config>
